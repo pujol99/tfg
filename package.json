@@ -5,7 +5,8 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --dest docs",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "install": "git checkout main && git merge develop && git checkout develop"
     },
     "dependencies": {
         "core-js": "^3.6.5",
