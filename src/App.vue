@@ -1,5 +1,5 @@
 <template>
-  <Renderer ref="renderer">
+  <Renderer ref="renderer" orbitCtrl resize="window">
     <Camera :position="{ z: 10 }" />
     <Scene>
       <PointLight :position="{ y: 50, z: 50 }" />
@@ -17,7 +17,7 @@ export default {
     const renderer = this.$refs.renderer;
     const box = this.$refs.box.mesh;
     renderer.onBeforeRender(() => {
-      box.rotation.x += 0.04;
+      box.rotation.x += 0.01;
     });
   },
 };
