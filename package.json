@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "local": "vue-cli-service serve",
-        "build": "vue-cli-service build --dest docs",
+        "build": "vue-cli-service build --dest docs && live-server ./docs",
         "lint": "vue-cli-service lint",
         "install": "git checkout main && git merge develop && git push && git checkout develop"
     },
