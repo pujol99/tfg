@@ -26,7 +26,7 @@ const { randFloat: rnd, randFloatSpread: rndFS } = MathUtils;
 
 export default {
   setup() {
-    const NUM_INSTANCES = 2000;
+    const NUM_INSTANCES = 200;
     const instances = [];
     const target = new Vector3();
     const dummyO = new Object3D();
