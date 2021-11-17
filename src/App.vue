@@ -1,5 +1,5 @@
 <template>
-    <Renderer ref="renderer" resize antialias :orbit-ctrl="{ autoRotate: true, enableDamping: true, dampingFactor: 0.05 }" pointer>
+    <Renderer ref="renderer" resize="window" antialias :orbit-ctrl="{ autoRotate: true, enableDamping: true, dampingFactor: 0.05 }" pointer>
       <Camera :position="{ x: 0, y: 0, z: 10 }" />
       <Scene background="#000000" >
         <PointLight ref="light" :intensity="0.5" :position="{ x: 0, y: 0, z: 0 }">
@@ -27,14 +27,16 @@
         <FXAAPass />
       </EffectComposer>
     </Renderer>
-    <div>
-      <p>rewatr</p>
-    </div>
+    <Option message="This is option 1"/>
 </template>
 
 <script>
 import { RepeatWrapping } from 'three';
+import Option from "./components/Option"
 export default {
+    components: {
+      Option
+    },
     data() {
     return {
       texturesProps: {
