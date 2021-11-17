@@ -6,8 +6,10 @@ canvas { display:block; } /* To remove the scrollbars */
 
 .over{
     position: absolute;
-    top: 300px;
-    left: 100px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: aliceblue;
     padding: 10px;
+    cursor: pointer;
 }
