@@ -1,27 +1,13 @@
 <template>
-    <Visuals v-if="playing"/>
-    <Option :message="message" @click="onButtonClick"/>
+    <Home />
 </template>
 
 <script>
-import Option from "./components/Option"
-import Visuals from "./components/Visuals"
+import Home from './views/stages/home/Home.vue'
 export default {
+    name: 'App',
     components: {
-      Option,
-      Visuals
-    },
-    data() {
-      return {
-        playing: false,
-        message: "Start playing"
-      }
-    },
-    methods: {
-      onButtonClick: function() {
-        this.playing = !this.playing
-        this.message = this.playing ? "Stop playing" : "Start playing"
-      }
-    },
+        Home
+    }
 };
 </script>

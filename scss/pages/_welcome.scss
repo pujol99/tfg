@@ -1,0 +1,28 @@
+body{
+    background-image: url("/static/img/bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+#welcome{
+    @include center();
+}
+
+.welcome-message{
+    color: $color0;
+    font-size: 3.5vw;
+}
+
+.welcome-bottom{
+    @include xcenter(fit-content);
+    margin-top: 30px;
+    img{
+        width: 50px;
+        @include tablet{width: 30px;}
+        background-color: $color0;
+        border-radius: 50%;
+        padding: 5px;
+    }
+}
