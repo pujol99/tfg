@@ -29,6 +29,10 @@ canvas {
   cursor: pointer;
 }
 
+body {
+  background-color: sandybrown;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { TroisJSVuePlugin } from "troisjs";
+import { store } from './store'
 
-createApp(App).use(TroisJSVuePlugin).mount('#app')
+createApp(App).use(store).use(TroisJSVuePlugin).mount('#app')

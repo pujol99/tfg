@@ -6,6 +6,6 @@
             unde animi sed tenetur repellendus quasi quod odio saepe ducimus
             voluptatem!
         </p>
-        <button>Start Game</button>
+        <button @click="this.$store.commit('nextScene')">Start Game</button>
     </div>
 </template>
