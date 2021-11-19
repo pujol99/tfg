@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import Scene1 from "../components/scenes/Visuals1.vue";
+import Scene1 from "./scenes/Scene1.vue";
 export default {
-    name: "App",
+    name: "Scenes",
     components: {
         Scene1,
-    },
+    }
 };
 </script>

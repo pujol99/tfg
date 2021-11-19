@@ -15,5 +15,10 @@ export const store = createStore({
         prevScene(state) {
             if (state.currentSceneIndex - 1 < 0) state.currentSceneIndex--;
         },
-    }
+    },
+    getters: {
+        isCurrentScene: (state) => (name) => {
+            return state.scenes[state.currentSceneIndex] == name;
+        },
+    },
 });

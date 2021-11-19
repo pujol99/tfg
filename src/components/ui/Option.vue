@@ -1,5 +1,5 @@
 <template>
-    <div class="over">
+    <div class="option">
         {{message}}
     </div>
 </template>
@@ -10,3 +10,9 @@ export default {
     props: ['message'],
 }
 </script>
+
+<style scoped>
+.option{
+    background-color: aliceblue;
+}
+</style>
