@@ -16,13 +16,13 @@ export default {
     },
     data() {
         return {
-            optionsProps: {
-                title: "Your friend is sad because she failed, but you are on the phone",
-                option1: "Ignore and stay on the phone",
-                option2: "Listen while on the phone",
-                option3: "Give her all your attention",
-            },
+            optionsProps: null,
         };
+    },
+    async created() {
+        this.optionsProps = await this.$store.getters.getSceneOptions(
+            this.$options.name
+        );
     },
 };
 </script>

@@ -1,20 +1,13 @@
 <template>
-    <Home />
-    <Scenes />
-    <Final />
+    <Home/>
 </template>
 
 <script>
-import Home from "./views/Home.vue";
-import Scenes from "./views/Scenes.vue";
-import Final from "./views/Final.vue";
-
+import Home from './views/Home'
 export default {
     name: "App",
     components: {
-        Home,
-        Scenes,
-        Final,
-    },
+        Home
+    }
 };
 </script>

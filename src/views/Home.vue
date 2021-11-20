@@ -1,15 +1,20 @@
 <template>
-    <div v-if="this.$store.getters.isCurrentScene(this.$options.name)">
-        <Message />
-    </div>
+    <Welcome />
+    <Scenes />
+    <Final />
 </template>
 
 <script>
-import Message from "../components/home/HomeMessage.vue";
+import Welcome from "./Welcome.vue";
+import Scenes from "./Scenes.vue";
+import Final from "./Final.vue";
+
 export default {
     name: "Home",
     components: {
-        Message,
-    }
+        Welcome,
+        Scenes,
+        Final,
+    },
 };
 </script>

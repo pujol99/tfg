@@ -80,12 +80,12 @@
                     </StandardMaterial>
                 </Plane>
             </Group>
-            <FbxModel
+            <!-- <FbxModel
                 src="./assets/models/Samba Dancing.fbx"
                 @load="onLoad"
                 :position="{ y: -3, z: -3 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
-            />
+            /> -->
         </Scene>
         <EffectComposer>
             <RenderPass />
