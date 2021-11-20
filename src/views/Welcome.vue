@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import Message from "../components/home/HomeMessage.vue";
+import Message from "../components/welcome/WelcomeMessage.vue";
 export default {
     name: "Welcome",
     components: {
         Message,
-    }
+    },
 };
 </script>

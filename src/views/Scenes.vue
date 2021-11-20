@@ -1,13 +1,17 @@
 <template>
-    <Scene1 />
+    <Scene name="Scene1">
+        <Visuals1 />
+    </Scene>
 </template>
 
 <script>
-import Scene1 from "./scenes/Scene1.vue";
+import Visuals1 from "../components/scenes/Visuals1.vue";
+import Scene from "./Scene.vue";
 export default {
     name: "Scenes",
     components: {
-        Scene1,
-    }
+        Scene,
+        Visuals1,
+    },
 };
 </script>
