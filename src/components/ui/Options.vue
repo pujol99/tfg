@@ -21,23 +21,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-.title{
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    background-color: aliceblue;
-    padding: 10px;
-}
-
-.options{
-    position: absolute;
-    top: 90%;
-    left: 10%;
-    width: 80%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-</style>

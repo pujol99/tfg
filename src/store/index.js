@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 export const store = createStore({
     state() {
         return {
-            scenes: ["Welcome", "Scene1", "Final"],
+            scenes: ["Scene1", "Final"],
             currentSceneIndex: 0,
             scenesOptions: {
                 Scene1: {
@@ -34,6 +34,6 @@ export const store = createStore({
         getSceneOptions: (state) => (scene) => {
             // return state.scenesOptions.then((data) => data[scene]);
             return state.scenesOptions[scene];
-        },
+        }
     },
 });
