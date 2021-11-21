@@ -1,6 +1,6 @@
 <template>
     <Renderer ref="renderer" resize="window" >
-        <PerspectiveCamera ref="camera" :lookAt="cameraLookAt" :position="{ x: 0, y: 0, z: 5 }" />
+        <PerspectiveCamera ref="camera" :lookAt="cameraLookAt" :position="cameraPosition" />
         <Scene background="#000000">
             <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
             <Plane
@@ -40,23 +40,19 @@
             <FbxModel
                 src="./assets/models/Samba Dancing.fbx"
                 ref="model1"
-                :position="{ y: -3, x: -2 }"
+                @load="onLoad"
+                :position="{ y: -3, x: -2, z: 0 }"
                 :rotation="{ y: Math.PI * 0.5 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
             />
             <FbxModel
                 src="./assets/models/Samba Dancing.fbx"
                 ref="model2"
-                :position="{ y: -3, x: 2 }"
+                :position="{ y: -3, x: 2, z: 0 }"
                 :rotation="{ y: -Math.PI * 0.5 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
             />
         </Scene>
-        <EffectComposer>
-            <RenderPass />
-            <UnrealBloomPass :strength="0.3" />
-            <FXAAPass />
-        </EffectComposer>
     </Renderer>
 </template>
 
@@ -67,7 +63,8 @@ export default {
     name: "Visuals1",
     data() {
         return {
-            cameraLookAt: { x: 2, y: 0, z: 0 }
+            cameraLookAt: { x: 0, y: 0, z: 0 },
+            cameraPosition: { x: 0, y: 0, z: 5 }
         };
     },
     mounted() {
@@ -80,45 +77,25 @@ export default {
     },
     methods: {
         init() {
-            //this.camera.initObject3D()
             this.renderer.onBeforeRender(this.animate);
         },
-        animate() {
-            // gsap.to(this.camera.position, {
-            //     duration: 2,
-            //     delay: 3,
-            //     x: this.model1.position.x,
-            // });
-            // gsap.to(this.camera.position, {
-            //     duration: 2,
-            //     delay: 3,
-            //     y: this.model1.position.y + 3,
-            // });
-            // gsap.to(this.camera.position, {
-            //     duration: 2,
-            //     delay: 3,
-            //     z: this.model1.position.z,
-            // });
-            // gsap.to(this.camera.lookAt, {
-            //     duration: 2,
-            //     delay: 3,
-            //     x: this.model2.position.x,
-            // });
-            // gsap.to(this.camera.lookAt, {
-            //     duration: 2,
-            //     delay: 3,
-            //     y: this.model2.position.y,
-            // });
-            // gsap.to(this.camera.lookAt, {
-            //     duration: 2,
-            //     delay: 3,
-            //     x: this.model2.position.z,
-            // });
-            //this.camera.camera.position.x += 0.01
-            this.cameraLookAt.x += 0.01
-            console.log(this.camera);
-            console.log(this.model1);
-            // console.log(this.model1.position);
+        animate() {},
+        updateView() {
+            gsap.to(this.cameraPosition, {
+                duration: 2,
+                x: this.model1.position.x,
+                y: this.model1.position.y + 3,
+                z: this.model1.position.z,
+            });
+            gsap.to(this.cameraLookAt, {
+                duration: 2,
+                x: this.model2.position.x,
+                y: this.model2.position.y + 3,
+                z: this.model2.position.z,
+            });
+        },
+        onLoad(object) {
+            this.updateView();
         },
     },
 };
