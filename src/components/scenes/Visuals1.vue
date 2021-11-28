@@ -17,22 +17,22 @@
                     }"
                 >
                     <Texture
-                        src="/assets/textures/Wood_Tiles_002_basecolor.jpg"
+                        src="../assets/textures/Wood_Tiles_002_basecolor.jpg"
                     />
                     <Texture
-                        src="/assets/textures/Wood_Tiles_002_height.png"
+                        src="../assets/textures/Wood_Tiles_002_height.png"
                         name="displacementMap"
                     />
                     <Texture
-                        src="/assets/textures/Wood_Tiles_002_normal.jpg"
+                        src="../assets/textures/Wood_Tiles_002_normal.jpg"
                         name="normalMap"
                     />
                     <Texture
-                        src="/assets/textures/Wood_Tiles_002_roughness.jpg"
+                        src="../assets/textures/Wood_Tiles_002_roughness.jpg"
                         name="roughnessMap"
                     />
                     <Texture
-                        src="/assets/textures/Wood_Tiles_002_ambientOcclusion.jpg"
+                        src="../assets/textures/Wood_Tiles_002_ambientOcclusion.jpg"
                         name="aoMap"
                     />
                 </StandardMaterial>
