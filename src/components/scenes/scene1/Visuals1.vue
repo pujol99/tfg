@@ -6,46 +6,18 @@
             :position="cameraPosition"
         />
         <Scene background="#000000">
-            <PointLight
-                ref="light"
-                :position="{ x: 0, y: 0, z: 3 }"
-                :intensity="0.4"
-                ><Sphere :radius="0.1" />
+            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4"
+                ><Sphere :radius="0.05" />
+            </PointLight>
+            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4"
+                ><Sphere :radius="0.05" />
             </PointLight>
             <Plane
                 :width="30"
                 :height="30"
                 :rotation="{ x: -Math.PI / 2, y: 0, z: 0 }"
                 :position="{ y: -3 }"
-            >
-                <StandardMaterial
-                    :props="{
-                        displacementScale: 0.2,
-                        roughness: 0,
-                        metalness: 0,
-                    }"
-                >
-                    <Texture
-                        src="./assets/textures/Wood_Tiles_002_basecolor.jpg"
-                    />
-                    <Texture
-                        src="./assets/textures/Wood_Tiles_002_height.png"
-                        name="displacementMap"
-                    />
-                    <Texture
-                        src="./assets/textures/Wood_Tiles_002_normal.jpg"
-                        name="normalMap"
-                    />
-                    <Texture
-                        src="./assets/textures/Wood_Tiles_002_roughness.jpg"
-                        name="roughnessMap"
-                    />
-                    <Texture
-                        src="./assets/textures/Wood_Tiles_002_ambientOcclusion.jpg"
-                        name="aoMap"
-                    />
-                </StandardMaterial>
-            </Plane>
+            />
             <FbxModel
                 src="./assets/models/Standing Arguing.fbx"
                 ref="model1"
@@ -82,7 +54,6 @@ export default {
         this.renderer = this.$refs.renderer;
         this.model1 = this.$refs.model1;
         this.model2 = this.$refs.model2;
-        this.light = this.$refs.light;
         this.camera = this.$refs.camera;
 
         this.init();
@@ -91,8 +62,7 @@ export default {
         init() {
             this.renderer.onBeforeRender(this.animate);
         },
-        animate() {
-        },
+        animate() {},
         onLoad(object) {
             this.mixer = new AnimationMixer(object);
             const action = this.mixer.clipAction(object.animations[1]);
