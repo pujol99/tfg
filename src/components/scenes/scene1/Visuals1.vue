@@ -1,12 +1,17 @@
 <template>
-    <Renderer ref="renderer" resize="window">
+    <Renderer ref="renderer" resize="window" :orbit-ctrl="{ autoRotate: true }">
         <PerspectiveCamera
             ref="camera"
             :lookAt="cameraLookAt"
             :position="cameraPosition"
         />
         <Scene background="#000000">
-            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
+            <PointLight
+                ref="light"
+                :position="{ x: 0, y: 0, z: 3 }"
+                :intensity="0.4"
+                ><Sphere :radius="0.1" />
+            </PointLight>
             <Plane
                 :width="30"
                 :height="30"
@@ -77,6 +82,7 @@ export default {
         this.renderer = this.$refs.renderer;
         this.model1 = this.$refs.model1;
         this.model2 = this.$refs.model2;
+        this.light = this.$refs.light;
         this.camera = this.$refs.camera;
 
         this.init();
@@ -85,7 +91,8 @@ export default {
         init() {
             this.renderer.onBeforeRender(this.animate);
         },
-        animate() {},
+        animate() {
+        },
         onLoad(object) {
             this.mixer = new AnimationMixer(object);
             const action = this.mixer.clipAction(object.animations[1]);
