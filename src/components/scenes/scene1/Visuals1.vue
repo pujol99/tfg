@@ -1,6 +1,10 @@
 <template>
-    <Renderer ref="renderer" resize="window" >
-        <PerspectiveCamera ref="camera" :lookAt="cameraLookAt" :position="cameraPosition" />
+    <Renderer ref="renderer" resize="window">
+        <PerspectiveCamera
+            ref="camera"
+            :lookAt="cameraLookAt"
+            :position="cameraPosition"
+        />
         <Scene background="#000000">
             <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
             <Plane
@@ -38,17 +42,18 @@
                 </StandardMaterial>
             </Plane>
             <FbxModel
-                src="./assets/models/Samba Dancing.fbx"
+                src="./assets/models/Standing Arguing.fbx"
                 ref="model1"
                 @load="onLoad"
-                :position="{ y: -3, x: -2, z: 0 }"
+                :position="{ y: -3, x: -1, z: 0 }"
                 :rotation="{ y: Math.PI * 0.5 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
             />
             <FbxModel
-                src="./assets/models/Samba Dancing.fbx"
+                src="./assets/models/Standing Arguing.fbx"
                 ref="model2"
-                :position="{ y: -3, x: 2, z: 0 }"
+                @load="onLoad2"
+                :position="{ y: -3, x: 1, z: 0 }"
                 :rotation="{ y: -Math.PI * 0.5 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
             />
@@ -64,7 +69,8 @@ export default {
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: 0, y: 0, z: 5 }
+            cameraPosition: { x: 0, y: 0, z: 5 },
+            originalCameraPosition: this.cameraPosition,
         };
     },
     mounted() {
@@ -80,22 +86,36 @@ export default {
             this.renderer.onBeforeRender(this.animate);
         },
         animate() {},
-        updateView() {
+        onLoad(object) {
+            this.mixer = new AnimationMixer(object);
+            const action = this.mixer.clipAction(object.animations[1]);
+            action.play();
+            this.clock = new Clock();
+            this.$refs.renderer.onBeforeRender(this.updateMixer);
+        },
+        onLoad2(object) {
+            this.mixer2 = new AnimationMixer(object);
+            const action2 = this.mixer2.clipAction(object.animations[1]);
+            action2.play();
+            this.clock2 = new Clock();
+        },
+        updateMixer() {
+            this.mixer.update(this.clock.getDelta());
+            this.mixer2.update(this.clock2.getDelta());
+        },
+        moveCamera(from, lookingAt) {
             gsap.to(this.cameraPosition, {
                 duration: 2,
-                x: this.model1.position.x,
-                y: this.model1.position.y + 3,
-                z: this.model1.position.z,
+                x: from.x,
+                y: from.y + 3,
+                z: from.z,
             });
             gsap.to(this.cameraLookAt, {
                 duration: 2,
-                x: this.model2.position.x,
-                y: this.model2.position.y + 3,
-                z: this.model2.position.z,
+                x: lookingAt.x,
+                y: lookingAt.y + 3,
+                z: lookingAt.z,
             });
-        },
-        onLoad(object) {
-            this.updateView();
         },
     },
 };
