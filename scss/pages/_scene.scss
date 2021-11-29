@@ -1,16 +1,38 @@
-.title{
+.title {
     position: absolute;
     top: 10%;
     left: 10%;
     padding: 10px;
+    & > button {
+        padding: 10px;
+    }
+    @include tablet {
+        width: 100%;
+        left: 0%;
+    }
 }
 
-.options{
+.options {
     position: absolute;
     top: 80%;
     left: 10%;
     width: 80%;
     padding: 10px;
+    @include tablet {
+        padding: 5px;
+        width: 100%;
+        left: 0%;
+    }
     display: flex;
     justify-content: space-between;
+}
+
+.option {
+    padding: 10px;
+    @include mobile {
+        padding: 2px;
+    }
+
+    background-color: white;
+    border: 2px solid black;
 }

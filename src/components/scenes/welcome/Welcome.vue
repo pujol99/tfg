@@ -6,7 +6,6 @@
             :position="cameraPosition"
         />
         <Scene background="#000000">
-            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
             <Sphere ref="sphere">
                 <ShaderMaterial
                     ref="material"
@@ -27,10 +26,10 @@ export default {
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: 0, y: 0, z: 5 },
+            cameraPosition: { x: 0, y: 0, z: 2 },
             clock: null,
             myUniforms: {
-                uTime: { value: 0.5 },
+                uTime: { value: 0.0 },
             },
             vs: `
                 varying vec2 vUv;
@@ -111,7 +110,7 @@ export default {
 
                 void main()
                 {  
-                    float strength = step(0.9, sin(cnoise(vUv * 10.0 * vUv.y) * 4.0 * vTime * 0.3));
+                    float strength = step(0.9, sin(cnoise(vUv * 10.0 * vUv.y) * 4.0 * vTime * 0.2));
                     vec3 black = vec3(0.0);
                     vec3 uvColor = vec3(vUv, 1.0);
                     vec3 mixed = mix(black, uvColor, strength);
@@ -137,7 +136,8 @@ export default {
         animate() {
             const elapsedTime = this.clock.getElapsedTime();
             this.myUniforms.uTime.value = elapsedTime;
-            this.sphere.mesh.rotateY(Math.sin(elapsedTime*0.0001));
+            this.sphere.mesh.rotateY(-Math.sin((elapsedTime%3)*0.003));
+            this.sphere.mesh.rotateX(-Math.sin(elapsedTime*0.0001));
         },
     },
 };

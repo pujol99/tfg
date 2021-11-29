@@ -18,6 +18,10 @@ canvas {
 }
 
 /* To remove the scrollbars */
+button {
+  cursor: pointer;
+}
+
 .welcome {
   position: absolute;
   top: 80%;
@@ -49,6 +53,17 @@ canvas {
   padding: 10px;
 }
 
+.title > button {
+  padding: 10px;
+}
+
+@media (max-width: 900px) {
+  .title {
+    width: 100%;
+    left: 0%;
+  }
+}
+
 .options {
   position: absolute;
   top: 80%;
@@ -61,4 +76,24 @@ canvas {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .options {
+    padding: 5px;
+    width: 100%;
+    left: 0%;
+  }
+}
+
+.option {
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+}
+
+@media (max-width: 550px) {
+  .option {
+    padding: 2px;
+  }
 }

@@ -1,6 +1,6 @@
 <template>
     <div v-if="message" @click="this.$store.commit('nextScene')">
-        <button>{{message}}</button>
+        <button class="option">{{message}}</button>
     </div>
 </template>
 
