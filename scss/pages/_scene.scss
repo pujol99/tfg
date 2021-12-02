@@ -18,21 +18,17 @@
     left: 10%;
     width: 80%;
     padding: 10px;
-    @include tablet {
-        padding: 5px;
-        width: 100%;
-        left: 0%;
-    }
     display: flex;
     justify-content: space-between;
+    @include mobile {
+        flex-direction: column;
+    }
 }
 
 .option {
     padding: 10px;
-    @include mobile {
-        padding: 2px;
-    }
-
+    width: 100%;
+    margin-bottom: 5px;
     background-color: white;
     border: 2px solid black;
 }
