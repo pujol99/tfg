@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-show="!this.$store.getters.isSceneLoading">
         <div class="title">
             <Option :message="information.title"/>
         </div>

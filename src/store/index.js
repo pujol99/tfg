@@ -5,6 +5,7 @@ export const store = createStore({
         return {
             scenes: ["Welcome", "Scene1", "Final"],
             currentSceneIndex: 0,
+            sceneLoading: false,
             scenesOptions: {
                 Scene1: {
                     title: "Your friend is sad because she failed, but you are on the phone",
@@ -20,20 +21,30 @@ export const store = createStore({
     },
     mutations: {
         nextScene(state) {
-            if (state.currentSceneIndex + 1 < state.scenes.length)
+            if (state.currentSceneIndex + 1 < state.scenes.length){
                 state.currentSceneIndex++;
+                if(state.scenes[state.currentSceneIndex].includes("Scene")) {
+                    state.sceneLoading = !state.sceneLoading;
+                }
+            }
         },
         prevScene(state) {
             if (state.currentSceneIndex - 1 < 0) state.currentSceneIndex--;
+        },
+        loadingSwap(state) {
+            state.sceneLoading = !state.sceneLoading;
         },
     },
     getters: {
         isCurrentScene: (state) => (name) => {
             return state.scenes[state.currentSceneIndex] == name;
         },
+        isSceneLoading: state => {
+            return state.sceneLoading;
+        },
         getSceneOptions: (state) => (scene) => {
             // return state.scenesOptions.then((data) => data[scene]);
             return state.scenesOptions[scene];
-        }
+        },
     },
 });

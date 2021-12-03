@@ -1,11 +1,11 @@
 <template>
-    <Renderer ref="renderer" resize="window" :orbit-ctrl="{ autoRotate: true }">
+    <Renderer ref="renderer" resize="window" orbitCtrl>
         <PerspectiveCamera
             ref="camera"
             :lookAt="cameraLookAt"
             :position="cameraPosition"
         />
-        <Scene background="#000000">
+        <Scene ref="scene" background="#000000">
             <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4"
                 ><Sphere :radius="0.05" />
             </PointLight>
@@ -18,9 +18,22 @@
                 :rotation="{ x: -Math.PI / 2, y: 0, z: 0 }"
                 :position="{ y: -3 }"
             />
+            <Plane
+                :width="10"
+                :height="10"
+                :position="{ y: -2, z: 2 }"
+            >
+                <ShaderMaterial
+                    ref="loadingScreen"
+                    :props="{
+                        vertexShader: vs,
+                        fragmentShader: fs,
+                        uniforms: myUniforms,
+                    }"
+                />
+            </Plane>
             <FbxModel
                 src="./assets/models/Standing Arguing.fbx"
-                ref="model1"
                 @load="onLoad"
                 :position="{ y: -3, x: -1, z: 0 }"
                 :rotation="{ y: Math.PI * 0.5 }"
@@ -28,8 +41,7 @@
             />
             <FbxModel
                 src="./assets/models/Standing Arguing.fbx"
-                ref="model2"
-                @load="onLoad2"
+                @load="onLoad"
                 :position="{ y: -3, x: 1, z: 0 }"
                 :rotation="{ y: -Math.PI * 0.5 }"
                 :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
@@ -40,58 +52,63 @@
 
 <script>
 import { AnimationMixer, Clock } from "three";
-import gsap from "gsap";
+import { gsap } from 'gsap'
 export default {
     name: "Visuals1",
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
             cameraPosition: { x: 0, y: 0, z: 5 },
-            originalCameraPosition: this.cameraPosition,
+            animations: [],
+            numberOfObjects: 2,
+            myUniforms: {
+                uAlpha: { value: 1.0 },
+            },
+            vs: `
+                void main()
+                {
+                    gl_Position = vec4(position, 1.0);
+                }
+            `,
+            fs: `
+                uniform float uAlpha;
+
+                void main()
+                {
+                    gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+                }
+            `
         };
     },
     mounted() {
+        this.loadingScreen = this.$refs.loadingScreen.material;
+        this.loadingScreen.transparent = true;
         this.renderer = this.$refs.renderer;
-        this.model1 = this.$refs.model1;
-        this.model2 = this.$refs.model2;
         this.camera = this.$refs.camera;
-
         this.init();
     },
     methods: {
         init() {
-            this.renderer.onBeforeRender(this.animate);
+            this.renderer.onBeforeRender(this.update);
         },
-        animate() {},
+        update() {
+            this.updateAnimations();
+        },
         onLoad(object) {
-            this.mixer = new AnimationMixer(object);
-            const action = this.mixer.clipAction(object.animations[1]);
-            action.play();
-            this.clock = new Clock();
-            this.$refs.renderer.onBeforeRender(this.updateMixer);
+            var animation = new AnimationMixer(object);
+            animation.clipAction(object.animations[1]).play();
+            var clock = new Clock();
+            this.animations.push({ animation, clock });
+
+            // Check if screen is fully loaded
+            if (this.numberOfObjects == this.animations.length){
+                this.$store.commit("loadingSwap");
+                gsap.to(this.loadingScreen.uniforms.uAlpha, { duration: 3, value: 0.0})
+            }
         },
-        onLoad2(object) {
-            this.mixer2 = new AnimationMixer(object);
-            const action2 = this.mixer2.clipAction(object.animations[1]);
-            action2.play();
-            this.clock2 = new Clock();
-        },
-        updateMixer() {
-            this.mixer.update(this.clock.getDelta());
-            this.mixer2.update(this.clock2.getDelta());
-        },
-        moveCamera(from, lookingAt) {
-            gsap.to(this.cameraPosition, {
-                duration: 2,
-                x: from.x,
-                y: from.y + 3,
-                z: from.z,
-            });
-            gsap.to(this.cameraLookAt, {
-                duration: 2,
-                x: lookingAt.x,
-                y: lookingAt.y + 3,
-                z: lookingAt.z,
+        updateAnimations() {
+            this.animations.forEach(function (anim) {
+                anim.animation.update(anim.clock.getDelta());
             });
         },
     },
