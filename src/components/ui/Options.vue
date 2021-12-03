@@ -1,7 +1,7 @@
 <template>
     <div v-show="!this.$store.getters.isSceneLoading">
         <div class="title">
-            <Option :message="information.title"/>
+            <Option :message="information.title" disabled/>
         </div>
         <div class="options">
             <Option :message="information.option1"/>

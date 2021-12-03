@@ -18,17 +18,12 @@
                 :rotation="{ x: -Math.PI / 2, y: 0, z: 0 }"
                 :position="{ y: -3 }"
             />
-            <Plane
-                :width="10"
-                :height="10"
-                :position="{ y: -2, z: 2 }"
-            >
+            <Plane ref="loadingScreen" :width="2" :height="2" :position="{ y: -2, z: 0 }">
                 <ShaderMaterial
-                    ref="loadingScreen"
                     :props="{
                         vertexShader: vs,
                         fragmentShader: fs,
-                        uniforms: myUniforms,
+                        uniforms: us,
                     }"
                 />
             </Plane>
@@ -52,7 +47,8 @@
 
 <script>
 import { AnimationMixer, Clock } from "three";
-import { gsap } from 'gsap'
+import { gsap } from "gsap";
+import { vs, fs } from "./shaders";
 export default {
     name: "Visuals1",
     data() {
@@ -61,30 +57,22 @@ export default {
             cameraPosition: { x: 0, y: 0, z: 5 },
             animations: [],
             numberOfObjects: 2,
-            myUniforms: {
+            us: {
                 uAlpha: { value: 1.0 },
+                uTime: { value: 0.0 },
             },
-            vs: `
-                void main()
-                {
-                    gl_Position = vec4(position, 1.0);
-                }
-            `,
-            fs: `
-                uniform float uAlpha;
-
-                void main()
-                {
-                    gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
-                }
-            `
+            vs: vs,
+            fs: fs,
         };
     },
     mounted() {
-        this.loadingScreen = this.$refs.loadingScreen.material;
-        this.loadingScreen.transparent = true;
+        this.loadingScreen = this.$refs.loadingScreen;
+        this.loadingScreenMaterial = this.loadingScreen.material;
+        this.loadingScreenMaterial.transparent = true;
         this.renderer = this.$refs.renderer;
-        this.camera = this.$refs.camera;
+        this.scene = this.$refs.scene;
+        this.camera = this.$refs.camwera;
+        this.clock = new Clock();
         this.init();
     },
     methods: {
@@ -92,6 +80,8 @@ export default {
             this.renderer.onBeforeRender(this.update);
         },
         update() {
+            const elapsedTime = this.clock.getElapsedTime();
+            this.us.uTime.value = elapsedTime;
             this.updateAnimations();
         },
         onLoad(object) {
@@ -101,9 +91,18 @@ export default {
             this.animations.push({ animation, clock });
 
             // Check if screen is fully loaded
-            if (this.numberOfObjects == this.animations.length){
+            if (this.numberOfObjects == this.animations.length) {
                 this.$store.commit("loadingSwap");
-                gsap.to(this.loadingScreen.uniforms.uAlpha, { duration: 3, value: 0.0})
+                var loadingScreen = this.loadingScreen;
+                var scene = this.scene;
+                gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
+                    duration: 3,
+                    value: 0.0,
+                    onComplete: function () {
+                        scene.scene.remove(loadingScreen)
+                        console.log(scene);
+                    },
+                });
             }
         },
         updateAnimations() {
