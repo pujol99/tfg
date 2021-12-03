@@ -78,22 +78,19 @@ button {
           justify-content: space-between;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 550px) {
   .options {
-    padding: 5px;
-    width: 100%;
-    left: 0%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
 .option {
   padding: 10px;
+  width: 100%;
+  margin-bottom: 5px;
   background-color: white;
   border: 2px solid black;
-}
-
-@media (max-width: 550px) {
-  .option {
-    padding: 2px;
-  }
 }
