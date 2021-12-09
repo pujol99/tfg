@@ -11,7 +11,7 @@ export default {
     name: "Scenes",
     components: {
         Scene,
-        Visuals1,
+        Visuals1
     }
 };
 </script>
