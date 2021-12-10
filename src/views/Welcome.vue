@@ -1,26 +1,18 @@
 <template>
     <div v-if="this.$store.getters.isCurrentScene(this.$options.name)">
         <Visuals />
-        <!-- <Options :information="optionsProps" /> -->
+        <Message />
     </div>
 </template>
 
 <script>
-// import Options from "../components/ui/Options.vue";
-import Visuals from "../components/scenes/welcome/Welcome.vue";
+import Message from "../components/scenes/welcome/Message.vue";
+import Visuals from "../components/scenes/welcome/Visuals.vue";
 export default {
     name: "Welcome",
     components: {
         Visuals,
-        // Options,
+        Message,
     },
-    // data() {
-    //     return {
-    //         optionsProps: {
-    //             title: "Alex TFG",
-    //             option1: "Continue",
-    //         },
-    //     };
-    // },
 };
 </script>
