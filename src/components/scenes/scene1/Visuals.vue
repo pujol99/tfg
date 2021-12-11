@@ -6,18 +6,9 @@
             :position="cameraPosition"
         />
         <Scene ref="scene" background="#000000">
-            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4">
-                <Sphere :radius="0.05" />
-            </PointLight>
-            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4">
-                <Sphere :radius="0.05" />
-            </PointLight>
-            <Plane
-                :width="30"
-                :height="30"
-                :rotation="{ x: -Math.PI / 2, y: 0, z: 0 }"
-                :position="{ y: -3 }"
-            />
+            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
+            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4" />
+
             <Plane
                 ref="loadingScreen"
                 :width="2"
@@ -51,14 +42,14 @@
 </template>
 
 <script>
-import { AnimationMixer, Clock } from "three";
+import { AnimationMixer, Clock, CubeTextureLoader } from "three";
 import { gsap } from "gsap";
 import { vs, fs } from "./shaders";
 export default {
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: 0, y: 0, z: 5 },
+            cameraPosition: { x: -1.8625455300041365, y: 0.2209428475467337, z: 0.676835122899029},
             animations: [],
             numberOfObjects: 2,
             us: {
@@ -76,17 +67,28 @@ export default {
         this.renderer = this.$refs.renderer;
         this.scene = this.$refs.scene;
 
-        this.camera = this.$refs.camwera;
+        this.camera = this.$refs.camera;
         this.clock = new Clock();
         this.init();
     },
     methods: {
         init() {
+            const cubeTextureLoader = new CubeTextureLoader()
+            this.scene.scene.background = cubeTextureLoader.load([
+                './assets/textures/street/px.jpg',
+                './assets/textures/street/nx.jpg',
+                './assets/textures/street/py.jpg',
+                './assets/textures/street/ny.jpg',
+                './assets/textures/street/pz.jpg',
+                './assets/textures/street/nz.jpg'
+            ])
+
             this.renderer.onBeforeRender(this.update);
         },
         update() {
             const elapsedTime = this.clock.getElapsedTime();
             this.us.uTime.value = elapsedTime;
+
             this.updateAnimations();
         },
         onLoad(object) {
