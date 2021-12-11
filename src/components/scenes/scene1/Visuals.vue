@@ -6,11 +6,11 @@
             :position="cameraPosition"
         />
         <Scene ref="scene" background="#000000">
-            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4"
-                ><Sphere :radius="0.05" />
+            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4">
+                <Sphere :radius="0.05" />
             </PointLight>
-            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4"
-                ><Sphere :radius="0.05" />
+            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4">
+                <Sphere :radius="0.05" />
             </PointLight>
             <Plane
                 :width="30"
@@ -18,7 +18,12 @@
                 :rotation="{ x: -Math.PI / 2, y: 0, z: 0 }"
                 :position="{ y: -3 }"
             />
-            <Plane ref="loadingScreen" :width="2" :height="2" :position="{ y: -2, z: 0 }">
+            <Plane
+                ref="loadingScreen"
+                :width="2"
+                :height="2"
+                :position="{ y: -2, z: 0 }"
+            >
                 <ShaderMaterial
                     :props="{
                         vertexShader: vs,
@@ -70,6 +75,7 @@ export default {
         this.loadingScreenMaterial.transparent = true;
         this.renderer = this.$refs.renderer;
         this.scene = this.$refs.scene;
+
         this.camera = this.$refs.camwera;
         this.clock = new Clock();
         this.init();
@@ -98,7 +104,7 @@ export default {
                     duration: 3,
                     value: 0.0,
                     onComplete: function () {
-                        scene.scene.remove(loadingScreen)
+                        scene.scene.remove(loadingScreen);
                         that.$store.commit("loadingSwap");
                     },
                 });

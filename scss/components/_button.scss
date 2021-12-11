@@ -1,5 +1,4 @@
-
-.welcome button {
+.card button {
     background-color: $buttonBG;
     color: $buttonFG;
 
@@ -7,13 +6,13 @@
     font-size: $large-font;
     height: 35px;
     width: 100%;
-    
+
     @include shadow;
     justify-content: center;
-    letter-spacing: .35px;
+    letter-spacing: 0.35px;
     transition: 0.6s;
 
-    &:hover{
+    &:hover {
         background: $buttonBG-hover;
         color: $buttonFG-hover;
     }

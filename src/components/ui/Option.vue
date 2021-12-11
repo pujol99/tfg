@@ -8,6 +8,9 @@
 export default {
     name: "Option",
     props: {
+        index: {
+            type: Number,
+        },
         message: {
             type: String,
         },
@@ -18,9 +21,12 @@ export default {
     },
     methods: {
         onClick() {
-            if(!this.disabled)
-                this.$store.commit('nextScene')
-        }
-    }
+            if (!this.disabled){
+                this.$store.state.userData.questions.push(this.index)
+                this.$store.dispatch("nextStage");
+            }
+
+        },
+    },
 };
 </script>

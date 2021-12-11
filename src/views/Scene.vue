@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.$store.getters.isCurrentScene(name)">
+    <div v-if="this.$store.getters.isCurrentStage(name)">
         <slot></slot>
         <Options :information="optionsProps" />
     </div>

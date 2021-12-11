@@ -1,13 +1,17 @@
 <template>
-    <div v-if="this.$store.getters.isCurrentScene(this.$options.name)">
-
+    <div v-if="this.$store.getters.isCurrentStage(this.$options.name)">
         <div class="center spaced">
             <h2>Quiz</h2>
-            <input v-model="user.name" placeholder="Name" />
+            <label for="gender">Select your gender</label>
+            <select v-model="user.gender" id="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
             <br />
-            <input v-model="user.surname" placeholder="Surname" />
+            <input type="number" v-model="user.age" placeholder="Age" min="3" max="99"/>
 
-            <button @click="sendUser">Send</button>
+            <button @click="onContinue">Continue</button>
         </div>
     </div>
 </template>
@@ -17,24 +21,17 @@ export default {
     name: "Quiz",
     data() {
         return {
-            user: {
-                name: "",
-                surname: "",
-            },
+            user: this.$store.state.userData,
         };
     },
-    computed: {
-        fullname: function () {
-            return this.user.name + " " + this.user.surname;
-        },
+    created() {
+        
     },
     methods: {
-        sendUser: function () {
-            this.$store.commit('saveData', {
-                data: JSON.stringify(this.user),
-                collection: this.$store.state.usersCollection
-            })
-        },
+        onContinue: function() {
+            this.$store.state.userData = this.user;
+            this.$store.dispatch('nextStage');
+        }
     },
 };
 </script>
