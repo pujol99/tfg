@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Visuals1 from "../components/scenes/scene1/Visuals1.vue";
+import Visuals1 from "../components/scenes/scene1/Visuals.vue";
 import Scene from "./Scene.vue";
 export default {
     name: "Scenes",

@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Overpass", sans-serif;
+  font-family: "Fira Code", sans-serif;
 }
 
 html, body {
@@ -21,6 +21,19 @@ canvas {
 button {
   cursor: pointer;
   border-style: none;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.spaced > * {
+  margin: 10px;
+  padding: 5px;
 }
 
 .welcome {

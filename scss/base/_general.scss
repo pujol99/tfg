@@ -13,3 +13,12 @@ button{
     cursor: pointer;
     border-style: none;
 }
+
+.center{
+    @include center;
+}
+
+.spaced > *{
+    margin: 10px;
+    padding: 5px;
+}

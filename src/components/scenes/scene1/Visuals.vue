@@ -50,7 +50,6 @@ import { AnimationMixer, Clock } from "three";
 import { gsap } from "gsap";
 import { vs, fs } from "./shaders";
 export default {
-    name: "Visuals1",
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
@@ -92,15 +91,15 @@ export default {
 
             // Check if screen is fully loaded
             if (this.numberOfObjects == this.animations.length) {
-                this.$store.commit("loadingSwap");
                 var loadingScreen = this.loadingScreen;
                 var scene = this.scene;
+                var that = this;
                 gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
                     duration: 3,
                     value: 0.0,
                     onComplete: function () {
                         scene.scene.remove(loadingScreen)
-                        console.log(scene);
+                        that.$store.commit("loadingSwap");
                     },
                 });
             }

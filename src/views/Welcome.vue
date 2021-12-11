@@ -1,18 +1,18 @@
 <template>
     <div v-if="this.$store.getters.isCurrentScene(this.$options.name)">
         <Visuals />
-        <Message />
+        <Content />
     </div>
 </template>
 
 <script>
-import Message from "../components/scenes/welcome/Message.vue";
+import Content from "../components/scenes/welcome/Content.vue";
 import Visuals from "../components/scenes/welcome/Visuals.vue";
 export default {
     name: "Welcome",
     components: {
         Visuals,
-        Message,
+        Content,
     },
 };
 </script>
