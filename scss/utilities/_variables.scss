@@ -6,7 +6,19 @@ $color4: #90a955;
 $color5: #ecf39e;
 $color6: #252422;
 
-$mobile: 550px;
+$buttonBG: $color0;
+$buttonBG-hover: $color6;
+
+$buttonFG: $color6;
+$buttonFG-hover: $color0;
+
+$smaller-font: 10px;
+$small-font: 12px;
+$medium-font: 14px;
+$large-font: 18px;
+$larger-font: 22px;
+
+$mobile: 400px;
 $tablet: 900px;
 
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&display=swap');

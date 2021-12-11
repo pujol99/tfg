@@ -20,30 +20,42 @@ canvas {
 /* To remove the scrollbars */
 button {
   cursor: pointer;
+  border-style: none;
 }
 
 .welcome {
   position: absolute;
-  top: 80%;
   left: 50%;
+  top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 60px 40px;
-  height: 300px;
   background-color: rgba(255, 255, 255, 0.4);
   -webkit-backdrop-filter: blur(16px);
           backdrop-filter: blur(16px);
+  padding: 10px;
+  border-radius: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-radius: 6px;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+
+@media (min-width: 400px) {
+  .welcome {
+    max-width: 500px;
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 400px) {
+  .welcome {
+    width: 90%;
+  }
 }
 
 .title {
@@ -78,7 +90,7 @@ button {
           justify-content: space-between;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 400px) {
   .options {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -93,4 +105,28 @@ button {
   margin-bottom: 5px;
   background-color: white;
   border: 2px solid black;
+}
+
+.welcome button {
+  background-color: #fffcf2;
+  color: #252422;
+  border-radius: 24px;
+  font-size: 18px;
+  height: 35px;
+  width: 100%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+          box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  letter-spacing: .35px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.welcome button:hover {
+  background: #252422;
+  color: #fffcf2;
 }
