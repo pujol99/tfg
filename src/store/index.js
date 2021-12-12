@@ -66,11 +66,11 @@ export const store = createStore({
     actions: {
         nextStage({ commit, getters }) {
             commit("nextStage");
-            if (getters.isLastStage) {
-                commit("saveUserData", {
-                    collection: getters.getUsersCollection,
-                });
-            }
+            // if (getters.isLastStage) {
+            //     commit("saveUserData", {
+            //         collection: getters.getUsersCollection,
+            //     });
+            // }
             // console.log(getters.getUserData);
         },
     },
