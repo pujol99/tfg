@@ -44,7 +44,7 @@ export const store = createStore({
         nextQuestion(state) {
             state.questionIndex++;
         },
-        loadingSwap(state) {
+        loadingSwitch(state) {
             state.sceneLoading = !state.sceneLoading;
         },
         saveUserData(state, payload) {

@@ -1,0 +1,65 @@
+<template>
+    <Plane
+        ref="loadingScreen"
+        :width="2"
+        :height="2"
+        :position="{ y: -2, z: 0 }"
+    >
+        <ShaderMaterial
+            :props="{
+                vertexShader: vs,
+                fragmentShader: fs,
+                uniforms: us,
+            }"
+        />
+    </Plane>
+</template>
+
+<script>
+import { Clock } from "three";
+import { gsap } from "gsap";
+export default {
+    data() {
+        return {
+            us: {
+                uAlpha: { value: 1.0 },
+                uTime: { value: 0.0 },
+            },
+            loadingFinished: false
+        };
+    },
+    props: {
+        vs: String,
+        fs: String,
+    },
+    mounted() {
+        this.loadingScreen = this.$refs.loadingScreen;
+        this.loadingScreenMaterial = this.loadingScreen.material;
+        this.loadingScreenMaterial.transparent = true;
+
+        this.clock = new Clock();
+    },
+    methods: {
+        finish() {
+            var that = this;
+            gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
+                duration: 3,
+                value: 0.0,
+                onComplete: function () {
+                    that.onFinish();
+                },
+            });
+        },
+        onFinish() {
+            this.loadingFinished = true;
+            this.$store.commit("loadingSwitch");
+        },
+        update() {
+            if(!this.loadingFinished){
+                const elapsedTime = this.clock.getElapsedTime();
+                this.us.uTime.value = elapsedTime;
+            }
+        },
+    },
+};
+</script>

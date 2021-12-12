@@ -1,5 +1,5 @@
 <template>
-    <Renderer ref="renderer" resize="window" orbitCtrl>
+    <Renderer ref="renderer" resize="window" :orbit-ctrl="{ autoRotate: true, autoRotateSpeed: 0.5}">
         <PerspectiveCamera
             ref="camera"
             :lookAt="cameraLookAt"
@@ -9,20 +9,7 @@
             <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
             <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4" />
 
-            <Plane
-                ref="loadingScreen"
-                :width="2"
-                :height="2"
-                :position="{ y: -2, z: 0 }"
-            >
-                <ShaderMaterial
-                    :props="{
-                        vertexShader: vs,
-                        fragmentShader: fs,
-                        uniforms: us,
-                    }"
-                />
-            </Plane>
+            <LoadingScreen ref="loadingScreen" :fs="fs" :vs="vs" />
             <FbxModel
                 src="./assets/models/Standing Arguing.fbx"
                 @load="onLoad"
@@ -43,53 +30,51 @@
 
 <script>
 import { AnimationMixer, Clock, CubeTextureLoader } from "three";
-import { gsap } from "gsap";
 import { vs, fs } from "./shaders";
+import LoadingScreen from "../../ui/LoadingScreen.vue";
 export default {
+    components: {
+        LoadingScreen,
+    },
     data() {
         return {
             cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: -1.8625455300041365, y: 0.2209428475467337, z: 0.676835122899029},
+            cameraPosition: {
+                x: -1.8625455300041365,
+                y: 0.2209428475467337,
+                z: 0.676835122899029,
+            },
             animations: [],
             numberOfObjects: 2,
-            us: {
-                uAlpha: { value: 1.0 },
-                uTime: { value: 0.0 },
-            },
             vs: vs,
             fs: fs,
         };
     },
     mounted() {
-        this.loadingScreen = this.$refs.loadingScreen;
-        this.loadingScreenMaterial = this.loadingScreen.material;
-        this.loadingScreenMaterial.transparent = true;
         this.renderer = this.$refs.renderer;
         this.scene = this.$refs.scene;
-
+        this.loadingScreen = this.$refs.loadingScreen;
         this.camera = this.$refs.camera;
+
         this.clock = new Clock();
         this.init();
     },
     methods: {
         init() {
-            const cubeTextureLoader = new CubeTextureLoader()
+            const cubeTextureLoader = new CubeTextureLoader();
             this.scene.scene.background = cubeTextureLoader.load([
-                './assets/textures/street/px.jpg',
-                './assets/textures/street/nx.jpg',
-                './assets/textures/street/py.jpg',
-                './assets/textures/street/ny.jpg',
-                './assets/textures/street/pz.jpg',
-                './assets/textures/street/nz.jpg'
-            ])
-
+                "./assets/textures/street/px.jpg",
+                "./assets/textures/street/nx.jpg",
+                "./assets/textures/street/py.jpg",
+                "./assets/textures/street/ny.jpg",
+                "./assets/textures/street/pz.jpg",
+                "./assets/textures/street/nz.jpg",
+            ]);
             this.renderer.onBeforeRender(this.update);
         },
         update() {
-            const elapsedTime = this.clock.getElapsedTime();
-            this.us.uTime.value = elapsedTime;
-
             this.updateAnimations();
+            this.loadingScreen.update();
         },
         onLoad(object) {
             var animation = new AnimationMixer(object);
@@ -99,17 +84,7 @@ export default {
 
             // Check if screen is fully loaded
             if (this.numberOfObjects == this.animations.length) {
-                var loadingScreen = this.loadingScreen;
-                var scene = this.scene;
-                var that = this;
-                gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
-                    duration: 3,
-                    value: 0.0,
-                    onComplete: function () {
-                        scene.scene.remove(loadingScreen);
-                        that.$store.commit("loadingSwap");
-                    },
-                });
+                this.loadingScreen.finish();
             }
         },
         updateAnimations() {
