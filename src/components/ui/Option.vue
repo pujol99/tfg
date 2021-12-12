@@ -1,6 +1,11 @@
 <template>
     <div v-if="message" @click="onClick">
-        <button class="option">{{ message }}</button>
+        <button
+            class="option"
+            :class="{ active: !this.$store.getters.isSceneLoading }"
+        >
+            {{ message }}
+        </button>
     </div>
 </template>
 
@@ -21,11 +26,10 @@ export default {
     },
     methods: {
         onClick() {
-            if (!this.disabled){
-                this.$store.state.userData.questions.push(this.index)
+            if (!this.disabled) {
+                this.$store.state.userData.questions.push(this.index);
                 this.$store.dispatch("nextStage");
             }
-
         },
     },
 };

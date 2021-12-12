@@ -36,7 +36,7 @@ export default {
         this.loadingScreen = this.$refs.loadingScreen;
         this.loadingScreenMaterial = this.loadingScreen.material;
         this.loadingScreenMaterial.transparent = true;
-
+        
         this.clock = new Clock();
     },
     methods: {

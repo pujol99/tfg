@@ -1,5 +1,5 @@
 <template>
-    <div v-show="!this.$store.getters.isSceneLoading">
+    <div>
         <div class="title">
             <Option :message="information.title" disabled/>
         </div>
