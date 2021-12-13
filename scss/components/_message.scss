@@ -1,0 +1,34 @@
+$divHeight: -80px;
+
+.message{
+    position: absolute;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    width: 100%;
+    top: $divHeight;
+}
+
+.activate {
+    animation-name: fade-in;
+}
+.deactivate {
+    animation-name: fade-out;
+}
+
+.message-content{
+    background-color: lightcoral;
+    padding: 20px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+@keyframes fade-in {
+  from {top: $divHeight;}
+  to {top: 0px;}
+}
+
+@keyframes fade-out {
+  from {top: 0px;}
+  to {top: $divHeight;}
+}

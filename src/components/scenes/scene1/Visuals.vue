@@ -1,5 +1,9 @@
 <template>
-    <Renderer ref="renderer" resize="window" :orbit-ctrl="{ autoRotate: true, autoRotateSpeed: 0.5}">
+    <Renderer
+        ref="renderer"
+        resize="window"
+        :orbit-ctrl="{ autoRotate: true, autoRotateSpeed: 0.5 }"
+    >
         <PerspectiveCamera
             ref="camera"
             :lookAt="cameraLookAt"
@@ -29,7 +33,12 @@
 </template>
 
 <script>
-import { AnimationMixer, Clock, CubeTextureLoader } from "three";
+import {
+    AnimationMixer,
+    Clock,
+    CubeTextureLoader,
+    MeshBasicMaterial,
+} from "three";
 import { vs, fs } from "./shaders";
 import LoadingScreen from "../../ui/LoadingScreen.vue";
 export default {
@@ -80,6 +89,7 @@ export default {
             var animation = new AnimationMixer(object);
             animation.clipAction(object.animations[1]).play();
             var clock = new Clock();
+
             this.animations.push({ animation, clock });
 
             // Check if screen is fully loaded

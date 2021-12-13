@@ -9,8 +9,8 @@ $color6: #252422;
 $buttonBG: $color0;
 $buttonBG-hover: $color6;
 
-$buttonFG: $color6;
-$buttonFG-hover: $color0;
+$buttonFG: $buttonBG-hover;
+$buttonFG-hover: $buttonBG;
 
 $smaller-font: 10px;
 $small-font: 12px;
