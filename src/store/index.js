@@ -22,11 +22,22 @@ export const store = createStore({
             usersCollection: "61b49c4262ed886f915e5a13",
             masterKey:
                 "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
-
+            quizQuestions: {
+                age: {
+                    title: "Select your age",
+                    options: ["10-", "11-15", "15-19", "20+"],
+                    optionSelected: null,
+                },
+                gender: {
+                    title: "Select your gender",
+                    options: ["Male", "Female", "Other"],
+                    optionSelected: null,
+                },
+            },
             userData: {
-                gender: "Male",
-                age: 14,
-                questions: [],
+                quizDecisions: null,
+                sceneDecisions: [],
+                formDecisions: null,
             },
         };
     },
@@ -47,7 +58,7 @@ export const store = createStore({
         loadingSwitch(state) {
             state.sceneLoading = !state.sceneLoading;
         },
-        saveUserData(state, payload) {
+        saveUserData(state, collection) {
             let req = new XMLHttpRequest();
 
             req.onreadystatechange = () => {
@@ -59,19 +70,23 @@ export const store = createStore({
             req.open("POST", "https://api.jsonbin.io/v3/b", true);
             req.setRequestHeader("Content-Type", "application/json");
             req.setRequestHeader("X-Master-Key", state.masterKey);
-            req.setRequestHeader("X-Collection-Id", payload.collection);
+            req.setRequestHeader("X-Collection-Id", collection);
             req.send(JSON.stringify(state.userData));
+        },
+        saveQuizDecisions(state, quizDecisions) {
+            state.userData.quizDecisions = quizDecisions;
+        },
+        saveSceneDecision(state, index) {
+            state.userData.sceneDecisions.push(index);
         },
     },
     actions: {
         nextStage({ commit, getters }) {
             commit("nextStage");
             // if (getters.isLastStage) {
-            //     commit("saveUserData", {
-            //         collection: getters.getUsersCollection,
-            //     });
+            //     commit("saveUserData", getters.getUsersCollection);
             // }
-            // console.log(getters.getUserData);
+            console.log(getters.getUserData);
         },
     },
     getters: {
@@ -89,6 +104,9 @@ export const store = createStore({
         },
         getUserData: (state) => {
             return state.userData;
+        },
+        getQuizQuestions: (state) => {
+            return state.quizQuestions;
         },
         getSceneOptions: (state) => (scene) => {
             // return state.scenesOptions.then((data) => data[scene]);

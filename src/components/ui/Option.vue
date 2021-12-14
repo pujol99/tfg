@@ -27,7 +27,7 @@ export default {
     methods: {
         onClick() {
             if (!this.disabled) {
-                this.$store.state.userData.questions.push(this.index);
+                this.$store.commit('saveSceneDecision', this.index);
                 this.$store.dispatch("nextStage");
             }
         },

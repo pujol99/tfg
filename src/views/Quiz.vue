@@ -4,42 +4,39 @@
         v-if="this.$store.getters.isCurrentStage(this.$options.name)"
     >
         <div class="card">
-            <Message ref="message" message="Answer the questions"/>
+            <Message ref="message" message="Answer the questions" />
             <div class="card-container">
                 <div class="card-title">
                     <h2>Quiz</h2>
                 </div>
                 <div class="card-body">
                     <form>
-                        <div class="form-element">
+                        <div
+                            class="form-element"
+                            v-for="question in Object.keys(quizQuestions)"
+                            :key="question"
+                        >
                             <div class="form-element-title">
-                                Select your gender
+                                {{ quizQuestions[question].title }}
                             </div>
                             <div
                                 class="form-element-option spaced"
-                                v-for="option in genderOptions"
+                                v-for="option in quizQuestions[question]
+                                    .options"
                                 :key="option"
-                                @click="genderOption = option"
-                                :class="{ selected: option == genderOption }"
+                                @click="
+                                    quizQuestions[question].optionSelected =
+                                        option
+                                "
+                                :class="{
+                                    selected:
+                                        option ==
+                                        quizQuestions[question].optionSelected,
+                                }"
                             >
                                 {{ option }}
                             </div>
                         </div>
-                        <div class="form-element">
-                            <div class="form-element-title">
-                                Select your age
-                            </div>
-                            <div
-                                class="form-element-option spaced"
-                                v-for="option in ageOptions"
-                                :key="option"
-                                @click="ageOption = option"
-                                :class="{ selected: option == ageOption }"
-                            >
-                                {{ option }}
-                            </div>
-                        </div>
-                        
                     </form>
                 </div>
                 <div class="card-action">
@@ -59,18 +56,18 @@ export default {
     },
     data() {
         return {
-            user: this.$store.state.userData,
-            ageOptions: ["10-", "11-15", "15-19", "20+"],
-            ageOption: null,
-            genderOptions: ["Male", "Female", "Other"],
-            genderOption: null,
+            quizQuestions: this.$store.getters.getQuizQuestions,
         };
     },
     computed: {
         dataValidated: function () {
             return (
-                this.ageOptions.includes(this.ageOption) &&
-                this.genderOptions.includes(this.genderOption)
+                Object.keys(this.quizQuestions).filter(
+                    question =>
+                        !this.quizQuestions[question].options.includes(
+                            this.quizQuestions[question].optionSelected
+                        )
+                ).length == 0
             );
         },
     },
@@ -80,7 +77,12 @@ export default {
                 this.$refs.message.onActivate();
                 return;
             }
-            this.$store.state.userData = this.user;
+
+            for (var key of Object.keys(this.quizQuestions)) {
+                this.quizQuestions[key] =
+                    this.quizQuestions[key].optionSelected;
+            }
+            this.$store.commit("saveQuizDecisions", this.quizQuestions);
             this.$store.dispatch("nextStage");
         },
     },
