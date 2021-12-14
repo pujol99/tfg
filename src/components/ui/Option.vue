@@ -2,7 +2,7 @@
     <div v-if="message" @click="onClick">
         <button
             class="option"
-            :class="{ active: !this.$store.getters.isSceneLoading }"
+            :class="{ active: !this.$store.getters.isSceneLoading, disabled: disabled }"
         >
             {{ message }}
         </button>
@@ -27,7 +27,7 @@ export default {
     methods: {
         onClick() {
             if (!this.disabled) {
-                this.$store.state.userData.questions.push(this.index);
+                this.$store.commit('saveSceneDecision', this.index);
                 this.$store.dispatch("nextStage");
             }
         },
