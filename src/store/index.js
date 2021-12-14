@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 export const store = createStore({
     state() {
         return {
-            stages: ["Welcome", "Scene1", "Final"],
+            stages: ["Welcome", "Quiz", "Scene1", "Survey", "Final"],
             currentStageIndex: 0,
             questionIndex: 0,
             sceneLoading: false,
@@ -34,10 +34,34 @@ export const store = createStore({
                     optionSelected: null,
                 },
             },
+            surveyQuestions: {
+                s1: {
+                    title: "An excessive use of social media platforms can lead to negative effects in physical and mental health",
+                    options: [
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Undecided",
+                        "Agree",
+                        "Strongly agree",
+                    ],
+                    optionSelected: null,
+                },
+                s2: {
+                    title: "How much time do you spend on social media on a daily basis?",
+                    options: [
+                        "Strongly Disagree",
+                        "Disagree",
+                        "Undecided",
+                        "Agree",
+                        "Strongly agree",
+                    ],
+                    optionSelected: null,
+                },
+            },
             userData: {
                 quizDecisions: null,
                 sceneDecisions: [],
-                formDecisions: null,
+                surveyDecisions: null,
             },
         };
     },
@@ -76,6 +100,9 @@ export const store = createStore({
         saveQuizDecisions(state, quizDecisions) {
             state.userData.quizDecisions = quizDecisions;
         },
+        saveSurveyDecisions(state, surveyDecisions) {
+            state.userData.surveyDecisions = surveyDecisions;
+        },
         saveSceneDecision(state, index) {
             state.userData.sceneDecisions.push(index);
         },
@@ -90,25 +117,28 @@ export const store = createStore({
         },
     },
     getters: {
-        isCurrentStage: (state) => (name) => {
+        isCurrentStage: state => name => {
             return state.stages[state.currentStageIndex] == name;
         },
-        isSceneLoading: (state) => {
+        isSceneLoading: state => {
             return state.sceneLoading;
         },
-        isLastStage: (state) => {
+        isLastStage: state => {
             return state.currentStageIndex == state.stages.length - 1;
         },
-        getUsersCollection: (state) => {
+        getUsersCollection: state => {
             return state.usersCollection;
         },
-        getUserData: (state) => {
+        getUserData: state => {
             return state.userData;
         },
-        getQuizQuestions: (state) => {
+        getQuizQuestions: state => {
             return state.quizQuestions;
         },
-        getSceneOptions: (state) => (scene) => {
+        getSurveyQuestions: state => {
+            return state.surveyQuestions;
+        },
+        getSceneOptions: state => scene => {
             // return state.scenesOptions.then((data) => data[scene]);
             return state.scenesOptions[scene];
         },
