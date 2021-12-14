@@ -31,7 +31,7 @@ button {
           transform: translate(-50%, -50%);
 }
 
-.spaced > * {
+.spaced, .spaced > * {
   margin: 10px;
   padding: 5px;
 }
@@ -88,10 +88,12 @@ button {
 }
 
 .option {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+  background-color: #fffcf2;
+  color: #252422;
   padding: 10px;
-  width: 100%;
-  margin-bottom: 5px;
-  background-color: white;
   border: 2px solid black;
   visibility: hidden;
   opacity: 0;
@@ -100,7 +102,8 @@ button {
 }
 
 .option:hover {
-  background-color: darkgray;
+  background: #252422;
+  color: #fffcf2;
 }
 
 .active {
@@ -108,9 +111,18 @@ button {
   opacity: 1;
 }
 
-.card button {
+.disabled {
+  cursor: default;
   background-color: #fffcf2;
   color: #252422;
+}
+
+.disabled:hover {
+  background: #fffcf2;
+  color: #252422;
+}
+
+.card button {
   border-radius: 24px;
   font-size: 18px;
   height: 35px;
@@ -123,13 +135,21 @@ button {
       -ms-flex-pack: center;
           justify-content: center;
   letter-spacing: 0.35px;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+  background-color: #fffcf2;
+  color: #252422;
 }
 
 .card button:hover {
   background: #252422;
   color: #fffcf2;
+}
+
+.selected {
+  background: #252422 !important;
+  color: #fffcf2 !important;
 }
 
 .card {
@@ -170,5 +190,103 @@ button {
 @media (max-width: 400px) {
   .card-container {
     width: 90%;
+  }
+}
+
+.form-element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-element-option {
+  border: 1px solid black;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+  background-color: #fffcf2;
+  color: #252422;
+}
+
+.form-element-option:hover {
+  background: #252422;
+  color: #fffcf2;
+}
+
+.form-element-title {
+  width: 100%;
+}
+
+.message {
+  position: absolute;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  width: 100%;
+  top: -80px;
+}
+
+.activate {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+}
+
+.deactivate {
+  -webkit-animation-name: fade-out;
+          animation-name: fade-out;
+}
+
+.message-content {
+  background-color: lightcoral;
+  padding: 20px;
+  margin: 10px;
+  font-size: 20px;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    top: -80px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    top: -80px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -80px;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -80px;
   }
 }
