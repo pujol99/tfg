@@ -2,7 +2,7 @@
     <div v-if="message" @click="onClick">
         <button
             class="option"
-            :class="{ active: !this.$store.getters.isSceneLoading }"
+            :class="{ active: !this.$store.getters.isSceneLoading, disabled: disabled }"
         >
             {{ message }}
         </button>

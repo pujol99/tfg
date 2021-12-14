@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 export const store = createStore({
     state() {
         return {
-            stages: ["Quiz", "Scene1", "Final"],
+            stages: ["Welcome", "Scene1", "Final"],
             currentStageIndex: 0,
             questionIndex: 0,
             sceneLoading: false,

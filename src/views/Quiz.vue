@@ -60,6 +60,7 @@ export default {
         };
     },
     computed: {
+        // Check that the options selected are valid options
         dataValidated: function () {
             return (
                 Object.keys(this.quizQuestions).filter(

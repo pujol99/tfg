@@ -51,3 +51,15 @@
         color: $buttonFG-hover;
     }
 }
+
+@mixin buttonDisabled {
+    cursor: default;
+
+    background-color: $buttonBG;
+    color: $buttonFG;
+
+    &:hover {
+        background: $buttonBG;
+        color: $buttonFG;
+    }
+}

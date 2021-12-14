@@ -26,21 +26,19 @@
 }
 
 .option {
+    @include button;
     padding: 10px;
-    width: 100%;
-    margin-bottom: 5px;
-    background-color: white;
     border: 2px solid black;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
 }
 
-.option:hover{
-    background-color: darkgray;
-}
-
-.active{
+.active {
     visibility: visible;
     opacity: 1;
+}
+
+.disabled {
+    @include buttonDisabled;
 }

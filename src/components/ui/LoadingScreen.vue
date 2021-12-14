@@ -21,6 +21,7 @@ import { gsap } from "gsap";
 export default {
     data() {
         return {
+            FADETIME: 3,
             us: {
                 uAlpha: { value: 1.0 },
                 uTime: { value: 0.0 },
@@ -43,7 +44,7 @@ export default {
         finish() {
             var that = this;
             gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
-                duration: 3,
+                duration: this.FADETIME,
                 value: 0.0,
                 onComplete: function () {
                     that.onFinish();
