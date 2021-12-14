@@ -1,7 +1,10 @@
 <template>
-    <div v-if="this.$store.getters.isCurrentStage(this.$options.name)" class="full">
+    <div
+        v-if="this.$store.getters.isCurrentStage(this.$options.name)"
+        class="full"
+    >
         <div class="card">
-            <Message ref="message" message="Answer the questions" />
+            <Popup ref="message" message="Answer the questions" />
             <div class="card-container">
                 <div class="card-title">
                     <h2>Quiz</h2>
@@ -28,7 +31,8 @@
                                 :class="{
                                     selected:
                                         option ==
-                                        surveyQuestions[question].optionSelected,
+                                        surveyQuestions[question]
+                                            .optionSelected,
                                 }"
                             >
                                 {{ option }}
@@ -45,11 +49,11 @@
 </template>
 
 <script>
-import Message from "../components/ui/Message.vue";
+import Popup from "../components/ui/Popup.vue";
 export default {
     name: "Survey",
     components: {
-        Message,
+        Popup,
     },
     data() {
         return {
