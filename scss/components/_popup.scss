@@ -1,6 +1,6 @@
 $divHeight: -80px;
 
-.message{
+.popup{
     position: absolute;
     animation-duration: 0.4s;
     animation-timing-function: ease-in-out;
@@ -16,7 +16,7 @@ $divHeight: -80px;
     animation-name: fade-out;
 }
 
-.message-content{
+.popup-content{
     background-color: lightcoral;
     padding: 20px;
     margin: 10px;
