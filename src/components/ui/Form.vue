@@ -50,15 +50,9 @@ export default {
         Popup,
     },
     props: {
-        propQuestions: {
-            type: Object,
-        },
-        title: {
-            type: String,
-        },
-        saveFunction: {
-            type: String
-        }
+        propQuestions: Object,
+        title: String,
+        saveFunction: String
     },
     created() {
         this.questions = this.propQuestions
@@ -82,7 +76,7 @@ export default {
                 this.$refs.message.onActivate();
                 return;
             }
-
+            
             for (var key of Object.keys(this.questions)) {
                 this.questions[key] =
                     this.questions[key].optionSelected;
