@@ -2,9 +2,11 @@ const state = () => ({
     scenesOptions: {
         Scene1: {
             title: "Your friend is sad because she failed, but you are on the phone",
-            option1: "Ignore and stay on the phone.",
-            option2: "Listen while on the phone.",
-            option3: "Give her all your attention.",
+            options: [
+                "Ignore and stay on the phone.",
+                "Listen while on the phone.",
+                "Give her all your attention.",
+            ],
         },
     },
     // scenesOptions: fetch( //also change line 65
@@ -13,7 +15,6 @@ const state = () => ({
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
-    test: "test",
     quizQuestions: {
         age: {
             title: "Select your age",
@@ -62,9 +63,6 @@ const getters = {
     getUsersCollection: state => {
         return state.usersCollection;
     },
-    getTest: state => {
-        return state.test;
-    },
     getScenesCollection: state => {
         return state.scenesCollection;
     },
@@ -94,7 +92,7 @@ const actions = {
 const mutations = {
     saveData(state, collection) {
         let req = new XMLHttpRequest();
-        
+
         req.onreadystatechange = () => {
             if (req.readyState == XMLHttpRequest.DONE) {
                 console.log(req.responseText);
