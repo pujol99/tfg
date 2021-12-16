@@ -1,43 +1,36 @@
 <template>
-    <div class="card">
-        <Popup ref="message" message="Fill answers please" />
-        <div class="card-container">
-            <div class="card-title">
-                <h2>{{title}}</h2>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div
-                        class="form-element"
-                        v-for="question in Object.keys(questions)"
-                        :key="question"
-                    >
-                        <div class="form-element-title">
-                            {{ questions[question].title }}
-                        </div>
-                        <div
-                            class="form-element-option spaced"
-                            v-for="option in questions[question]
-                                .options"
-                            :key="option"
-                            @click="
-                                questions[question].optionSelected =
-                                    option
-                            "
-                            :class="{
-                                selected:
-                                    option ==
-                                    questions[question].optionSelected,
-                            }"
-                        >
-                            {{ option }}
-                        </div>
+    <Popup ref="message" message="Fill answers please" />
+    <div class="card-container">
+        <div class="card-title">
+            <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body">
+            <form>
+                <div
+                    class="form-element"
+                    v-for="question in Object.keys(questions)"
+                    :key="question"
+                >
+                    <div class="form-element-title">
+                        {{ questions[question].title }}
                     </div>
-                </form>
-            </div>
-            <div class="card-action">
-                <button @click="onContinue">Continue</button>
-            </div>
+                    <div
+                        class="form-element-option spaced"
+                        v-for="option in questions[question].options"
+                        :key="option"
+                        @click="questions[question].optionSelected = option"
+                        :class="{
+                            selected:
+                                option == questions[question].optionSelected,
+                        }"
+                    >
+                        {{ option }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-action">
+            <button @click="onContinue">Continue</button>
         </div>
     </div>
 </template>
@@ -53,10 +46,10 @@ export default {
     props: {
         propQuestions: Object,
         title: String,
-        saveFunction: String
+        saveFunction: String,
     },
     created() {
-        this.questions = this.propQuestions
+        this.questions = this.propQuestions;
     },
     computed: {
         // Check that the options selected are valid options
@@ -72,19 +65,30 @@ export default {
         },
     },
     methods: {
-        ...mapActions(["stages/nextStage"]),
+        ...mapActions({ nextStage: "stages/nextStage" }),
         onContinue: function () {
             if (!this.dataValidated) {
-                this.$refs.message.onActivate();
+                this.onDataNotValidated();
                 return;
             }
-            
-            for (var key of Object.keys(this.questions)) {
-                this.questions[key] =
-                    this.questions[key].optionSelected;
-            }
+
+            this.formatDataForSave()
+
+            // Save decisions
             this.$store.commit(`data/${this.saveFunction}`, this.questions);
-            this['stages/nextStage']();
+
+            this.nextStage();
+        },
+        onDataNotValidated: function () {
+            // activate popup warning
+            this.$refs.message.activate();
+        },
+        formatDataForSave: function () {
+            // From { {question: title, options[]}, ...}
+            // To { {question: optionSelected}, ...}
+            for (var key of Object.keys(this.questions)) {
+                this.questions[key] = this.questions[key].optionSelected;
+            }
         },
     },
 };

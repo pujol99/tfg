@@ -11,5 +11,5 @@ test("Get to second screen", async () => {
     });
     await wrapper.find("button").trigger("click");
     
-    expect(wrapper.html()).toContain("Quiz");
+    expect(wrapper.html()).toContain("About you");
 });

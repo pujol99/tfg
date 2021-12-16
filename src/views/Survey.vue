@@ -1,8 +1,8 @@
 <template>
-    <div class="full" v-if="this['stages/isCurrentStage'](this.$options.name)">
+    <div v-if="currentScene('Survey')">
         <Form
-            :propQuestions="this['data/getSurveyQuestions']"
-            :title="this.$options.name"
+            :propQuestions="getSurveyQuestions"
+            title="Final survey"
             saveFunction="saveSurveyDecisions"
         />
     </div>
@@ -12,12 +12,14 @@
 import Form from "../components/ui/Form.vue";
 import { mapGetters } from "vuex";
 export default {
-    name: "Survey",
     components: {
         Form,
     },
     computed: {
-        ...mapGetters(["data/getSurveyQuestions", "stages/isCurrentStage"]),
+        ...mapGetters({
+            currentScene: "stages/isCurrentStage",
+            getSurveyQuestions: "data/getSurveyQuestions",
+        }),
     },
 };
 </script>

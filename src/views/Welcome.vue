@@ -1,19 +1,17 @@
 <template>
-    <div class="full" v-if="currentScene('Welcome')">
-        <div class="card">
-            <div class="card-container">
-                <div class="card-title">
-                    <h1>Hello world</h1>
-                </div>
-                <div class="card-body">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Impedit, odit.
-                    </p>
-                </div>
-                <div class="card-action">
-                    <button @click="nextStage()">Continue</button>
-                </div>
+    <div v-if="currentScene('Welcome')">
+        <div class="card-container">
+            <div class="card-title">
+                <h1>Hello world</h1>
+            </div>
+            <div class="card-body">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Impedit, odit.
+                </p>
+            </div>
+            <div class="card-action">
+                <button @click="nextStage()">Continue</button>
             </div>
         </div>
     </div>
