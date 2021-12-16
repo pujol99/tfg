@@ -1,18 +1,14 @@
-import { mount } from '@vue/test-utils'
+import { mount } from "@vue/test-utils";
+import Data from "../Data";
+import { store } from "../../src/store/index";
 
-// The component to test
-const MessageComponent = {
-  template: '<p>{{ msg }}</p>',
-  props: ['msg']
-}
 
-test('displays message', () => {
-  const wrapper = mount(MessageComponent, {
-    props: {
-      msg: 'Hello world'
-    }
-  })
+test("rcv test", async () => {
+    const wrapper = mount(Data, {
+        global: {
+            plugins: [store],
+        },
+    });
 
-  // Assert the rendered text of the component
-  expect(wrapper.text()).toContain('Hello world')
-})
+    expect(wrapper.html()).toContain("test");
+});

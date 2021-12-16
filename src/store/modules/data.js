@@ -13,6 +13,7 @@ const state = () => ({
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
+    test: "test",
     quizQuestions: {
         age: {
             title: "Select your age",
@@ -60,6 +61,9 @@ const state = () => ({
 const getters = {
     getUsersCollection: state => {
         return state.usersCollection;
+    },
+    getTest: state => {
+        return state.test;
     },
     getScenesCollection: state => {
         return state.scenesCollection;
