@@ -6,7 +6,8 @@
         "local": "start http://localhost:8080 && vue-cli-service serve",
         "build": "vue-cli-service build --dest docs && live-server ./docs",
         "lint": "vue-cli-service lint",
-        "install": "git add * && git commit && git push && git checkout main && git merge develop && git push && git checkout develop"
+        "test": "vue-cli-service test:unit",
+        "add": "git add * && git commit "
     },
     "dependencies": {
         "core-js": "^3.6.5",
@@ -19,29 +20,15 @@
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-router": "^4.5.15",
+        "@vue/cli-plugin-unit-jest": "~4.5.0",
         "@vue/cli-plugin-vuex": "^4.5.15",
         "@vue/cli-service": "~4.5.0",
         "@vue/compiler-sfc": "^3.0.0",
-        "babel-eslint": "^10.1.0",
+        "@vue/test-utils": "^2.0.0-0",
         "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^7.0.0"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/vue3-essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {
-            "no-unused-vars": "off"
-        }
+        "babel-eslint": "^10.1.0",
+        "eslint-plugin-vue": "^7.0.0",
+        "vue-jest": "^5.0.0-0"
     },
     "browserslist": [
         "> 1%",
