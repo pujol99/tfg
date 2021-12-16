@@ -1,4 +1,8 @@
+- Test for popup message
 
+- Test for data recieved
+
+- Test for next correct Stage loaded
 
 learn github actions
 https://www.youtube.com/watch?v=MNBf-ylhtK0 

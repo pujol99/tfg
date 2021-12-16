@@ -1,10 +1,10 @@
 <template>
     <div
         class="full"
-        v-if="this.$store.getters.isCurrentStage(this.$options.name)"
+        v-if="isCurrentStage(this.$options.name)"
     >
         <Form
-            :propQuestions="this.$store.getters.getQuizQuestions"
+            :propQuestions="getQuizQuestions"
             :title="this.$options.name"
             :saveFunction="`save${this.$options.name}Decisions`"
         />
@@ -13,10 +13,14 @@
 
 <script>
 import Form from "../components/ui/Form.vue";
+import { mapGetters } from "vuex";
 export default {
     name: "Quiz",
     components: {
         Form,
+    },
+    computed: {
+        ...mapGetters(["isCurrentStage", "getQuizQuestions"]),
     },
 };
 </script>

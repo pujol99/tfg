@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.$store.getters.isCurrentStage(name)">
+    <div v-if="isCurrentStage(name)">
         <slot></slot>
         <Options :information="optionsProps" />
     </div>
@@ -7,22 +7,17 @@
 
 <script>
 import Options from "../components/ui/Options.vue";
+import { mapGetters } from "vuex";
 export default {
     components: {
         Options,
     },
-    props: {
-        name: String,
-    },
-    data() {
-        return {
-            optionsProps: null,
-        };
+    props: ["name"],
+    computed: {
+        ...mapGetters(["getSceneOptions", "isCurrentStage"]),
     },
     async created() {
-        this.optionsProps = await this.$store.getters.getSceneOptions(
-            this.name
-        );
+        this.optionsProps = await this.getSceneOptions(this.name);
     },
 };
 </script>
