@@ -4,7 +4,7 @@
 
 - Test for next correct Stage loaded
 
-- Turn all $store.commits to actions
+- Turn all $store.commits to actions + cleaning store part
 
 learn github actions
 https://www.youtube.com/watch?v=MNBf-ylhtK0 
