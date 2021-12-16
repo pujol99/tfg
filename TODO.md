@@ -1,8 +1,13 @@
+- Test for popup message
 
+- Test for data recieved from jsonbin
 
-learn github actions
-https://www.youtube.com/watch?v=MNBf-ylhtK0 
+- Test for data sended after game
 
-create test for data rcv jsonbin.io
+- Test for next correct Stage loaded
 
-create action before push to main
+- Turn all $store.commits to actions + cleaning store part
+
+- /results for gathering the users's data
+
+- Handle loading Plane deletion after fade out

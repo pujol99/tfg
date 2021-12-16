@@ -4,13 +4,13 @@
     "private": true,
     "scripts": {
         "local": "start http://localhost:8080 && vue-cli-service serve",
-        "lint": "vue-cli-service lint",
+        "deploy": "npm run test && npm run build && npm run addBuild && npm run merge",
+        "add": "npm run test && git add * && git commit && git push",
         "test": "vue-cli-service test:unit",
+        "lint": "vue-cli-service lint",
         "build": "vue-cli-service build --dest docs",
-        "add": "git add * && git commit && git push",
         "addBuild": "git add * && git commit -m \"build\" && git push",
-        "merge": "git checkout main && git merge develop && git push && git checkout develop",
-        "deploy": "npm run test && npm run build && npm run addBuild && npm run merge"
+        "merge": "git checkout main && git merge develop && git push && git checkout develop"
     },
     "dependencies": {
         "core-js": "^3.6.5",

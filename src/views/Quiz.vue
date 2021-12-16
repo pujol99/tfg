@@ -1,22 +1,25 @@
 <template>
-    <div
-        class="full"
-        v-if="this.$store.getters.isCurrentStage(this.$options.name)"
-    >
+    <div v-if="currentScene('Quiz')">
         <Form
-            :propQuestions="this.$store.getters.getQuizQuestions"
-            :title="this.$options.name"
-            :saveFunction="`save${this.$options.name}Decisions`"
+            :propQuestions="getQuizQuestions"
+            title="About you"
+            saveFunction="saveQuizDecisions"
         />
     </div>
 </template>
-
+f
 <script>
 import Form from "../components/ui/Form.vue";
+import { mapGetters } from "vuex";
 export default {
-    name: "Quiz",
     components: {
         Form,
+    },
+    computed: {
+        ...mapGetters({
+            currentScene: "stages/isCurrentStage",
+            getQuizQuestions: "data/getQuizQuestions",
+        }),
     },
 };
 </script>

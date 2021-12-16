@@ -21,7 +21,7 @@ import { gsap } from "gsap";
 export default {
     data() {
         return {
-            FADETIME: 3,
+            FADETIME: 2.0,
             us: {
                 uAlpha: { value: 1.0 },
                 uTime: { value: 0.0 },
@@ -29,10 +29,7 @@ export default {
             loadingFinished: false
         };
     },
-    props: {
-        vs: String,
-        fs: String,
-    },
+    props: ['vs', 'fs'],
     mounted() {
         this.loadingScreen = this.$refs.loadingScreen;
         this.loadingScreenMaterial = this.loadingScreen.material;
@@ -43,6 +40,7 @@ export default {
     methods: {
         finish() {
             var that = this;
+            // Fade out animation
             gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
                 duration: this.FADETIME,
                 value: 0.0,
@@ -53,7 +51,7 @@ export default {
         },
         onFinish() {
             this.loadingFinished = true;
-            this.$store.commit("loadingSwitch");
+            this.$store.commit("stages/loadingSwitch");
         },
         update() {
             if(!this.loadingFinished){
