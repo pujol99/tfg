@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isCurrentStage(name)">
+    <div v-if="this['stages/isCurrentStage'](name)">
         <slot></slot>
         <Options :information="optionsProps" />
     </div>
@@ -14,10 +14,10 @@ export default {
     },
     props: ["name"],
     computed: {
-        ...mapGetters(["getSceneOptions", "isCurrentStage"]),
+        ...mapGetters(["data/getSceneOptions", "stages/isCurrentStage"]),
     },
     async created() {
-        this.optionsProps = await this.getSceneOptions(this.name);
+        this.optionsProps = await this['data/getSceneOptions'](this.name);
     },
 };
 </script>

@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Popup from "./Popup.vue";
 export default {
     name: "Form",
@@ -71,6 +72,7 @@ export default {
         },
     },
     methods: {
+        ...mapActions(["stages/nextStage"]),
         onContinue: function () {
             if (!this.dataValidated) {
                 this.$refs.message.onActivate();
@@ -81,8 +83,8 @@ export default {
                 this.questions[key] =
                     this.questions[key].optionSelected;
             }
-            this.$store.commit(this.saveFunction, this.questions);
-            this.$store.dispatch("nextStage");
+            this.$store.commit(`data/${this.saveFunction}`, this.questions);
+            this['stages/nextStage']();
         },
     },
 };

@@ -1,9 +1,9 @@
 <template>
-    <div class="full" v-if="isCurrentStage(this.$options.name)">
+    <div class="full" v-if="this['stages/isCurrentStage'](this.$options.name)">
         <Form
-            :propQuestions="getSurveyQuestions"
+            :propQuestions="this['data/getSurveyQuestions']"
             :title="this.$options.name"
-            :saveFunction="`save${this.$options.name}Decisions`"
+            saveFunction="saveSurveyDecisions"
         />
     </div>
 </template>
@@ -17,7 +17,7 @@ export default {
         Form,
     },
     computed: {
-        ...mapGetters(["getSurveyQuestions", "isCurrentStage"]),
+        ...mapGetters(["data/getSurveyQuestions", "stages/isCurrentStage"]),
     },
 };
 </script>

@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="full"
-        v-if="this.$store.getters.isCurrentStage(this.$options.name)"
-    >
+    <div class="full" v-if="currentScene('Welcome')">
         <div class="card">
             <div class="card-container">
                 <div class="card-title">
@@ -15,9 +12,7 @@
                     </p>
                 </div>
                 <div class="card-action">
-                    <button @click="this.$store.dispatch('nextStage')">
-                        Continue
-                    </button>
+                    <button @click="nextStage()">Continue</button>
                 </div>
             </div>
         </div>
@@ -25,7 +20,13 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
-    name: "Welcome",
+    computed: {
+        ...mapGetters({ currentScene: "stages/isCurrentStage" }),
+    },
+    methods: {
+        ...mapActions({ nextStage: "stages/nextStage" }),
+    },
 };
 </script>

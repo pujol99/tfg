@@ -53,7 +53,7 @@ export default {
         },
         onFinish() {
             this.loadingFinished = true;
-            this.$store.commit("loadingSwitch");
+            this.$store.commit("stages/loadingSwitch");
         },
         update() {
             if(!this.loadingFinished){

@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="full"
-        v-if="this.$store.getters.isCurrentStage(this.$options.name)"
-    >
+    <div class="full" v-if="currentScene('Final')">
         <div class="card">
             <div class="card-container">
                 <div class="card-title">
@@ -15,7 +12,7 @@
                     </p>
                 </div>
                 <div class="card-action">
-                    <button @click="reloadPage">Restart</button>
+                    <button @click="reloadPage()">Restart</button>
                 </div>
             </div>
         </div>
@@ -23,8 +20,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "Final",
+    computed: {
+        ...mapGetters({ currentScene: "stages/isCurrentStage" }),
+    },
     methods: {
         reloadPage() {
             window.location.reload();

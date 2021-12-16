@@ -4,6 +4,8 @@
 
 - Test for next correct Stage loaded
 
+- Turn all $store.commits to actions
+
 learn github actions
 https://www.youtube.com/watch?v=MNBf-ylhtK0 
 
