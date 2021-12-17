@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Options from "../components/ui/Options.vue";
+import Options from "../../components/ui/Options.vue";
 import { mapGetters } from "vuex";
 export default {
     components: {
