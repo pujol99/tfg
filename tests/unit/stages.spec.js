@@ -1,8 +1,8 @@
 import { mount } from "@vue/test-utils";
 import App from "../../src/App";
+import About from "../../src/views/About";
 import { store } from "../../src/store/index";
 
-// Test quiz data
 test("Get to second screen", async () => {
     const wrapper = mount(App, {
         global: {
@@ -10,6 +10,17 @@ test("Get to second screen", async () => {
         },
     });
     await wrapper.find("button").trigger("click");
-    
-    expect(wrapper.html()).toContain("About you");
+
+    expect(wrapper.html()).toContain("Sobre tu");
+});
+
+test("Popup activates in About (no selected options)", async () => {
+    const wrapper = mount(About, {
+        global: {
+            plugins: [store],
+        },
+    });
+    await wrapper.find("button").trigger("click");
+
+    expect(wrapper.html()).toContain("popupActive");
 });

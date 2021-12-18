@@ -2,16 +2,13 @@
     <div v-if="currentScene('Final')">
         <div class="card-container">
             <div class="card-title">
-                <h1>End</h1>
+                <h1>{{getLabel('final_title')}}</h1>
             </div>
             <div class="card-body">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Impedit, odit.
-                </p>
+                <p>{{getLabel('final_description')}}</p>
             </div>
             <div class="card-action">
-                <button @click="reloadPage()">Restart</button>
+                <button @click="reloadPage()">{{getLabel('final_restart')}}</button>
             </div>
         </div>
     </div>
@@ -21,7 +18,10 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        ...mapGetters({ currentScene: "stages/isCurrentStage" }),
+        ...mapGetters({
+            currentScene: "stages/isCurrentStage",
+            getLabel: "data/getLabel",
+        }),
     },
     methods: {
         reloadPage() {
