@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run test && npm run build && npm run addBuild && npm run merge",
+    "deploy": "npm run build && npm run addBuild && npm run merge",
     "add": "npm run test && git add * && git commit && git push",
     "addBuild": "git add * && git commit -m \"build\" && git push",
     "local": "start http://localhost:8080 && vue-cli-service serve",
