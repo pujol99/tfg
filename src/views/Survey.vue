@@ -1,15 +1,15 @@
 <template>
-    <div v-if="currentScene('Quiz')">
+    <div v-if="currentScene('Survey')">
         <Form
-            :propQuestions="getQuizQuestions"
-            title="About you"
-            saveFunction="saveQuizDecisions"
+            :propQuestions="getSurveyQuestions"
+            title="Final survey"
+            saveFunction="saveSurveyDecisions"
         />
     </div>
 </template>
 
 <script>
-import Form from "../../components/ui/Form.vue";
+import Form from "../components/ui/Form.vue";
 import { mapGetters } from "vuex";
 export default {
     components: {
@@ -18,7 +18,7 @@ export default {
     computed: {
         ...mapGetters({
             currentScene: "stages/isCurrentStage",
-            getQuizQuestions: "data/getQuizQuestions",
+            getSurveyQuestions: "data/getSurveyQuestions",
         }),
     },
 };

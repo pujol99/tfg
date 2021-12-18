@@ -12,7 +12,6 @@
             </div>
             <div class="card-action">
                 <button @click="nextStage()">Continue</button>
-                <router-link to="/results">Go to Results</router-link>
             </div>
         </div>
     </div>

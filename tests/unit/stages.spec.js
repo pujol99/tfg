@@ -1,11 +1,11 @@
 import { mount } from "@vue/test-utils";
-import Game from "../../src/views/Game";
-import Quiz from "../../src/views/stages/Quiz";
+import App from "../../src/App";
+import Quiz from "../../src/views/Quiz";
 import { store } from "../../src/store/index";
 
 
 test("Get to second screen", async () => {
-    const wrapper = mount(Game, {
+    const wrapper = mount(App, {
         global: {
             plugins: [store],
         },
