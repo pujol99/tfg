@@ -11,20 +11,26 @@
                 </p>
             </div>
             <div class="card-action">
-                <button @click="nextStage()">Continue</button>
+                <Continue />
             </div>
+            <SelectLanguage/>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
+import Continue from "../components/ui/Continue.vue";
+import SelectLanguage from "../components/SelectLanguage.vue";
 export default {
-    computed: {
-        ...mapGetters({ currentScene: "stages/isCurrentStage" }),
+    components: {
+        Continue,
+        SelectLanguage
     },
-    methods: {
-        ...mapActions({ nextStage: "stages/nextStage" }),
+    computed: {
+        ...mapGetters({
+            currentScene: "stages/isCurrentStage",
+        }),
     },
 };
 </script>
