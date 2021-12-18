@@ -13,7 +13,7 @@
             <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
             <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4" />
 
-            <LoadingScreen ref="loadingScreen" :fs="fs" :vs="vs" />
+            <LoadingScreen ref="loadingScreen"/>
             <FbxModel
                 src="./assets/models/Standing Arguing.fbx"
                 @load="onLoad"
@@ -39,7 +39,6 @@ import {
     CubeTextureLoader,
     MeshBasicMaterial,
 } from "three";
-import { vs, fs } from "./shaders";
 import LoadingScreen from "../../ui/LoadingScreen.vue";
 export default {
     components: {
@@ -55,8 +54,6 @@ export default {
             },
             animations: [],
             numberOfObjects: 2,
-            vs: vs,
-            fs: fs,
         };
     },
     mounted() {

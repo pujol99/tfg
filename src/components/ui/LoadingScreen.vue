@@ -18,6 +18,7 @@
 <script>
 import { Clock } from "three";
 import { gsap } from "gsap";
+import { vs, fs } from "/public/shaders/loadingScreen";
 export default {
     data() {
         return {
@@ -26,10 +27,11 @@ export default {
                 uAlpha: { value: 1.0 },
                 uTime: { value: 0.0 },
             },
-            loadingFinished: false
+            loadingFinished: false,
+            vs: vs,
+            fs: fs
         };
     },
-    props: ['vs', 'fs'],
     mounted() {
         this.loadingScreen = this.$refs.loadingScreen;
         this.loadingScreenMaterial = this.loadingScreen.material;
