@@ -13,10 +13,10 @@ export default {
         this.selected = this.currentLanguage;
     },
     computed: {
-        ...mapGetters({ currentLanguage: "labels/getLanguage" }),
+        ...mapGetters({ currentLanguage: "data/getLanguage" }),
     },
     methods: {
-        ...mapActions({ setLanguage: "labels/setLanguage" }),
+        ...mapActions({ setLanguage: "data/setLanguage" }),
     },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
     <Welcome />
-    <Quiz />
+    <About />
     <Scenes />
     <Survey />
     <Final />
@@ -8,7 +8,7 @@
 
 <script>
 import Welcome from "./views/Welcome.vue";
-import Quiz from "./views/Quiz.vue";
+import About from "./views/About.vue";
 import Scenes from "./views/Scenes.vue";
 import Survey from "./views/Survey.vue";
 import Final from "./views/Final.vue";
@@ -17,7 +17,7 @@ export default {
     name: "Game",
     components: {
         Welcome,
-        Quiz,
+        About,
         Scenes,
         Survey,
         Final,

@@ -1,5 +1,5 @@
 const state = () => ({
-    stages: ["Welcome", "Quiz", "Scene1", "Survey", "Final"],
+    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
     currentStageIndex: 0,
     sceneLoading: false,
 });
@@ -44,7 +44,7 @@ const mutations = {
         if (state.currentStageIndex == state.stages.length - 1) {
             this.dispatch("data/saveData", { root: true });
         }
-    }
+    },
 };
 
 export default {

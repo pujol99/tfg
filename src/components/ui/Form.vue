@@ -24,7 +24,7 @@
                                 option == questions[question].optionSelected,
                         }"
                     >
-                        {{ option }}
+                        {{option}}
                     </div>
                 </div>
             </form>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+//@click="questions[question].optionSelected = option"
 import { mapActions } from "vuex";
 import Popup from "./Popup.vue";
 export default {
@@ -48,8 +49,10 @@ export default {
         title: String,
         saveFunction: String,
     },
-    created() {
-        this.questions = this.propQuestions;
+    data() {
+        return {
+            questions: this.propQuestions
+        }
     },
     computed: {
         // Check that the options selected are valid options
@@ -68,7 +71,8 @@ export default {
         ...mapActions({ nextStage: "stages/nextStage" }),
         onContinue: function () {
             if (!this.dataValidated) {
-                this.onDataNotValidated();
+                // activate popup warning
+                this.$refs.message.activate();
                 return;
             }
 
@@ -78,10 +82,6 @@ export default {
             this.$store.commit(`data/${this.saveFunction}`, this.questions);
 
             this.nextStage();
-        },
-        onDataNotValidated: function () {
-            // activate popup warning
-            this.$refs.message.activate();
         },
         formatDataForSave: function () {
             // From { {question: title, options[]}, ...}

@@ -1,8 +1,8 @@
 <template>
     <div v-if="currentScene('Survey')">
         <Form
-            :propQuestions="getSurveyQuestions"
-            title="Final survey"
+            :propQuestions="surveyQuestions"
+            :title="getLabel('survey_title')"
             saveFunction="saveSurveyDecisions"
         />
     </div>
@@ -16,9 +16,23 @@ export default {
         Form,
     },
     computed: {
+        surveyQuestions() {
+            return {
+                s1: {
+                    title: this.getLabel("s1_title"),
+                    options: this.getLabel("survey_options"),
+                    optionSelected: null,
+                },
+                s2: {
+                    title: this.getLabel("s2_title"),
+                    options: this.getLabel("survey_options"),
+                    optionSelected: null,
+                },
+            };
+        },
         ...mapGetters({
             currentScene: "stages/isCurrentStage",
-            getSurveyQuestions: "data/getSurveyQuestions",
+            getLabel: "data/getLabel",
         }),
     },
 };

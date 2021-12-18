@@ -2,18 +2,15 @@
     <div v-if="currentScene('Welcome')">
         <div class="card-container">
             <div class="card-title">
-                <h1>Hello world</h1>
+                <h1>{{ getLabel("welcome_title") }}</h1>
             </div>
             <div class="card-body">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Impedit, odit.
-                </p>
+                <p>{{ getLabel("welcome_description") }}</p>
             </div>
             <div class="card-action">
                 <Continue />
             </div>
-            <SelectLanguage/>
+            <SelectLanguage />
         </div>
     </div>
 </template>
@@ -25,11 +22,12 @@ import SelectLanguage from "../components/SelectLanguage.vue";
 export default {
     components: {
         Continue,
-        SelectLanguage
+        SelectLanguage,
     },
     computed: {
         ...mapGetters({
             currentScene: "stages/isCurrentStage",
+            getLabel: "data/getLabel",
         }),
     },
 };
