@@ -8,8 +8,6 @@
 
 - Turn all $store.commits to actions + cleaning store part
 
-- /results for gathering the users's data
-
 - Handle loading Plane deletion after fade out
 
 - Collapse Continue.vue and Option.vue
@@ -17,3 +15,9 @@
 - Separate data labels store
 
 - Continue in Form breaks onContinue method
+
+- Finish label traduction
+
+- Fix css scene options on mobile
+
+- Survey / About save indexes decisions, not contents

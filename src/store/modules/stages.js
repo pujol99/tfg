@@ -19,9 +19,9 @@ const getters = {
 
 // actions
 const actions = {
-    nextStage({ commit }) {
+    nextStage({ commit, getters }) {
         commit("nextStage");
-        commit("saveData");
+        if (getters.isLastStage) commit("saveData");
     },
 };
 
@@ -41,9 +41,7 @@ const mutations = {
         state.sceneLoading = !state.sceneLoading;
     },
     saveData(state) {
-        if (state.currentStageIndex == state.stages.length - 1) {
-            this.dispatch("data/saveData", { root: true });
-        }
+        this.dispatch("data/saveData", { root: true });
     },
 };
 

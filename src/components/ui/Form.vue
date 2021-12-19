@@ -1,5 +1,5 @@
 <template>
-    <Popup ref="message" message="Fill answers please" />
+    <Popup ref="message" :message="getLabel('popup')" />
     <div class="card-container">
         <div class="card-title">
             <h2>{{ title }}</h2>
@@ -30,14 +30,14 @@
             </form>
         </div>
         <div class="card-action">
-            <button @click="onContinue">Continue</button>
+            <button @click="onContinue">{{getLabel("continue")}}</button>
         </div>
     </div>
 </template>
 
 <script>
 //@click="questions[question].optionSelected = option"
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Popup from "./Popup.vue";
 export default {
     name: "Form",
@@ -55,6 +55,7 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({ getLabel: "data/getLabel" }),
         // Check that the options selected are valid options
         dataValidated: function () {
             return (
