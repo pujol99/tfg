@@ -2,13 +2,15 @@
     <div v-if="currentScene('Final')">
         <div class="card-container">
             <div class="card-title">
-                <h1>{{getLabel('final_title')}}</h1>
+                <h1>{{ getLabel("final_title") }}</h1>
             </div>
             <div class="card-body">
-                <p>{{getLabel('final_description')}}</p>
+                <p>{{ getLabel("final_description") }}</p>
             </div>
             <div class="card-action">
-                <button @click="reloadPage()">{{getLabel('final_restart')}}</button>
+                <button @click="reloadPage()">
+                    {{ getLabel("final_restart") }}
+                </button>
             </div>
         </div>
     </div>

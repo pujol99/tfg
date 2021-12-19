@@ -17,3 +17,7 @@
 - Continue in Form breaks onContinue method
 
 - Finish label traduction
+
+- Fix css scene options on mobile
+
+- Survey / About save indexes decisions, not contents

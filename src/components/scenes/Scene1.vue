@@ -39,7 +39,7 @@ import {
     CubeTextureLoader,
     MeshBasicMaterial,
 } from "three";
-import LoadingScreen from "../../ui/LoadingScreen.vue";
+import LoadingScreen from "../ui/LoadingScreen.vue";
 export default {
     components: {
         LoadingScreen,

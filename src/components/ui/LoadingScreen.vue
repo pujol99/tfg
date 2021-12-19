@@ -18,7 +18,7 @@
 <script>
 import { Clock } from "three";
 import { gsap } from "gsap";
-import { vs, fs } from "/public/shaders/loadingScreen";
+import { vs, fs } from "/public/assets/shaders/loadingScreen";
 export default {
     data() {
         return {

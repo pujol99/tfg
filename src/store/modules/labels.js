@@ -1,5 +1,6 @@
 export const labels = {
     continue: ["Continue", "Avanza", "Avança"],
+    popup: ["Fill answers please", "Rellena las preguntas por favor", "Emplena les preguntes siusplau"],
     welcome_title: ["TFG", "TFG", "TFG"],
     welcome_description: [
         "Game for raising awarness on social media addiction",

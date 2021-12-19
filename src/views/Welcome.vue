@@ -20,7 +20,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Continue from "../components/ui/Continue.vue";
-import Flag from "../components/SelectFlag";
+import Flag from "../components/ui/SelectFlag";
 export default {
     components: {
         Continue,
