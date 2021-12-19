@@ -13,11 +13,6 @@
                 @pointerOver="onMouseOver"
             />
         </Scene>
-        <EffectComposer>
-            <RenderPass />
-            <UnrealBloomPass :strength="0.5" />
-            <HalftonePass :radius="2" :scatter="0" />
-        </EffectComposer>
     </Renderer>
 </template>
 

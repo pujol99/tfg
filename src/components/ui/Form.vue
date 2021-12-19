@@ -16,9 +16,9 @@
                     </div>
                     <div
                         class="form-element-option spaced"
-                        v-for="option in questions[question].options"
+                        v-for="(option, index) in questions[question].options"
                         :key="option"
-                        @click="questions[question].optionSelected = option"
+                        @click="onDecisionClick(questions[question], option, index)"
                         :class="{
                             selected:
                                 option == questions[question].optionSelected,
@@ -84,11 +84,15 @@ export default {
 
             this.nextStage();
         },
+        onDecisionClick: function (question, option, index) {
+            question.optionSelected = option
+            question.optionSelectedIndex = index
+        },
         formatDataForSave: function () {
             // From { {question: title, options[]}, ...}
             // To { {question: optionSelected}, ...}
             for (var key of Object.keys(this.questions)) {
-                this.questions[key] = this.questions[key].optionSelected;
+                this.questions[key] = this.questions[key].optionSelectedIndex;
             }
         },
     },

@@ -21,12 +21,10 @@ export default {
                 age: {
                     title: this.getLabel("about_age"),
                     options: ["10-", "11-15", "15-19", "20+"],
-                    optionSelected: "",
                 },
                 gender: {
                     title: this.getLabel("about_gender"),
                     options: this.getLabel("about_gender_options"),
-                    optionSelected: "",
                 },
             };
         },
