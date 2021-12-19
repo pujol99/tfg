@@ -1,7 +1,11 @@
 const labels = {
     continue: ["Continue", "Avanza", "Avança"],
     welcome_title: ["TFG Game", "Juego TFG", "Joc TFG"],
-    welcome_description: ["TFG Game", "Juego TFG", "Joc TFG"],
+    welcome_description: [
+        "Game for raising awarness on social media addiction",
+        "Juego para concienciar sobre la adicción a las redes sociales",
+        "Joc per conscienciar sobre l'addicció a les xarxes socials",
+    ],
     final_title: ["Game end", "Fin del juego", "Fi del joc"],
     final_description: ["Thanks", "Gracias", "Gracies"],
     final_restart: ["Restart", "Reinicia", "Reinicia"],
@@ -64,7 +68,7 @@ const state = () => ({
             ],
         },
     },
-    
+
     userData: {
         aboutDecisions: null,
         sceneDecisions: [],
