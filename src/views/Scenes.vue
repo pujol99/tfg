@@ -1,5 +1,5 @@
 <template>
-    <Scene name="Scene1">
+    <Scene sceneName="Scene1">
         <Visuals1 />
     </Scene>
 </template>

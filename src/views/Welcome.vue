@@ -10,8 +10,7 @@
             <div class="card-action">
                 <Continue />
             </div>
-            <!-- <SelectLanguage /> -->
-            <div class="flag-space">
+            <div id="flag-space">
                 <Flag/>
             </div>
         </div>
@@ -21,13 +20,11 @@
 <script>
 import { mapGetters } from "vuex";
 import Continue from "../components/ui/Continue.vue";
-// import SelectLanguage from "../components/SelectLanguage.vue";
 import Flag from "../components/SelectFlag";
 export default {
     components: {
         Continue,
         Flag,
-        // SelectLanguage,
     },
     computed: {
         ...mapGetters({
@@ -37,9 +34,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.flag-space {
-    height: 200px;
-}
-</style>

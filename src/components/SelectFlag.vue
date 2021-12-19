@@ -1,7 +1,7 @@
 <template>
     <Renderer ref="renderer">
         <Camera :position="{ x: 0, y: 0, z: 100 }" />
-        <Scene>
+        <Scene ref="scene">
             <NoisyImage
                 v-for="lang in langs"
                 :key="lang"
@@ -13,6 +13,11 @@
                 @pointerOver="onMouseOver"
             />
         </Scene>
+        <EffectComposer>
+            <RenderPass />
+            <UnrealBloomPass :strength="0.5" />
+            <HalftonePass :radius="2" :scatter="0" />
+        </EffectComposer>
     </Renderer>
 </template>
 
@@ -38,8 +43,9 @@ export default {
     methods: {
         ...mapActions({ setLanguage: "data/setLanguage" }),
         onMouseOver: function ({ over, component }) {
-            component.mesh.position.z = over ? 5 : 0;
+            component.mesh.position.z = over ? 7 : 0;
+            document.getElementById("flag-space").style.cursor = over ? "pointer" : "default";
         },
     },
 };
-</script>
+</script>w

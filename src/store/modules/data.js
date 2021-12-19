@@ -1,47 +1,4 @@
-const labels = {
-    continue: ["Continue", "Avanza", "Avança"],
-    welcome_title: ["TFG Game", "Juego TFG", "Joc TFG"],
-    welcome_description: [
-        "Game for raising awarness on social media addiction",
-        "Juego para concienciar sobre la adicción a las redes sociales",
-        "Joc per conscienciar sobre l'addicció a les xarxes socials",
-    ],
-    final_title: ["Game end", "Fin del juego", "Fi del joc"],
-    final_description: ["Thanks", "Gracias", "Gracies"],
-    final_restart: ["Restart", "Reinicia", "Reinicia"],
-    about_title: ["About you", "Sobre ti", "Sobre tu"],
-    about_age: [
-        "Select your age",
-        "Selecciona tu edad",
-        "Selecciona la teva edat",
-    ],
-    about_gender: [
-        "Select your gender",
-        "Selecciona tu genero",
-        "Selecciona el teu genere",
-    ],
-    about_gender_options: [
-        ["Male", "Female", "Other"],
-        ["Hombre", "Mujer", "Otro"],
-        ["Home", "Dona", "Altre"],
-    ],
-    survey_title: ["Final survey", "Encuesta final", "Enquesta final"],
-    survey_options: [
-        ["Disagree", "Neutral", "Agree"],
-        ["En desacuerdo", "Neutral", "De acuerdo"],
-        ["En desacord", "Neutral", "D'acord"],
-    ],
-    s1_title: [
-        "ENGAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "ESPAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "CATAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-    ],
-    s2_title: [
-        "ENGAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "ESPAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "CATAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-    ],
-};
+import { labels } from "./labels";
 
 const state = () => ({
     //labels
@@ -58,17 +15,6 @@ const state = () => ({
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
-    scenesOptions: {
-        Scene1: {
-            title: "Your friend is sad because she failed, but you are on the phone",
-            options: [
-                "Ignore and stay on the phone.",
-                "Listen while on the phone.",
-                "Give her all your attention.",
-            ],
-        },
-    },
-
     userData: {
         aboutDecisions: null,
         sceneDecisions: [],
