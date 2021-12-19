@@ -1,28 +1,18 @@
 <template>
     <Renderer ref="renderer">
         <Camera :position="{ x: 0, y: 0, z: 100 }" />
-    <Scene background="#000000">
-      <NoisyImage
-        src="./assets/images/catala.png"
-        :width="120"
-        :time-coef="0.001"
-        :noise-coef="2"
-        :z-coef="5"
-        :disp-coef="0.015"
-        :position="{x:50, y:0, z:0}"
-        @click="flagClick('CAT')"
-      />
-      <NoisyImage
-        src="./assets/images/english.png"
-        :width="120"
-        :time-coef="0.001"
-        :noise-coef="2"
-        :z-coef="5"
-        :disp-coef="0.015"
-        :position="{x:-50, y:0, z:0}"
-        @click="flagClick('ENG')"
-      />
-    </Scene>
+        <Scene>
+            <NoisyImage
+                v-for="lang in langs"
+                :key="lang"
+                :src="`./assets/images/${lang.type}.png`"
+                :width="120"
+                :z-coef="5"
+                :position="{ x: lang.pos, y: 0, z: 0 }"
+                @click="setLanguage(lang.type)"
+                @pointerOver="onMouseOver"
+            />
+        </Scene>
     </Renderer>
 </template>
 
@@ -33,15 +23,23 @@ export default {
     components: { NoisyImage },
     data() {
         return {
-            cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: 0, y: 0, z: 1.5 },
+            langs: [
+                {
+                    type: "CAT",
+                    pos: 45,
+                },
+                {
+                    type: "ENG",
+                    pos: -45,
+                },
+            ],
         };
     },
     methods: {
         ...mapActions({ setLanguage: "data/setLanguage" }),
-        flagClick: function (language) {
-            this.setLanguage(language)
-        }
+        onMouseOver: function ({ over, component }) {
+            component.mesh.position.z = over ? 5 : 0;
+        },
     },
 };
 </script>
