@@ -1,16 +1,16 @@
 <template>
     <div v-if="currentStage(sceneName)">
         <slot></slot>
-        <Options :information="options" />
+        <!-- <Options :information="options" /> -->
     </div>
 </template>
 
 <script>
-import Options from "../components/ui/Options.vue";
+// import Options from "../components/ui/Options.vue";
 import { mapGetters } from "vuex";
 export default {
     components: {
-        Options,
+        // Options,
     },
     props: ["sceneName"],
     computed: {

@@ -1,5 +1,5 @@
 const state = () => ({
-    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
+    stages: ["Scene1"],
     currentStageIndex: 0,
     sceneLoading: false,
 });
