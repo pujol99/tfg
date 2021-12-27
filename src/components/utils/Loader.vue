@@ -1,6 +1,6 @@
 <template>
     <LoadingScreen ref="loadingScreen" />
-    <LoadBlender ref="blender" :path="toLoad.blender" />
+    <LoadBlender ref="blender" :path="toLoad.blender"/>
     <LoadFBX ref="fbx" :models="toLoad.fbx" />
 </template>
 
@@ -18,10 +18,12 @@ export default {
         toLoad: Object,
     },
     mounted() {
-        this.onePass = true;
         this.blender = this.$refs.blender;
         this.fbx = this.$refs.fbx;
         this.loadingScreen = this.$refs.loadingScreen;
+
+        // It ables to only call loading screen finish once
+        this.onePass = true;
     },
     methods: {
         init(scene) {
@@ -29,8 +31,9 @@ export default {
             this.fbx.init();
         },
         update() {
-            this.fbx.update();
+            if(this.toLoad.fbx) this.fbx.update();
             this.loadingScreen.update();
+
             if (this.onePass && this.isLoaded()) {
                 this.loadingScreen.finish();
                 this.onePass = false;
