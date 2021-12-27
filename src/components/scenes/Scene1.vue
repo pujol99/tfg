@@ -1,103 +1,74 @@
 <template>
-    <Renderer
-        ref="renderer"
-        resize="window"
-        :orbit-ctrl="{ autoRotate: true, autoRotateSpeed: 0.5 }"
-    >
+    <Renderer ref="renderer" resize="window" orbitCtrl>
         <PerspectiveCamera
             ref="camera"
-            :lookAt="cameraLookAt"
-            :position="cameraPosition"
+            :position="{
+                x: 1.2156695694719077,
+                y: 0.2993947225727276,
+                z: 4.048672963352252,
+            }"
         />
         <Scene ref="scene" background="#000000">
-            <PointLight :position="{ x: 0, y: 0, z: 3 }" :intensity="0.4" />
-            <PointLight :position="{ x: 0, y: 0, z: -3 }" :intensity="0.4" />
+            <AmbientLight :intensity="0.2" />
+            <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
 
-            <LoadingScreen ref="loadingScreen"/>
-            <FbxModel
-                src="./assets/models/Standing Arguing.fbx"
-                @load="onLoad"
-                :position="{ y: -3, x: -1, z: 0 }"
-                :rotation="{ y: Math.PI * 0.5 }"
-                :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
-            />
-            <FbxModel
-                src="./assets/models/Standing Arguing.fbx"
-                @load="onLoad"
-                :position="{ y: -3, x: 1, z: 0 }"
-                :rotation="{ y: -Math.PI * 0.5 }"
-                :scale="{ x: 0.02, y: 0.02, z: 0.02 }"
+            <Cube ref="cube" name="night" />
+            <Loader
+                ref="loader"
+                :toLoad="{
+                    blender: 'scene2',
+                    fbx: [
+                        {
+                            path: 'Standing Arguing',
+                            props: {
+                                position: { x: -1, y: 0, z: 1 },
+                                rotation: { y: Math.PI * 0.5 },
+                                scale: { x: 0.01, y: 0.01, z: 0.01 },
+                            },
+                        },
+                        {
+                            path: 'Standing Arguing',
+                            props: {
+                                position: { x: 1, y: 0, z: 1 },
+                                rotation: { y: - Math.PI * 0.5 },
+                                scale: { x: 0.01, y: 0.01, z: 0.01 },
+                            },
+                        },
+                    ],
+                }"
             />
         </Scene>
     </Renderer>
 </template>
 
 <script>
-import {
-    AnimationMixer,
-    Clock,
-    CubeTextureLoader,
-    MeshBasicMaterial,
-} from "three";
-import LoadingScreen from "../ui/LoadingScreen.vue";
+import Cube from "../utils/Cube.vue";
+import Loader from "../utils/Loader.vue";
+
 export default {
     components: {
-        LoadingScreen,
-    },
-    data() {
-        return {
-            cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: {
-                x: -1.8625455300041365,
-                y: 0.2209428475467337,
-                z: 0.676835122899029,
-            },
-            animations: [],
-            numberOfObjects: 2,
-        };
+        Cube,
+        Loader,
     },
     mounted() {
         this.renderer = this.$refs.renderer;
         this.scene = this.$refs.scene;
-        this.loadingScreen = this.$refs.loadingScreen;
-        this.camera = this.$refs.camera;
+        this.loader = this.$refs.loader;
 
-        this.clock = new Clock();
+        this.cube = this.$refs.cube;
+
         this.init();
     },
     methods: {
         init() {
-            const cubeTextureLoader = new CubeTextureLoader();
-            this.scene.scene.background = cubeTextureLoader.load([
-                "./assets/textures/street/px.jpg",
-                "./assets/textures/street/nx.jpg",
-                "./assets/textures/street/py.jpg",
-                "./assets/textures/street/ny.jpg",
-                "./assets/textures/street/pz.jpg",
-                "./assets/textures/street/nz.jpg",
-            ]);
+            this.cube.init(this.scene);
+
+            this.loader.init(this.scene);
+
             this.renderer.onBeforeRender(this.update);
         },
         update() {
-            this.updateAnimations();
-            this.loadingScreen.update();
-        },
-        onLoad(object) {
-            var animation = new AnimationMixer(object);
-            animation.clipAction(object.animations[1]).play();
-            var clock = new Clock();
-
-            this.animations.push({ animation, clock });
-
-            // Check if screen is fully loaded
-            if (this.numberOfObjects == this.animations.length) {
-                this.loadingScreen.finish();
-            }
-        },
-        updateAnimations() {
-            this.animations.forEach(function (anim) {
-                anim.animation.update(anim.clock.getDelta());
-            });
+            this.loader.update();
         },
     },
 };
