@@ -21,12 +21,10 @@ export default {
                 s1: {
                     title: this.getLabel("s1_title"),
                     options: this.getLabel("survey_options"),
-                    optionSelected: null,
                 },
                 s2: {
                     title: this.getLabel("s2_title"),
                     options: this.getLabel("survey_options"),
-                    optionSelected: null,
                 },
             };
         },
