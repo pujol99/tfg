@@ -1,30 +1,34 @@
 <template>
-    <FbxModel v-for="model in models" :key="model"
+    <FbxModel
+        v-for="model in models"
+        :key="model"
         :src="`./assets/models/${model.path}.fbx`"
         @load="onLoad"
-        :scale="model.props.scale"
-        :position="model.props.position"
-        :rotation="model.props.rotation"
+        :scale="model.scale || { x: 0.01, y: 0.01, z: 0.01 }"
+        :position="model.position || { x: 0, y: 0, z: 0 }"
+        :rotation="model.rotation || { y: -Math.PI * 0.5 }"
     />
 </template>
 
 <script>
-import { AnimationMixer, Clock } from 'three';
+import { AnimationMixer, Clock } from "three";
 export default {
     props: {
-        models: Array
-    },
-    data() {
-        return {
-            isLoaded: false,
-        }
+        models: Array,
     },
     mounted() {
-        this.modelsSize = this.models.length;
+        this.isLoaded = false;
+        if (this.models) this.modelsSize = this.models.length;
     },
     methods: {
         init() {
-            this.animations = []
+            if (!this.models) this.isLoaded = true;
+            this.animations = [];
+        },
+        update() {
+            this.animations.forEach(function (anim) {
+                anim.animation.update(anim.clock.getDelta());
+            });
         },
         onLoad(object) {
             var animation = new AnimationMixer(object);
@@ -32,14 +36,10 @@ export default {
             var clock = new Clock();
 
             this.animations.push({ animation, clock });
-            if(this.animations.length === this.modelsSize) this.isLoaded = true;
+            
+            if (this.animations.length === this.modelsSize)
+                this.isLoaded = true;
         },
-        update() {
-            this.animations.forEach(function (anim) {
-                anim.animation.update(anim.clock.getDelta());
-            });
-        },
-
     },
 };
 </script>

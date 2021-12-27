@@ -19,6 +19,11 @@ export default {
     },
     methods: {
         init(scene) {
+            if(!this.path) {
+                this.isLoaded = true;
+                return
+            }
+
             //Loaders
             const textureLoader = new TextureLoader();
             const dracoLoader = new DRACOLoader();
