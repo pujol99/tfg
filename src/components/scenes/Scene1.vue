@@ -1,100 +1,74 @@
 <template>
     <Renderer ref="renderer" resize="window">
-        <PerspectiveCamera
+        <Camera
             ref="camera"
-            :lookAt="cameraLookAt"
-            :position="cameraPosition"
+            :lookAt="{ x: 0, y: 1.5, z: 0 }"
+            :position="{
+                x: 1.2156695694719077,
+                y: 0.2993947225727276,
+                z: 4.048672963352252,
+            }"
         />
         <Scene ref="scene" background="#000000">
-            <AmbientLight />
+            <AmbientLight :intensity="0.2" />
+            <Cube ref="cube" name="night"/>
+            <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
+            <LoadBlender ref="blender" path="scene2" />
+            <LoadFBX
+                ref="fbx"
+                :models="[
+                    {
+                        path: 'Standing Arguing',
+                        props: {
+                            position: { x: -1, y: 0, z: 1 },
+                            rotation: { y: Math.PI * 0.5 },
+                            scale: { x: 0.01, y: 0.01, z: 0.01 },
+                        },
+                    },
+                    {
+                        path: 'Standing Arguing',
+                        props: {
+                            position: { x: 1, y: 0, z: 1 },
+                            rotation: { y: -Math.PI * 0.5 },
+                            scale: { x: 0.01, y: 0.01, z: 0.01 },
+                        },
+                    },
+                ]"
+            />
         </Scene>
     </Renderer>
 </template>
 
 <script>
-import { AnimationMixer, Clock } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { FirstPersonControls } from "three/examples/jsm/controls/FirstPersonControls.js";
+import LoadBlender from "../utils/LoadBlender.vue";
+import LoadFBX from "../utils/LoadFBX.vue";
+import Cube from "../utils/Cube.vue";
 export default {
-    data() {
-        return {
-            cameraLookAt: { x: 0, y: 0, z: 0 },
-            cameraPosition: { x: 5, y: 5, z: 5 },
-            animations: [],
-            previousTime: 0,
-        };
+    components: {
+        LoadBlender,
+        LoadFBX,
+        Cube,
     },
     mounted() {
         this.renderer = this.$refs.renderer;
-        this.scene = this.$refs.scene;
-        this.camera = this.$refs.camera;
+        this.scene = this.$refs.scene
 
-        this.clock = new Clock();
-        this.mixer = null;
-        this.controls = null;
-
-        this.up = false;
-        this.down = false;
+        this.blender = this.$refs.blender;
+        this.fbx = this.$refs.fbx;
+        this.cube = this.$refs.cube;
 
         this.init();
     },
     methods: {
         init() {
-            this.controls = new FirstPersonControls(
-                this.camera.camera,
-                this.renderer.canvas
-            );
-            this.controls.enableDamping = true;
-            this.controls.constrainVertical = true;
-            this.controls.verticalMax = Math.PI - Math.PI / 4;
-            this.controls.verticalMin = Math.PI / 4;
-            this.controls.lookSpeed = 0.01;
-            const dracoLoader = new DRACOLoader();
-            dracoLoader.setDecoderPath("/draco/");
+            this.cube.init(this.scene)
+            this.blender.init(this.scene);
+            this.fbx.init();
 
-            const gltfLoader = new GLTFLoader();
-            gltfLoader.setDRACOLoader(dracoLoader);
-
-            gltfLoader.load("/assets/models/LittlestTokyo.glb", gltf => {
-                gltf.scene.scale.set(0.025, 0.025, 0.025);
-                this.scene.add(gltf.scene);
-
-                // Animation
-                this.mixer = new AnimationMixer(gltf.scene);
-                this.mixer.clipAction(gltf.animations[0]).play();
-            });
-
-            this.renderer.onBeforeRender(() => {
-                this.update();
-            });
-
-            document.addEventListener("keydown", this.onDocumentKeyDown, false);
-            document.addEventListener("keyup", this.onDocumentKeyUp, false);
+            this.renderer.onBeforeRender(this.update);
         },
         update() {
-            const delta = this.clock.getDelta();
-            if (this.mixer) {
-                this.mixer.update(delta / 2);
-            }
-            this.controls.update(delta * 10);
-
-            if (this.up) this.camera.camera.position.y += 0.02;
-            if (this.down) this.camera.camera.position.y -= 0.02;
-        },
-        onDocumentKeyDown(event) {
-            if (event.which == 81) {
-                this.up = true;
-            } else if (event.which == 69) {
-                this.down = true;
-            }
-        },
-        onDocumentKeyUp(event) {
-            if (event.which == 81) {
-                this.up = false;
-            } else if (event.which == 69) {
-                this.down = false;
-            }
+            this.fbx.update();
         },
     },
 };

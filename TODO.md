@@ -18,4 +18,6 @@
 
 - Fix css scene options on mobile
 
+- Go to npm install three@0.134 troisjs
+
 ## Bugs
