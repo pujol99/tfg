@@ -18,7 +18,7 @@ export default {
             const textureLoader = new TextureLoader();
             const dracoLoader = new DRACOLoader();
             const gltfLoader = new GLTFLoader();
-            dracoLoader.setDecoderPath("/draco/");
+            dracoLoader.setDecoderPath("/assets/draco/");
             gltfLoader.setDRACOLoader(dracoLoader);
 
             //Textures 
