@@ -14,7 +14,7 @@ import Survey from "./views/Survey.vue";
 import Final from "./views/Final.vue";
 
 export default {
-    name: "Game",
+    name: "App",
     components: {
         Welcome,
         About,

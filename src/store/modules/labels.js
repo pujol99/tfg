@@ -1,14 +1,18 @@
 export const labels = {
     continue: ["Continue", "Avanza", "Avança"],
-    popup: ["Fill answers please", "Rellena las preguntas por favor", "Emplena les preguntes siusplau"],
+    popup: [
+        "Fill answers please",
+        "Rellena las preguntas por favor",
+        "Emplena les preguntes siusplau",
+    ],
     welcome_title: ["TFG", "TFG", "TFG"],
-    welcome_description: [
+    welcome_body: [
         "Game for raising awarness on social media addiction",
         "Juego para concienciar sobre la adicción a las redes sociales",
         "Joc per conscienciar sobre l'addicció a les xarxes socials",
     ],
     final_title: ["Game end", "Fin del juego", "Fi del joc"],
-    final_description: ["Thanks", "Gracias", "Gracies"],
+    final_body: ["Thanks", "Gracias", "Gracies"],
     final_restart: ["Restart", "Reinicia", "Reinicia"],
     about_title: ["About you", "Sobre ti", "Sobre tu"],
     about_age: [

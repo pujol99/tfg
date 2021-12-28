@@ -9,6 +9,9 @@ const getters = {
     isCurrentStage: state => name => {
         return state.stages[state.currentStageIndex] == name;
     },
+    currentStageIsScene: state => {
+        return state.stages[state.currentStageIndex].includes("Scene");
+    },
     isSceneLoading: state => {
         return state.sceneLoading;
     },
@@ -20,7 +23,8 @@ const getters = {
 // actions
 const actions = {
     nextStage({ commit, getters }) {
-        commit("nextStage");
+        if (!getters.isLastStage) commit("nextStage");
+        if (getters.currentStageIsScene) commit("loadingSwitch");
         if (getters.isLastStage) commit("saveData");
     },
 };
@@ -28,19 +32,12 @@ const actions = {
 // mutations
 const mutations = {
     nextStage(state) {
-        if (state.currentStageIndex + 1 < state.stages.length) {
-            state.currentStageIndex++;
-
-            // If next scene is of Scene type
-            if (state.stages[state.currentStageIndex].includes("Scene")) {
-                state.sceneLoading = !state.sceneLoading;
-            }
-        }
+        state.currentStageIndex++;
     },
     loadingSwitch(state) {
         state.sceneLoading = !state.sceneLoading;
     },
-    saveData(state) {
+    saveData() {
         this.dispatch("data/saveData", { root: true });
     },
 };

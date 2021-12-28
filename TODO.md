@@ -18,4 +18,6 @@
 
 - Fix css scene options on mobile
 
+- Make my own flag shader
+
 ## Bugs

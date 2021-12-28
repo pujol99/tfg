@@ -9,12 +9,8 @@
 </template>
 
 <script>
-import Form from "../components/ui/Form.vue";
 import { mapGetters } from "vuex";
 export default {
-    components: {
-        Form,
-    },
     computed: {
         aboutQuestions() {
             return {
