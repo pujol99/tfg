@@ -1,58 +1,54 @@
 <template>
-    <Popup ref="message" :message="getLabel('popup')" />
+    <Popup ref="popup" :message="getLabel('popup')" />
     <div class="card-container">
         <div class="card-title">
             <h2>{{ title }}</h2>
         </div>
         <div class="card-body">
-            <form>
-                <div
-                    class="form-element"
-                    v-for="question in Object.keys(questions)"
-                    :key="question"
-                >
-                    <div class="form-element-title">
-                        {{ questions[question].title }}
-                    </div>
-                    <div
-                        class="form-element-option spaced"
-                        v-for="(option, index) in questions[question].options"
-                        :key="option"
-                        @click="onDecisionClick(questions[question], option, index)"
-                        :class="{
-                            selected:
-                                option == questions[question].optionSelected,
-                        }"
-                    >
-                        {{option}}
-                    </div>
+            <div
+                class="form-element"
+                v-for="question in Object.keys(questions)"
+                :key="question"
+            >
+                <!-- form title -->
+                <div class="form-element-title">
+                    {{ questions[question].title }}
                 </div>
-            </form>
+
+                <!-- form options -->
+                <div
+                    class="form-element-option spaced"
+                    v-for="(option, index) in questions[question].options"
+                    :key="option"
+                    @click="onDecisionClick(questions[question], option, index)"
+                    :class="{
+                        selected: option == questions[question].optionSelected,
+                    }"
+                >
+                    {{ option }}
+                </div>
+            </div>
         </div>
         <div class="card-action">
-            <button @click="onContinue">{{getLabel("continue")}}</button>
+            <button @click="onContinue">{{ getLabel("continue") }}</button>
         </div>
     </div>
 </template>
 
 <script>
-//@click="questions[question].optionSelected = option"
 import { mapActions, mapGetters } from "vuex";
-import Popup from "./Popup.vue";
 export default {
     name: "Form",
-    components: {
-        Popup,
-    },
     props: {
         propQuestions: Object,
         title: String,
         saveFunction: String,
     },
     data() {
+        // Convert to local questions
         return {
-            questions: this.propQuestions
-        }
+            questions: this.propQuestions,
+        };
     },
     computed: {
         ...mapGetters({ getLabel: "data/getLabel" }),
@@ -73,20 +69,20 @@ export default {
         onContinue: function () {
             if (!this.dataValidated) {
                 // activate popup warning
-                this.$refs.message.activate();
+                this.$refs.popup.activate();
                 return;
             }
-
-            this.formatDataForSave()
-
-            // Save decisions
-            this.$store.commit(`data/${this.saveFunction}`, this.questions);
-
+            this.saveData();
             this.nextStage();
         },
+        saveData: function (){
+            this.formatDataForSave();
+
+            this.$store.commit(`data/${this.saveFunction}`, this.questions);
+        },
         onDecisionClick: function (question, option, index) {
-            question.optionSelected = option
-            question.optionSelectedIndex = index
+            question.optionSelected = option;
+            question.optionSelectedIndex = index;
         },
         formatDataForSave: function () {
             // From { {question: title, options[]}, ...}

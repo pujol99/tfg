@@ -1,16 +1,11 @@
 <template>
-    <div>
-        
-    </div>
+    <div></div>
 </template>
 
 <script>
-import {
-    CubeTextureLoader,
-} from "three";
-
+import { CubeTextureLoader } from "three";
 export default {
-    props: ['name'],
+    props: ["name"],
     methods: {
         init(scene) {
             const cubeTextureLoader = new CubeTextureLoader();
@@ -22,7 +17,7 @@ export default {
                 `./assets/textures/${this.name}/pz.jpg`,
                 `./assets/textures/${this.name}/nz.jpg`,
             ]);
-        }
-    }
-}
+        },
+    },
+};
 </script>

@@ -1,20 +1,16 @@
 <template>
     <div v-if="currentScene('Survey')">
         <Form
-            :propQuestions="surveyQuestions"
             :title="getLabel('survey_title')"
+            :propQuestions="surveyQuestions"
             saveFunction="saveSurveyDecisions"
         />
     </div>
 </template>
 
 <script>
-import Form from "../components/ui/Form.vue";
 import { mapGetters } from "vuex";
 export default {
-    components: {
-        Form,
-    },
     computed: {
         surveyQuestions() {
             return {

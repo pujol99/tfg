@@ -5,14 +5,12 @@
 </template>
 
 <script>
-import LoadingScreen from "../ui/LoadingScreen.vue";
 import LoadBlender from "../utils/LoadBlender.vue";
 import LoadFBX from "../utils/LoadFBX.vue";
 export default {
     components: {
         LoadBlender,
         LoadFBX,
-        LoadingScreen,
     },
     props: {
         toLoad: Object,

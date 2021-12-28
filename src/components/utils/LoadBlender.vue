@@ -1,7 +1,5 @@
 <template>
-    <div>
-        
-    </div>
+    <div></div>
 </template>
 
 <script>
@@ -9,19 +7,17 @@ import { TextureLoader, MeshBasicMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 export default {
-    props: {
-        path: String
-    },
+    props: ["path"],
     data() {
         return {
-            isLoaded: false
-        }
+            isLoaded: false,
+        };
     },
     methods: {
         init(scene) {
-            if(!this.path) {
+            if (!this.path) {
                 this.isLoaded = true;
-                return
+                return;
             }
 
             //Loaders
@@ -31,7 +27,7 @@ export default {
             dracoLoader.setDecoderPath("./assets/draco/");
             gltfLoader.setDRACOLoader(dracoLoader);
 
-            //Textures 
+            //Textures
             const bakedTexture = textureLoader.load(
                 `./assets/scenes/${this.path}/baked.jpg`
             );
@@ -50,13 +46,13 @@ export default {
                     child.material = bakedMaterial;
                 });
 
-                gltf.scene.children.filter(
-                    child => child.name.includes("Light")
-                ).forEach(child => child.material = lightMaterial);
+                gltf.scene.children
+                    .filter(child => child.name.includes("Light"))
+                    .forEach(child => (child.material = lightMaterial));
 
                 scene.add(gltf.scene);
                 this.isLoaded = true;
-            });  
+            });
         },
     },
 };

@@ -15,12 +15,7 @@
 </template>
 
 <script>
-import Option from "./Option";
 export default {
-    name: "Options",
     props: ["information"],
-    components: {
-        Option,
-    },
 };
 </script>

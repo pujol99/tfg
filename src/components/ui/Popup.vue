@@ -8,7 +8,6 @@
 
 <script>
 export default {
-    name: "Popup",
     data() {
         return {
             POPUP_TIME: 2,
@@ -16,7 +15,7 @@ export default {
             deactivated: false,
         };
     },
-    props: ["type", "message"],
+    props: ["message"],
     methods: {
         activate() {
             this.activated = true;

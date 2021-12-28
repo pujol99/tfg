@@ -1,12 +1,12 @@
 <template>
     <div v-if="message">
         <button
-            @click="onClick"
             class="option"
             :class="{
                 active: !sceneLoading,
                 disabled: disabled,
             }"
+            @click="onClick"
         >
             {{ message }}
         </button>
@@ -16,7 +16,6 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-    name: "Option",
     props: {
         index: Number,
         message: String,
@@ -31,7 +30,6 @@ export default {
     methods: {
         ...mapActions({ nextStage: "stages/nextStage" }),
         onClick() {
-            // if button is active
             if (!this.disabled) {
                 this.$store.commit("data/saveSceneDecision", this.index);
                 this.nextStage();

@@ -2,9 +2,9 @@ import { labels } from "./labels";
 
 const state = () => ({
     languages: {
-        ENG: 0,
-        ESP: 1,
-        CAT: 2,
+        "ENG": 0,
+        "ESP": 1,
+        "CAT": 2,
     },
     language: 2,
     userData: {
@@ -20,7 +20,13 @@ const getters = {
     //labels
     getLabel: state => label => {
         if (!labels[label]) return "No label";
+        
         return labels[label][state.language];
+    },
+    getLanguage: state => {
+        return Object.keys(state.languages).find(
+            key => state.languages[key] === state.language
+        );
     },
     //data
     getUserData: state => {

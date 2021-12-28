@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+
+// Modules
 import data from "./modules/data";
 import stages from "./modules/stages";
 
