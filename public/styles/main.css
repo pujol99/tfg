@@ -10,6 +10,7 @@
 html, body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 /* just to be sure these are full screen*/
@@ -64,18 +65,31 @@ button {
   }
 }
 
+.icon {
+  background-color: aliceblue !important;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: -50px;
+}
+
 .options {
   position: absolute;
   width: 100%;
-  bottom: 5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
+  bottom: 10px;
+}
+
+.options_content {
+  display: none;
 }
 
 @media (max-width: 900px) {
-  .options {
+  .options_content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -85,22 +99,25 @@ button {
   }
 }
 
+.expanded {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
 .option {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
+  border: 2px solid black;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
   background-color: #fffcf2;
   color: #252422;
   padding: 10px;
-  border: 2px solid black;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
-  transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
 }
 
 @media (max-width: 900px) {
@@ -118,6 +135,13 @@ button {
   .option {
     padding: 15px 10px;
   }
+}
+
+.hided {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
+  transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
 }
 
 .active {

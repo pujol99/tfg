@@ -1,7 +1,7 @@
 <template>
     <button
         v-if="message"
-        class="option"
+        class="option hided"
         :class="{
             active: !sceneLoading,
             disabled: disabled,
