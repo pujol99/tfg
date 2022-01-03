@@ -51,52 +51,45 @@ button {
 
 .title {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  padding: 10px;
-}
-
-.title > button {
-  padding: 10px;
+  width: 100%;
+  top: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (max-width: 900px) {
   .title {
-    width: 100%;
-    top: 0%;
-    left: 0%;
+    top: 0;
   }
 }
 
 .options {
   position: absolute;
-  top: 80%;
-  left: 10%;
-  width: 80%;
-  padding: 10px;
+  width: 100%;
+  bottom: 5%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  gap: 10px;
 }
 
 @media (max-width: 900px) {
   .options {
-    top: 70%;
-    width: 100%;
-    left: 0;
-    padding: 5px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    gap: 0px;
+    bottom: 0;
   }
 }
 
 .option {
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
@@ -110,9 +103,21 @@ button {
   transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
 }
 
+@media (max-width: 900px) {
+  .option {
+    width: 100%;
+  }
+}
+
 .option:hover {
   background: #252422;
   color: #fffcf2;
+}
+
+@media (max-width: 900px) {
+  .option {
+    padding: 15px 10px;
+  }
 }
 
 .active {

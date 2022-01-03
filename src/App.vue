@@ -22,5 +22,8 @@ export default {
         Survey,
         Final,
     },
+    mounted() {
+        this.$store.dispatch("stages/onAppLoad")
+    },
 };
 </script>

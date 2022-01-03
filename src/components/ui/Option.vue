@@ -1,16 +1,15 @@
 <template>
-    <div v-if="message">
-        <button
-            class="option"
-            :class="{
-                active: !sceneLoading,
-                disabled: disabled,
-            }"
-            @click="onClick"
-        >
-            {{ message }}
-        </button>
-    </div>
+    <button
+        v-if="message"
+        class="option"
+        :class="{
+            active: !sceneLoading,
+            disabled: disabled,
+        }"
+        @click="onClick"
+    >
+        {{ message }}
+    </button>
 </template>
 
 <script>

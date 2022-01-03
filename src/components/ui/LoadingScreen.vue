@@ -23,7 +23,7 @@ import { mapActions } from "vuex";
 export default {
     data() {
         return {
-            FADETIME: 2.0,
+            FADETIME: 0.0,
             us: {
                 uAlpha: { value: 1.0 },
                 uTime: { value: 0.0 },

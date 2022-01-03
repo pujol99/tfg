@@ -9,16 +9,6 @@
                 :payload="{
                     blenderSceneName: 'scene1',
                     fbx: [
-                        {
-                            path: 'Standing Arguing',
-                            position: { x: -1, y: 0, z: 1 },
-                            rotation: { y: Math.PI * 0.5 },
-                        },
-                        {
-                            path: 'Standing Arguing',
-                            position: { x: 1, y: 0, z: 1 },
-                            rotation: { y: -Math.PI * 0.5 },
-                        },
                     ],
                 }"
             />
@@ -27,6 +17,16 @@
 </template>
 
 <script>
+                        // {
+                        //     path: 'Standing Arguing',
+                        //     position: { x: -1, y: 0, z: 1 },
+                        //     rotation: { y: Math.PI * 0.5 },
+                        // },
+                        // {
+                        //     path: 'Standing Arguing',
+                        //     position: { x: 1, y: 0, z: 1 },
+                        //     rotation: { y: -Math.PI * 0.5 },
+                        // },
 import Loader from "../utils/Loader.vue";
 export default {
     components: {

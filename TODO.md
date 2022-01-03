@@ -20,4 +20,6 @@
 
 - Add scene titles (Day 1 Scene 1...)
 
+- In mobile create switch between title/options to have more screen space
+
 ## Bugs

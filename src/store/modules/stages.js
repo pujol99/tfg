@@ -1,5 +1,5 @@
 const state = () => ({
-    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
+    stages: ["Scene1", "Survey", "Final"],
     currentStageIndex: 0,
     sceneLoading: false,
     scene: null,
@@ -23,6 +23,9 @@ const getters = {
 
 // actions
 const actions = {
+    onAppLoad({ commit, getters }){
+        if (getters.currentStageIsScene) commit("loadingStart");
+    },
     nextStage({ commit, getters }) {
         if (!getters.isLastStage) commit("nextStage");
         if (getters.currentStageIsScene) commit("loadingStart");
