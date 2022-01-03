@@ -20,4 +20,6 @@
 
 - Make my own flag shader
 
+- Add scene titles (Day 1 Scene 1...)
+
 ## Bugs

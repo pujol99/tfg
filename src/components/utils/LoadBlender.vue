@@ -8,52 +8,47 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 export default {
     props: ["path"],
-    data() {
-        return {
-            isLoaded: false,
-        };
-    },
-    methods: {
-        init(scene) {
-            if (!this.path) {
-                this.isLoaded = true;
-                return;
-            }
+    mounted() {
+        this.isLoaded = false;
 
-            //Loaders
-            const textureLoader = new TextureLoader();
-            const dracoLoader = new DRACOLoader();
-            const gltfLoader = new GLTFLoader();
-            dracoLoader.setDecoderPath("./assets/draco/");
-            gltfLoader.setDRACOLoader(dracoLoader);
+        if (!this.path) {
+            this.isLoaded = true;
+            return;
+        }
 
-            //Textures
-            const bakedTexture = textureLoader.load(
-                `./assets/scenes/${this.path}/baked.jpg`
-            );
-            bakedTexture.flipY = false;
+        //Loaders
+        const textureLoader = new TextureLoader();
+        const dracoLoader = new DRACOLoader();
+        const gltfLoader = new GLTFLoader();
+        dracoLoader.setDecoderPath("./assets/draco/");
+        gltfLoader.setDRACOLoader(dracoLoader);
 
-            //Materials
-            const bakedMaterial = new MeshBasicMaterial({
-                map: bakedTexture,
+        //Textures
+        const bakedTexture = textureLoader.load(
+            `./assets/scenes/${this.path}/baked.jpg`
+        );
+        bakedTexture.flipY = false;
+
+        //Materials
+        const bakedMaterial = new MeshBasicMaterial({
+            map: bakedTexture,
+        });
+        const lightMaterial = new MeshBasicMaterial({
+            color: 0xffffe5,
+        });
+
+        gltfLoader.load(`./assets/scenes/${this.path}/scene.glb`, gltf => {
+            gltf.scene.traverse(child => {
+                child.material = bakedMaterial;
             });
-            const lightMaterial = new MeshBasicMaterial({
-                color: 0xffffe5,
-            });
 
-            gltfLoader.load(`./assets/scenes/${this.path}/scene.glb`, gltf => {
-                gltf.scene.traverse(child => {
-                    child.material = bakedMaterial;
-                });
+            gltf.scene.children
+                .filter(child => child.name.includes("Light"))
+                .forEach(child => (child.material = lightMaterial));
 
-                gltf.scene.children
-                    .filter(child => child.name.includes("Light"))
-                    .forEach(child => (child.material = lightMaterial));
-
-                scene.add(gltf.scene);
-                this.isLoaded = true;
-            });
-        },
+            this.$store.commit("stages/addBlender", gltf.scene);
+            this.isLoaded = true;
+        });
     },
 };
 </script>

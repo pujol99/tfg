@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {  mapGetters } from "vuex";
 import LoadBlender from "../utils/LoadBlender.vue";
 import LoadFBX from "../utils/LoadFBX.vue";
 export default {
@@ -15,6 +16,9 @@ export default {
     props: {
         toLoad: Object,
     },
+    computed: {
+        ...mapGetters({ isSceneLoading: "stages/isSceneLoading" }),
+    },
     mounted() {
         this.blender = this.$refs.blender;
         this.fbx = this.$refs.fbx;
@@ -24,13 +28,10 @@ export default {
         this.onePass = true;
     },
     methods: {
-        init(scene) {
-            this.blender.init(scene);
-            this.fbx.init();
-        },
         update() {
             if(this.toLoad.fbx) this.fbx.update();
-            this.loadingScreen.update();
+
+            if(this.isSceneLoading) this.loadingScreen.update();
 
             if (this.onePass && this.isLoaded()) {
                 this.loadingScreen.finish();

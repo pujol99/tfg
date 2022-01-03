@@ -17,14 +17,11 @@ export default {
         models: Array,
     },
     mounted() {
-        this.isLoaded = false;
-        if (this.models) this.modelsSize = this.models.length;
+        this.modelsSize = this.models.length;
+        this.isLoaded = this.modelsSize === 0;
+        this.animations = [];
     },
     methods: {
-        init() {
-            if (!this.models) this.isLoaded = true;
-            this.animations = [];
-        },
         update() {
             this.animations.forEach(function (anim) {
                 anim.animation.update(anim.clock.getDelta());

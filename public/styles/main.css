@@ -63,7 +63,7 @@ button {
 @media (max-width: 900px) {
   .title {
     width: 100%;
-    top: 5%;
+    top: 0%;
     left: 0%;
   }
 }
