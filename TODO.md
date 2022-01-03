@@ -12,8 +12,6 @@
 
 ## Tasks
 
-- Handle loading Plane deletion after fade out
-
 - Finish label traduction
 
 - Fix css scene options on mobile

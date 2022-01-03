@@ -6,12 +6,13 @@
 import { TextureLoader, MeshBasicMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+
 export default {
-    props: ["path"],
+    props: ["sceneName"],
     mounted() {
         this.isLoaded = false;
 
-        if (!this.path) {
+        if (!this.sceneName) {
             this.isLoaded = true;
             return;
         }
@@ -25,7 +26,7 @@ export default {
 
         //Textures
         const bakedTexture = textureLoader.load(
-            `./assets/scenes/${this.path}/baked.jpg`
+            `./assets/scenes/${this.sceneName}/baked.jpg`
         );
         bakedTexture.flipY = false;
 
@@ -37,7 +38,7 @@ export default {
             color: 0xffffe5,
         });
 
-        gltfLoader.load(`./assets/scenes/${this.path}/scene.glb`, gltf => {
+        gltfLoader.load(`./assets/scenes/${this.sceneName}/scene.glb`, gltf => {
             gltf.scene.traverse(child => {
                 child.material = bakedMaterial;
             });

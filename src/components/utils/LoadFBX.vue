@@ -17,7 +17,7 @@ export default {
         models: Array,
     },
     mounted() {
-        this.modelsSize = this.models.length;
+        this.modelsSize = (this.models && this.models.length) ? this.models.length : 0;
         this.isLoaded = this.modelsSize === 0;
         this.animations = [];
     },

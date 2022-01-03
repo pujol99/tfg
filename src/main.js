@@ -10,6 +10,11 @@ import Options from "./components/ui/Options";
 import Popup from "./components/ui/Popup";
 import SelectFlag from "./components/ui/SelectFlag";
 
+// Utils
+import Loader from "./components/utils/Loader";
+import LoadBlender from "./components/utils/LoadBlender";
+import LoadFBX from "./components/utils/LoadFBX";
+
 // Middleware
 import { store } from "./store";
 import { TroisJSVuePlugin } from "troisjs";
@@ -24,4 +29,7 @@ createApp(App)
     .component("Options", Options)
     .component("Popup", Popup)
     .component("SelectFlag", SelectFlag)
+    .component("Loader", Loader)
+    .component("LoadBlender", LoadBlender)
+    .component("LoadFBX", LoadFBX)
     .mount("#app");
