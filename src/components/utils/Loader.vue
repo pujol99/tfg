@@ -1,41 +1,29 @@
 <template>
     <LoadingScreen ref="loadingScreen" />
-    <LoadBlender ref="blender" :path="toLoad.blender"/>
-    <LoadFBX ref="fbx" :models="toLoad.fbx" />
+    <LoadBlender ref="blender" :sceneName="payload.blenderSceneName" />
+    <LoadFBX ref="fbx" :models="payload.fbx" />
 </template>
 
 <script>
-import LoadBlender from "../utils/LoadBlender.vue";
-import LoadFBX from "../utils/LoadFBX.vue";
+import { mapGetters } from "vuex";
 export default {
-    components: {
-        LoadBlender,
-        LoadFBX,
-    },
     props: {
-        toLoad: Object,
+        payload: Object,
     },
+    computed: { ...mapGetters({ isSceneLoading: "stages/isSceneLoading" }) },
     mounted() {
+        this.loadingScreen = this.$refs.loadingScreen;
         this.blender = this.$refs.blender;
         this.fbx = this.$refs.fbx;
-        this.loadingScreen = this.$refs.loadingScreen;
-
-        // It ables to only call loading screen finish once
-        this.onePass = true;
     },
     methods: {
-        init(scene) {
-            this.blender.init(scene);
-            this.fbx.init();
-        },
         update() {
-            if(this.toLoad.fbx) this.fbx.update();
-            this.loadingScreen.update();
+            this.fbx.update();
 
-            if (this.onePass && this.isLoaded()) {
+            if (this.isSceneLoading) this.loadingScreen.update();
+            
+            if (this.isSceneLoading && this.isLoaded())
                 this.loadingScreen.finish();
-                this.onePass = false;
-            }
         },
         isLoaded() {
             return this.blender.isLoaded && this.fbx.isLoaded;

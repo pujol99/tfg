@@ -6,8 +6,8 @@
             <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
             <Loader
                 ref="loader"
-                :toLoad="{
-                    blender: 'scene1',
+                :payload="{
+                    blenderSceneName: 'scene1',
                     fbx: [
                         {
                             path: 'Standing Arguing',
@@ -33,20 +33,14 @@ export default {
         Loader,
     },
     mounted() {
-        this.renderer = this.$refs.renderer;
         this.scene = this.$refs.scene;
-        this.loader = this.$refs.loader;
+        this.renderer = this.$refs.renderer;
 
-        this.init();
-    },
-    methods: {
-        init() {
-            this.loader.init(this.scene);
+        this.$store.commit("stages/setScene", this.scene);
 
-            this.renderer.onBeforeRender(() => {
-                this.loader.update();
-            });
-        },
+        this.renderer.onBeforeRender(() => {
+            this.$refs.loader.update();
+        });
     },
 };
 </script>
