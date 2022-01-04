@@ -1,13 +1,16 @@
-$divHeight: -80px;
+$divHeight: -90px;
 
 .popup {
     position: absolute;
-    animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-    width: 100%;
     top: $divHeight;
+    width: 100%;
     z-index: 1;
+    
+    @include easyInOut(0.4s);
+    
+    padding: 20px;
+    text-align: center;
+    font-size: $large-font;
 }
 
 .popupActive {
@@ -17,27 +20,12 @@ $divHeight: -80px;
     animation-name: fade-out;
 }
 
-.popup-content {
-    background-color: #ffcc00;
-    padding: 20px;
-    margin: 10px;
-    font-size: 20px;
-}
-
 @keyframes fade-in {
-    from {
-        top: $divHeight;
-    }
-    to {
-        top: 0px;
-    }
+    from { top: $divHeight; }
+    to   { top: 0px; }
 }
 
 @keyframes fade-out {
-    from {
-        top: 0px;
-    }
-    to {
-        top: $divHeight;
-    }
+    from { top: 0px; }
+    to   { top: $divHeight; }
 }

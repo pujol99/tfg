@@ -5,15 +5,30 @@ export const labels = {
         "Rellena las preguntas por favor",
         "Emplena les preguntes siusplau",
     ],
+    /**
+     *
+     *  Welcome
+     *
+     */
     welcome_title: ["TFG", "TFG", "TFG"],
     welcome_body: [
         "Game for raising awarness on social media addiction",
         "Juego para concienciar sobre la adicción a las redes sociales",
         "Joc per conscienciar sobre l'addicció a les xarxes socials",
     ],
+    /**
+     *
+     *  Final
+     *
+     */
     final_title: ["Game end", "Fin del juego", "Fi del joc"],
     final_body: ["Thanks", "Gracias", "Gracies"],
     final_restart: ["Restart", "Reinicia", "Reinicia"],
+    /**
+     *
+     *  About
+     *
+     */
     about_title: ["About you", "Sobre ti", "Sobre tu"],
     about_age: [
         "Select your age",
@@ -30,12 +45,12 @@ export const labels = {
         ["Hombre", "Mujer", "Otro"],
         ["Home", "Dona", "Altre"],
     ],
+    /**
+     *
+     *  Survey
+     *
+     */
     survey_title: ["Final survey", "Encuesta final", "Enquesta final"],
-    survey_options: [
-        ["Disagree", "Neutral", "Agree"],
-        ["En desacuerdo", "Neutral", "De acuerdo"],
-        ["En desacord", "Neutral", "D'acord"],
-    ],
     s1_title: [
         "ENGAn excessive use of social media platforms can lead to negative effects in physical and mental health",
         "ESPAn excessive use of social media platforms can lead to negative effects in physical and mental health",
@@ -46,6 +61,18 @@ export const labels = {
         "ESPAn excessive use of social media platforms can lead to negative effects in physical and mental health",
         "CATAn excessive use of social media platforms can lead to negative effects in physical and mental health",
     ],
+    survey_options: [
+        ["Disagree", "Neutral", "Agree"],
+        ["En desacuerdo", "Neutral", "De acuerdo"],
+        ["En desacord", "Neutral", "D'acord"],
+    ],
+    /**
+     *
+     *  Scenes
+     *
+     */
+    // Scene 1
+    Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacion 1", "Dia 1 Situacio 1"],
     Scene1_title: [
         "Your friend is sad because she failed, but you are on the phone",
         "Your friend is sad because she failed, but you are on the phone",

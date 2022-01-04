@@ -5,6 +5,7 @@
             <h2>{{ title }}</h2>
         </div>
         <div class="card-body">
+            <!-- <form> -->
             <div
                 class="form-element"
                 v-for="question in Object.keys(questions)"
@@ -14,20 +15,20 @@
                 <div class="form-element-title">
                     {{ questions[question].title }}
                 </div>
-
                 <!-- form options -->
-                <div
-                    class="form-element-option spaced"
-                    v-for="(option, index) in questions[question].options"
-                    :key="option"
-                    @click="onDecisionClick(questions[question], option, index)"
-                    :class="{
-                        selected: option == questions[question].optionSelected,
-                    }"
-                >
-                    {{ option }}
+                <div class="form-element-options">
+                    <div
+                        class="form-element-option"
+                        v-for="(option, index) in questions[question].options"
+                        :key="option"
+                        @click="onDecisionClick(questions[question], option, index)"
+                        :class="{ selected: option == questions[question].optionSelected }"
+                    >
+                        {{ option }}
+                    </div>
                 </div>
             </div>
+            <!-- </form> -->
         </div>
         <div class="card-action">
             <button @click="onContinue">{{ getLabel("continue") }}</button>
@@ -38,7 +39,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-    name: "Form",
     props: {
         propQuestions: Object,
         title: String,
@@ -53,7 +53,7 @@ export default {
     computed: {
         ...mapGetters({ getLabel: "data/getLabel" }),
         // Check that the options selected are valid options
-        dataValidated: function () {
+        dataValidated() {
             return (
                 Object.keys(this.questions).filter(
                     question =>
@@ -66,7 +66,7 @@ export default {
     },
     methods: {
         ...mapActions({ nextStage: "stages/nextStage" }),
-        onContinue: function () {
+        onContinue() {
             if (!this.dataValidated) {
                 // activate popup warning
                 this.$refs.popup.activate();
@@ -75,16 +75,16 @@ export default {
             this.saveData();
             this.nextStage();
         },
-        saveData: function (){
+        saveData() {
             this.formatDataForSave();
 
             this.$store.commit(`data/${this.saveFunction}`, this.questions);
         },
-        onDecisionClick: function (question, option, index) {
+        onDecisionClick(question, option, index) {
             question.optionSelected = option;
             question.optionSelectedIndex = index;
         },
-        formatDataForSave: function () {
+        formatDataForSave() {
             // From { {question: title, options[]}, ...}
             // To { {question: optionSelected}, ...}
             for (var key of Object.keys(this.questions)) {
