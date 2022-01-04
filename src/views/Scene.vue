@@ -10,6 +10,9 @@
 import { mapGetters } from "vuex";
 export default {
     props: ["sceneName"],
+    mounted() {
+        this.scene = this.$refs.scene;
+    },
     computed: {
         ...mapGetters({
             currentStage: "stages/isCurrentStage",
@@ -18,6 +21,7 @@ export default {
         options() {
             // Labels for this specific scene
             return {
+                description: this.getLabel(`${this.sceneName}_desc`),
                 title: this.getLabel(`${this.sceneName}_title`),
                 options: this.getLabel(`${this.sceneName}_options`),
             };

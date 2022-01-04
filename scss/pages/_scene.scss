@@ -1,3 +1,12 @@
+.description{
+    @include center;
+    
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: azure;
+}
+
 .title {
     position: absolute;
     width: 100%;
@@ -11,20 +20,28 @@
     margin: 0 auto;
 }
 
+.icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .icon {
     @include icon;
-    @include center;
-    top: -30px;
 }
 
 .options {
     position: absolute;
-    width: 100%;
     bottom: 10px;
+    width: 100%;
 }
 
 .options_content {
     display: none;
+    max-width: 1000px;
+    margin: 0 auto;
     
     @include phone {
         flex-direction: column;

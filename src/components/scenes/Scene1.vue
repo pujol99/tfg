@@ -1,6 +1,6 @@
 <template>
     <Renderer ref="renderer" resize="window" orbitCtrl>
-        <PerspectiveCamera ref="camera" :position="{ x: 10, y: 10, z: 0 }" />
+        <PerspectiveCamera ref="camera" :position="cameraPositions[camera]" />
         <Scene ref="scene" background="#000000">
             <AmbientLight :intensity="0.2" />
             <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
@@ -27,10 +27,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Loader from "../utils/Loader.vue";
 export default {
     components: {
         Loader,
+    },
+    data() {
+        return {
+            cameraPositions: [
+                { x: 10, y: 10, z: 0 },
+                { x: 1, y: 1, z: 0 }
+            ]
+        }
+    },
+    computed: {
+        ...mapGetters({ camera: "stages/getSceneCamera" }),
     },
     mounted() {
         this.scene = this.$refs.scene;

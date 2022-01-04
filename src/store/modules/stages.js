@@ -3,6 +3,8 @@ const state = () => ({
     currentStageIndex: 0,
     sceneLoading: false,
     scene: null,
+    sceneCamera: 1,
+    cameras: 2,
 });
 
 // getters
@@ -15,6 +17,9 @@ const getters = {
     },
     isSceneLoading: state => {
         return state.sceneLoading;
+    },
+    getSceneCamera: state => {
+        return state.sceneCamera;
     },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;
@@ -60,6 +65,9 @@ const mutations = {
     saveData() {
         this.dispatch("data/saveData", { root: true });
     },
+    nextCamera(state) {
+        state.sceneCamera = (state.sceneCamera + 1) % state.cameras;
+    }
 };
 
 export default {

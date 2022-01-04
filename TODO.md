@@ -24,4 +24,6 @@
 
 - Paginate final quiz when there are more questions in future
 
+- Create all the necesary mixins
+
 ## Bugs
