@@ -12,9 +12,9 @@
     cursor: pointer;
 }
 
-@mixin xcenter($width) {
+@mixin xcenter {
     margin: 0 auto;
-    width: $width;
+    width: 100%;
 }
 
 @mixin easyInOut($time){

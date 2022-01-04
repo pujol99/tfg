@@ -2,18 +2,19 @@
     position: absolute;
     width: 100%;
     top: 5%;
+    @include phone { top: 0; }
+}
 
-    display: flex;
-
-    @include tablet {
-        top: 0;
-    }
+.title > button { 
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
 }
 
 .icon {
     @include icon;
     @include center;
-    top: -50px;
+    top: -30px;
 }
 
 .options {
@@ -25,7 +26,7 @@
 .options_content {
     display: none;
     
-    @include tablet {
+    @include phone {
         flex-direction: column;
         gap: 0px;
         bottom: 0;
@@ -38,15 +39,11 @@
 }
 
 .option {
-    width: fit-content;
-    @include tablet { width: 100%; }
-
-    margin: 0 auto;
-    border: 2px solid black;
+    @include xcenter;
     @include button;
     
     padding: 10px;
-    @include tablet { padding: 15px 10px; }
+    @include phone { padding: 15px 10px; }
 }
 
 .hided { 
