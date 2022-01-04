@@ -12,12 +12,16 @@
 
 ## Tasks
 
-- Finish label traduction
+- Background of application
 
-- Fix css scene options on mobile
+- Diff font for card titles
+
+- Finish label traduction
 
 - Make my own flag shader
 
 - Add scene titles (Day 1 Scene 1...)
+
+- Paginate final quiz when there are more questions in future
 
 ## Bugs

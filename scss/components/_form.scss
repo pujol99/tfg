@@ -1,17 +1,20 @@
 .form-element{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
-.form-element-option{
-    
-    border: 1px solid black;
-    align-self: flex-end;
-
-    @include button;
+    margin-bottom: 10px;
 }
 
 .form-element-title{
-    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-element-options{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form-element-option{
+    @include button;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

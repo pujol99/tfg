@@ -1,8 +1,33 @@
-.card-container button {
-    border-radius: 24px;
+@mixin button {
+    transition: 0.4s;
+    cursor: pointer;
+
+    background-color: $buttonBG;
+    color: $buttonFG;
+
+    &:hover {
+        background: $buttonBG-hover;
+        color: $buttonFG-hover;
+    }
+}
+
+@mixin buttonDisabled {
+    cursor: default;
+
+    background-color: $buttonBG;
+    color: $buttonFG;
+
+    &:hover {
+        background: $buttonBG;
+        color: $buttonFG;
+    }
+}
+
+.card-action button{
     font-size: $large-font;
     height: 35px;
     width: 100%;
+    border-radius: 5px;
 
     @include shadow;
     justify-content: center;

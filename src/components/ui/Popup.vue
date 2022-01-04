@@ -1,8 +1,9 @@
 <template>
-    <div class="popup" :class="{ popupActive: activated, popupInactive: deactivated }">
-        <div class="popup-content">
-            <h5>{{ message }}</h5>
-        </div>
+    <div
+        class="popup warning"
+        :class="{ popupActive: activated, popupInactive: deactivated }"
+    >
+        <h5>{{ message }}</h5>
     </div>
 </template>
 
@@ -18,12 +19,14 @@ export default {
     props: ["message"],
     methods: {
         activate() {
+            if (this.activated) return;
+
             this.activated = true;
             this.deactivated = false;
             var that = this;
             setTimeout(function () {
                 that.deactivate();
-            }, this.POPUP_TIME*1000);
+            }, this.POPUP_TIME * 1000);
         },
         deactivate() {
             this.activated = false;

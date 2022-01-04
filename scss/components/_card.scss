@@ -1,11 +1,10 @@
-
 .card-container {
     @include center;
     @include blur;
-
+    
     padding: 10px;
-    border-radius: 6px;
-
+    border-radius: 5px;
+    
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -13,12 +12,7 @@
 }
 
 .card-container {
-    @include NOmobile {
-        max-width: 500px;
-        min-width: 400px;
-    }
-
-    @include mobile {
-        width: 90%;
-    }
+    @include phone  { width: 100%; }
+    @include tablet { width: 90%; }
+    max-width: 700px;
 }

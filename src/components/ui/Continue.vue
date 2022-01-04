@@ -1,5 +1,5 @@
 <template>
-    <button @click="nextStage()">{{ getLabel("continue") }}</button>
+    <button @click="nextStage()" >{{ getLabel("continue") }}</button>
 </template>
 
 <script>

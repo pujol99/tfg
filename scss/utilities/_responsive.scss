@@ -1,0 +1,42 @@
+// For portrait phone and landscape phone
+@mixin phone{
+  @media screen and (min-width: $phone-min-width) and (max-height: $phone-max-height){
+    @content;
+  }
+}
+// For portrait phone
+@mixin portrait-phone {
+  @media screen and (min-width: $phone-min-width) and (max-width: $phone-max-width) and (orientation: portrait) {
+    @content;
+  }
+}
+// For landscape phone
+@mixin landscape-phone{
+  @media screen and (min-height: $phone-min-height) and (max-height: $phone-max-height) and (orientation: landscape){
+    @content;
+  }
+}
+// For portrait tablet and landscape tablet
+@mixin tablet{
+  @media screen and (min-width: $tablet-min-width) and (max-height: $tablet-max-height){
+    @content;
+  }
+}
+// For portrait tablet
+@mixin portrait-tablet {
+  @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) and (orientation: portrait) {
+    @content;
+  }
+}
+// For landscape tablet
+@mixin landscape-tablet{
+  @media screen and (min-height: $tablet-min-height) and (max-height: $tablet-max-height) and (orientation: landscape){
+    @content;
+  }
+}
+// For desktop
+@mixin desktop{
+  @media screen and (min-height: $desktop-min-height) and (max-height: $desktop-max-height){
+    @content;
+  }
+}
