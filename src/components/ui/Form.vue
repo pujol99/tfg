@@ -5,30 +5,30 @@
             <h2>{{ title }}</h2>
         </div>
         <div class="card-body">
-            <!-- <form> -->
-            <div
-                class="form-element"
-                v-for="question in Object.keys(questions)"
-                :key="question"
-            >
+            <!-- form -->
+            <div class="form-element" v-for="question in Object.keys(currentPage)" :key="question">
                 <!-- form title -->
                 <div class="form-element-title">
-                    {{ questions[question].title }}
+                    {{ currentPage[question].title }}
                 </div>
+                <!-- -->
                 <!-- form options -->
                 <div class="form-element-options">
                     <div
                         class="form-element-option"
-                        v-for="(option, index) in questions[question].options"
+                        v-for="(option, index) in currentPage[question].options"
                         :key="option"
-                        @click="onDecisionClick(questions[question], option, index)"
-                        :class="{ selected: option == questions[question].optionSelected }"
+                        @click="onDecisionClick(currentPage[question], option, index)"
+                        :class="{
+                            selected: option === currentPage[question].optionSelected,
+                        }"
                     >
                         {{ option }}
                     </div>
                 </div>
+                <!-- -->
             </div>
-            <!-- </form> -->
+            <!-- -->
         </div>
         <div class="card-action">
             <button @click="onContinue">{{ getLabel("continue") }}</button>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
     props: {
         propQuestions: Object,
@@ -45,9 +45,10 @@ export default {
         saveFunction: String,
     },
     data() {
-        // Convert to local questions
         return {
             questions: this.propQuestions,
+            pageIndex: 0,
+            pageSize: 2,
         };
     },
     computed: {
@@ -55,13 +56,16 @@ export default {
         // Check that the options selected are valid options
         dataValidated() {
             return (
-                Object.keys(this.questions).filter(
+                Object.keys(this.currentPage).filter(
                     question =>
-                        !this.questions[question].options.includes(
-                            this.questions[question].optionSelected
+                        !this.currentPage[question].options.includes(
+                            this.currentPage[question].optionSelected
                         )
                 ).length == 0
             );
+        },
+        currentPage() {
+            return this.paginateQuestions(this.questions, this.pageSize)[this.pageIndex];
         },
     },
     methods: {
@@ -73,12 +77,15 @@ export default {
                 return;
             }
             this.saveData();
-            this.nextStage();
+
+            // Next stage if last page
+            if (this.pageIndex === this.pagesLength - 1) this.nextStage();
+            else this.pageIndex++;
         },
         saveData() {
             this.formatDataForSave();
 
-            this.$store.commit(`data/${this.saveFunction}`, this.questions);
+            this.$store.commit(`data/${this.saveFunction}`, this.currentPage);
         },
         onDecisionClick(question, option, index) {
             question.optionSelected = option;
@@ -87,9 +94,34 @@ export default {
         formatDataForSave() {
             // From { {question: title, options[]}, ...}
             // To { {question: optionSelected}, ...}
-            for (var key of Object.keys(this.questions)) {
-                this.questions[key] = this.questions[key].optionSelectedIndex;
+            // Save only decision index
+            
+            for (var key of Object.keys(this.currentPage)) {
+                this.currentPage[key] = this.currentPage[key].optionSelectedIndex;
             }
+        },
+        paginateQuestions(questions, pageSize) {
+            // From { {} {} ...}
+            // To  [{ {} }, { {} }, ...]
+            var questionPages = [];
+            var questionPage = {};
+            var index = 0;
+
+            for (const [key, value] of Object.entries(questions)) {
+                // Reset page set when we reach pageSize
+                if (index !== 0 && index % pageSize === 0) {
+                    questionPages.push(questionPage);
+                    questionPage = {};
+                }
+                questionPage[key] = value;
+
+                index++;
+            }
+            // Add remaining partial page set
+            if (Object.keys(questionPage).length !== 0) questionPages.push(questionPage);
+
+            this.pagesLength = questionPages.length;
+            return questionPages;
         },
     },
 };

@@ -13,14 +13,19 @@ import { mapGetters } from "vuex";
 export default {
     computed: {
         surveyQuestions() {
+            let options = this.getLabel("survey_options")
             return {
                 s1: {
                     title: this.getLabel("s1_title"),
-                    options: this.getLabel("survey_options"),
+                    options: options,
                 },
                 s2: {
                     title: this.getLabel("s2_title"),
-                    options: this.getLabel("survey_options"),
+                    options: options,
+                },
+                s3: {
+                    title: this.getLabel("s2_title"),
+                    options: options,
                 },
             };
         },
