@@ -19,7 +19,7 @@
                 <i class="material-icons icon hided"
                    :class="{ active: !sceneLoading }"
                    @click="this.$store.commit('stages/nextCamera')">
-                    visibility
+                    360
                 </i>
             </div>
             <div class="options_content" :class="{ expanded: isExpanded }">

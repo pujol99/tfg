@@ -2,13 +2,15 @@ import { labels } from "./labels";
 
 const state = () => ({
     languages: {
-        "ENG": 0,
-        "ESP": 1,
-        "CAT": 2,
+        ENG: 0,
+        ESP: 1,
+        CAT: 2,
     },
     language: 2,
     userData: {
         sceneDecisions: [],
+        aboutDecisions: {},        
+        surveyDecisions: {},        
     },
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
@@ -66,10 +68,14 @@ const mutations = {
         req.send(JSON.stringify(state.userData));
     },
     saveAboutDecisions(state, aboutDecisions) {
-        state.userData.aboutDecisions = aboutDecisions;
+        for (const [key, value] of Object.entries(aboutDecisions)) {
+            state.userData.aboutDecisions[key] = value;
+        }
     },
     saveSurveyDecisions(state, surveyDecisions) {
-        state.userData.surveyDecisions = surveyDecisions;
+        for (const [key, value] of Object.entries(surveyDecisions)) {
+            state.userData.surveyDecisions[key] = value;
+        }
     },
     saveSceneDecision(state, index) {
         state.userData.sceneDecisions.push(index);

@@ -37,14 +37,17 @@ import { gsap } from "gsap";
 export default {
     data() {
         let cameraLookAts = [
-            { x: 0, y: 0, z: 1 },
+            { x: 0, y: 2, z: 1 },
+            { x: 1, y: 3, z: 1 },
             { x: 1, y: 3, z: 1 },
         ];
         let cameraPositions = [
             { x: 3, y: 3, z: 1 },
-            { x: 5, y: 5, z: 1 },
+            { x: 5, y: 5, z: -2 },
+            { x: -5, y: 5, z: -2 },
         ];
         return {
+            cameras: cameraPositions.length,
             cameraPositions,
             cameraPosition: Object.assign({}, cameraPositions[0]),
             cameraLookAts,
@@ -62,14 +65,15 @@ export default {
             this.$refs.loader.update();
         });
     },
-    computed: {
-        ...mapGetters({ camera: "stages/getSceneCamera" }),
-    },
     watch: {
         camera(newValue, oldValue) {
+            newValue = newValue % this.cameras;
             this.swap(this.cameraPosition, this.cameraPositions[newValue]);
             this.swap(this.cameraLookAt, this.cameraLookAts[newValue]);
         },
+    },
+    computed: {
+        ...mapGetters({ camera: "stages/getSceneCamera" }),
     },
     methods: {
         swap(from, to) {

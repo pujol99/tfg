@@ -3,8 +3,7 @@ const state = () => ({
     currentStageIndex: 0,
     sceneLoading: false,
     scene: null,
-    sceneCamera: 1,
-    cameras: 2,
+    sceneCamera: 0,
 });
 
 // getters
@@ -66,7 +65,7 @@ const mutations = {
         this.dispatch("data/saveData", { root: true });
     },
     nextCamera(state) {
-        state.sceneCamera = (state.sceneCamera + 1) % state.cameras;
+        state.sceneCamera++;
     }
 };
 
