@@ -9,6 +9,7 @@ import Option from "./components/ui/Option";
 import Options from "./components/ui/Options";
 import Popup from "./components/ui/Popup";
 import SelectFlag from "./components/ui/SelectFlag";
+import Report from "./components/ui/Report";
 
 // Utils
 import Loader from "./components/utils/Loader";
@@ -25,6 +26,7 @@ createApp(App)
     .component("Continue", Continue)
     .component("Form", Form)
     .component("LoadingScreen", LoadingScreen)
+    .component("Report", Report)
     .component("Option", Option)
     .component("Options", Options)
     .component("Popup", Popup)

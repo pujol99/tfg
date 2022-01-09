@@ -86,7 +86,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters({ mood: "stages/getMood" }),
+        ...mapGetters({ mood: "data/getMood" }),
     },
 };
 </script>

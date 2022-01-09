@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
     props: {
         index: Number,
@@ -27,11 +27,9 @@ export default {
         ...mapGetters({ sceneLoading: "stages/isSceneLoading" }),
     },
     methods: {
-        ...mapActions({ nextStage: "stages/nextStage" }),
         onClick() {
             if (!this.disabled) {
                 this.$store.commit("data/saveSceneDecision", this.index);
-                this.nextStage();
             }
         },
     },

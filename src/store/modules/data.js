@@ -9,9 +9,11 @@ const state = () => ({
     language: 2,
     userData: {
         sceneDecisions: [],
-        aboutDecisions: {},        
-        surveyDecisions: {},        
+        aboutDecisions: {},
+        surveyDecisions: {},
     },
+    mood: 0.5,
+    decisionsMood: [[-0.5, -0.1, 0.5]],
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
@@ -22,15 +24,16 @@ const getters = {
     //labels
     getLabel: state => label => {
         if (!labels[label]) return "No label";
-        
+
         return labels[label][state.language];
     },
     getLanguage: state => {
-        return Object.keys(state.languages).find(
-            key => state.languages[key] === state.language
-        );
+        return Object.keys(state.languages).find(key => state.languages[key] === state.language);
     },
     //data
+    getMood: state => {
+        return state.mood;
+    },
     getUserData: state => {
         return state.userData;
     },
@@ -78,7 +81,15 @@ const mutations = {
         }
     },
     saveSceneDecision(state, index) {
+        var sceneIndex = state.userData.sceneDecisions.length;
+
         state.userData.sceneDecisions.push(index);
+
+        state.mood += state.decisionsMood[sceneIndex][index];
+        if (state.mood > 1.0) state.mood = 1.0;
+        if (state.mood < 0.0) state.mood = 0.0;
+
+        this.commit("stages/reportStart", { root: true });
     },
 };
 

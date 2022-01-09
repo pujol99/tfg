@@ -6,7 +6,7 @@
         <div class="title">
             <Option :message="information.title" disabled />
         </div>
-        <div class="options">
+        <div class="options" id="options">
             <div class="icons">
                 <div>
                     <span class="info hided" :class="{ active: !sceneLoading }">
@@ -53,11 +53,19 @@ export default {
             isExpanded: true,
         };
     },
+    watch: {
+        sceneReporting(newValue, oldValue) {
+            if(newValue === true){
+                document.getElementById("options").remove();
+            }
+        },
+    },
     computed: {
         ...mapGetters({
             sceneLoading: "stages/isSceneLoading",
+            sceneReporting: "stages/isSceneReporting",
             currentCamera: "stages/getSceneCamera",
-            mood: "stages/getMood",
+            mood: "data/getMood",
             getLabel: "data/getLabel"
         }),
         moodFormatted: function () {
