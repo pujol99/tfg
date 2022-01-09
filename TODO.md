@@ -20,12 +20,12 @@
 
 - Make my own flag shader
 
-- Add scene titles (Day 1 Scene 1...)
-
-- Paginate final quiz when there are more questions in future
+- Improve scene titles (Day 1 Scene 1...)
 
 - Create all the necesary mixins
 
 ## Bugs
 
 - Loading screen doesnt show when lookat isnt 0 0 0
+
+- Sometimes on phone icons can be selected, google leans comes up

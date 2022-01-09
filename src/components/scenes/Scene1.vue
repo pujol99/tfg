@@ -1,10 +1,6 @@
 <template>
     <Renderer ref="renderer" resize="window">
-        <PerspectiveCamera
-            ref="camera"
-            :position="cameraPosition"
-            :lookAt="cameraLookAt"
-        />
+        <PerspectiveCamera ref="camera" :position="cameraPosition" :lookAt="cameraLookAt" />
         <Scene ref="scene" background="#000000">
             <AmbientLight :intensity="0.2" />
             <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
@@ -15,13 +11,13 @@
                     fbx: [
                         {
                             path: 'Standing Arguing',
-                            position: { x: -1, y: 0, z: 1 },
-                            rotation: { y: Math.PI * 0.5 },
+                            position: { x: 1, y: 0, z: 1 },
+                            rotation: { y: -Math.PI * 0.5 },
                         },
                         {
                             path: 'Standing Arguing',
-                            position: { x: 1, y: 0, z: 1 },
-                            rotation: { y: -Math.PI * 0.5 },
+                            position: { x: -1, y: 0, z: 1 },
+                            rotation: { y: Math.PI * 0.5 },
                         },
                     ],
                 }"
@@ -29,7 +25,6 @@
         </Scene>
     </Renderer>
 </template>
-s
 
 <script>
 import { mapGetters } from "vuex";
@@ -37,19 +32,19 @@ import { gsap } from "gsap";
 export default {
     data() {
         let cameraLookAts = [
+            { x: 1, y: 3, z: 1 },
+            { x: 1, y: 1.5, z: 1 },
             { x: 0, y: 2, z: 1 },
-            { x: 1, y: 3, z: 1 },
-            { x: 1, y: 3, z: 1 },
         ];
         let cameraPositions = [
-            { x: 3, y: 3, z: 1 },
             { x: 5, y: 5, z: -2 },
             { x: -5, y: 5, z: -2 },
+            { x: 3, y: 3, z: 1 },
         ];
         return {
             cameras: cameraPositions.length,
             cameraPositions,
-            cameraPosition: Object.assign({}, cameraPositions[0]),
+            cameraPosition: Object.assign({}, cameraPositions[0]), // make indep. copy
             cameraLookAts,
             cameraLookAt: Object.assign({}, cameraLookAts[0]),
             ANIM_TIME: 1.0,

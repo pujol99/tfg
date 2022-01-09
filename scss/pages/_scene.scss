@@ -11,7 +11,7 @@
     position: absolute;
     width: 100%;
     top: 5%;
-    @include phone { top: 0; }
+    @include tablet { top: 0; }
 }
 
 .title > button { 
@@ -23,13 +23,26 @@
 .icons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 30px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
+.icons > div{
+    flex: 0 1 0px;
+    min-width: fit-content;
+}
+
 .icon {
     @include icon;
+}
+
+.info{
+    background-color: azure;
+    height: fit-content;
+    padding: 4px 8px;
+    border-radius: 3px;
 }
 
 .options {
@@ -43,7 +56,7 @@
     max-width: 1000px;
     margin: 0 auto;
     
-    @include phone {
+    @include tablet {
         flex-direction: column;
         gap: 0px;
         bottom: 0;

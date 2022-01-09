@@ -1,9 +1,16 @@
 const state = () => ({
-    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
+    stages: [
+        "Welcome", 
+        "About", 
+        "Scene1", 
+        "Survey", 
+        "Final"
+    ],
     currentStageIndex: 0,
     sceneLoading: false,
     scene: null,
     sceneCamera: 0,
+    mood: 0.5,
 });
 
 // getters
@@ -20,6 +27,9 @@ const getters = {
     getSceneCamera: state => {
         return state.sceneCamera;
     },
+    getMood: state => {
+        return state.mood;
+    },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;
     },
@@ -27,7 +37,7 @@ const getters = {
 
 // actions
 const actions = {
-    onAppLoad({ commit, getters }){
+    onAppLoad({ commit, getters }) {
         if (getters.currentStageIsScene) commit("loadingStart");
     },
     nextStage({ commit, getters }) {
@@ -35,10 +45,10 @@ const actions = {
         if (getters.currentStageIsScene) commit("loadingStart");
         if (getters.isLastStage) commit("saveData");
     },
-    loadingFinish({ commit }){
+    loadingFinish({ commit }) {
         commit("removeLoading");
         commit("loadingEnd");
-    }
+    },
 };
 
 // mutations
@@ -52,8 +62,8 @@ const mutations = {
     removeLoading(state) {
         state.scene.remove(state.scene.scene.getObjectByName("loadingPlane"));
     },
-    addBlender(state, blender) {
-        state.scene.add(blender);
+    addToScene(state, object) {
+        state.scene.add(object);
     },
     loadingStart(state) {
         state.sceneLoading = true;
@@ -66,7 +76,7 @@ const mutations = {
     },
     nextCamera(state) {
         state.sceneCamera++;
-    }
+    },
 };
 
 export default {

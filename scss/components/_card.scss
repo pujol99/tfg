@@ -11,7 +11,17 @@
 }
 
 .card-container {
-    @include phone  { width: 100%; }
-    @include tablet { width: 90%; }
-    max-width: 700px;
+    max-width: 600px;
+    width: 90%;
+}
+
+#flag-space{
+    canvas{
+        width: 80%;
+        @include phone{
+            width: 100%;
+        }
+        margin: 0 auto;
+        border-radius: 5px;
+    }
 }
