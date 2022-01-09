@@ -23,20 +23,9 @@ $large-font: 18px;
 $larger-font: 22px;
 
 // width scale for phone
-$phone-min-width: 320px !default;
-$phone-max-width: 504px !default;
-// height scale for phone
-$phone-min-height: 346px !default;
-$phone-max-height: 850px !default;
-// width scale for tablet
-$tablet-min-width: 480px !default;
-$tablet-max-width: 1024px !default;
-// height scale for tablet
-$tablet-min-height: 800px !default;
-$tablet-max-height: 1440px !default;
-// Desktop Scale
-$desktop-min-height: 768px !default;
-$desktop-max-height: 1280px !default;
+$phone-width: 480px !default;
+$tablet-width: 800px !default;
+$desktop-width: 4000px !default;
 
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap');

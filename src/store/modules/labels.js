@@ -71,6 +71,7 @@ export const labels = {
      *  Scenes
      *
      */
+    mood: ["Mood","Animos","Anims"],
     // Scene 1
     Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacion 1", "Dia 1 Situacio 1"],
     Scene1_title: [

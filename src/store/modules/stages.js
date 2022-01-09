@@ -1,5 +1,11 @@
 const state = () => ({
-    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
+    stages: [
+        "Welcome", 
+        "About", 
+        "Scene1", 
+        "Survey", 
+        "Final"
+    ],
     currentStageIndex: 0,
     sceneLoading: false,
     scene: null,
@@ -31,7 +37,7 @@ const getters = {
 
 // actions
 const actions = {
-    onAppLoad({ commit, getters }){
+    onAppLoad({ commit, getters }) {
         if (getters.currentStageIsScene) commit("loadingStart");
     },
     nextStage({ commit, getters }) {
@@ -39,10 +45,10 @@ const actions = {
         if (getters.currentStageIsScene) commit("loadingStart");
         if (getters.isLastStage) commit("saveData");
     },
-    loadingFinish({ commit }){
+    loadingFinish({ commit }) {
         commit("removeLoading");
         commit("loadingEnd");
-    }
+    },
 };
 
 // mutations
@@ -70,7 +76,7 @@ const mutations = {
     },
     nextCamera(state) {
         state.sceneCamera++;
-    }
+    },
 };
 
 export default {

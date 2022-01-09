@@ -13,7 +13,6 @@ import {
     Color
 } from "three";
 import { vs, fs } from "/public/assets/shaders/aura";
-import * as dat from 'lil-gui'
 import { mapGetters } from "vuex";
 export default {
     data() {
@@ -30,10 +29,6 @@ export default {
         this.fireflies = null;
         this.red = new Color("red")
         this.green = new Color("green")
-
-        this.gui = new dat.GUI({
-            width: 400
-        })
     },
     methods: {
         init(center) {
@@ -69,8 +64,7 @@ export default {
             });
             // Points
             this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
-
-            this.gui.add(this.firefliesMaterial.uniforms.uSize, 'value').min(0).max(500).step(1).name('firefliesSize')
+            
             window.addEventListener("resize", () => {
                 this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(
                     window.devicePixelRatio,
