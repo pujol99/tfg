@@ -8,9 +8,10 @@ const state = () => ({
     ],
     currentStageIndex: 0,
     sceneLoading: false,
+    sceneReporting: false,
     scene: null,
     sceneCamera: 0,
-    mood: 0.5,
+
 });
 
 // getters
@@ -24,11 +25,11 @@ const getters = {
     isSceneLoading: state => {
         return state.sceneLoading;
     },
+    isSceneReporting: state => {
+        return state.sceneReporting;
+    },
     getSceneCamera: state => {
         return state.sceneCamera;
-    },
-    getMood: state => {
-        return state.mood;
     },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;
@@ -70,6 +71,12 @@ const mutations = {
     },
     loadingEnd(state) {
         state.sceneLoading = false;
+    },
+    reportStart(state) {
+        state.sceneReporting = true;
+    },
+    reportEnd(state) {
+        state.sceneReporting = false;
     },
     saveData() {
         this.dispatch("data/saveData", { root: true });
