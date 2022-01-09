@@ -31,6 +31,7 @@ export default {
             this.animations.forEach(function (anim) {
                 anim.animation.update(anim.clock.getDelta());
             });
+
             this.$refs.aura.update()
         },
         onLoad(object) {
@@ -38,7 +39,7 @@ export default {
             animation.clipAction(object.animations[1]).play();
             var clock = new Clock();
 
-            if(this.animations.length === 0) this.$refs.aura.load()
+            if(this.animations.length === 0) this.$refs.aura.init(this.models[0].position)
 
             this.animations.push({ animation, clock });
             

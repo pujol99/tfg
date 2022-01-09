@@ -4,6 +4,7 @@ const state = () => ({
     sceneLoading: false,
     scene: null,
     sceneCamera: 0,
+    mood: 0.5,
 });
 
 // getters
@@ -19,6 +20,9 @@ const getters = {
     },
     getSceneCamera: state => {
         return state.sceneCamera;
+    },
+    getMood: state => {
+        return state.mood;
     },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;

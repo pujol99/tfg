@@ -38,7 +38,7 @@ export default {
         let cameraLookAts = [
             { x: 0, y: 2, z: 1 },
             { x: 1, y: 3, z: 1 },
-            { x: 1, y: 3, z: 1 },
+            { x: 1, y: 1.5, z: 1 },
         ];
         let cameraPositions = [
             { x: 3, y: 3, z: 1 },
@@ -48,7 +48,7 @@ export default {
         return {
             cameras: cameraPositions.length,
             cameraPositions,
-            cameraPosition: Object.assign({}, cameraPositions[0]),
+            cameraPosition: Object.assign({}, cameraPositions[0]), // make indep. copy
             cameraLookAts,
             cameraLookAt: Object.assign({}, cameraLookAts[0]),
             ANIM_TIME: 1.0,

@@ -10,62 +10,89 @@ import {
     ShaderMaterial,
     AdditiveBlending,
     Points,
+    Color
 } from "three";
 import { vs, fs } from "/public/assets/shaders/aura";
+import * as dat from 'lil-gui'
+import { mapGetters } from "vuex";
 export default {
     data() {
         return {
             vs: vs,
             fs: fs,
+            loaded: false,
+            AURA_HEIGHT: 2.0
         };
     },
     mounted() {
         this.clock = new Clock();
+        this.firefliesMaterial = null;
+        this.fireflies = null;
+        this.red = new Color("red")
+        this.green = new Color("green")
 
-        const firefliesGeometry = new BufferGeometry();
-        const firefliesCount = 30;
-        const positionArray = new Float32Array(firefliesCount * 3);
-        const scaleArray = new Float32Array(firefliesCount);
-
-        for (let i = 0; i < firefliesCount; i++) {
-            positionArray[i * 3 + 0] = (Math.random() - 0.5) * 4;
-            positionArray[i * 3 + 1] = Math.random() * 1.5;
-            positionArray[i * 3 + 2] = (Math.random() - 0.5) * 4;
-
-            scaleArray[i] = Math.random();
-        }
-
-        firefliesGeometry.setAttribute("position", new BufferAttribute(positionArray, 3));
-        firefliesGeometry.setAttribute("aScale", new BufferAttribute(scaleArray, 1));
-
-        // Material
-        this.firefliesMaterial = new ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-                uSize: { value: 100 },
-            },
-            vertexShader: vs,
-            fragmentShader: fs,
-            transparent: true,
-            blending: AdditiveBlending,
-            depthWrite: false,
-        });
-        // Points
-        this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
-
-        window.addEventListener("resize", () => {
-            this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
-        });
+        this.gui = new dat.GUI({
+            width: 400
+        })
     },
     methods: {
-        load(){
+        init(center) {
+            const firefliesGeometry = new BufferGeometry();
+            const firefliesCount = 60;
+            const positionArray = new Float32Array(firefliesCount * 3);
+            const scaleArray = new Float32Array(firefliesCount);
+
+            for (let i = 0; i < firefliesCount; i++) {
+                positionArray[i * 3 + 0] = (Math.random() + center.x - 0.4);
+                positionArray[i * 3 + 1] = Math.random() * this.AURA_HEIGHT;
+                positionArray[i * 3 + 2] = (Math.random() + center.z - 0.5);
+
+                scaleArray[i] = Math.random();
+            }
+
+            firefliesGeometry.setAttribute("position", new BufferAttribute(positionArray, 3));
+            firefliesGeometry.setAttribute("aScale", new BufferAttribute(scaleArray, 1));
+
+            // Material
+            this.firefliesMaterial = new ShaderMaterial({
+                uniforms: {
+                    uTime: { value: 0 },
+                    uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+                    uSize: { value: 342 },
+                    uColor: { value: this.red.lerp(this.green, this.mood) }
+                },
+                vertexShader: vs,
+                fragmentShader: fs,
+                transparent: true,
+                blending: AdditiveBlending,
+                depthWrite: false,
+            });
+            // Points
+            this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
+
+            this.gui.add(this.firefliesMaterial.uniforms.uSize, 'value').min(0).max(500).step(1).name('firefliesSize')
+            window.addEventListener("resize", () => {
+                this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(
+                    window.devicePixelRatio,
+                    2
+                );
+            });
+
+            this.load()
+        },
+        load() {
             this.$store.commit("stages/addToScene", this.fireflies);
+            this.loaded = true
         },
         update() {
-            const elapsedTime = this.clock.getElapsedTime();
-            this.firefliesMaterial.uniforms.uTime.value = elapsedTime;
+            if(this.loaded){
+                const elapsedTime = this.clock.getElapsedTime();
+                this.firefliesMaterial.uniforms.uTime.value = elapsedTime;
+            }
         },
+    },
+    computed: {
+        ...mapGetters({ mood: "stages/getMood" }),
     },
 };
 </script>
