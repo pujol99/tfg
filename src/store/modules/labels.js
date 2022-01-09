@@ -30,16 +30,8 @@ export const labels = {
      *
      */
     about_title: ["About you", "Sobre ti", "Sobre tu"],
-    about_age: [
-        "Select your age",
-        "Selecciona tu edad",
-        "Selecciona la teva edat",
-    ],
-    about_gender: [
-        "Select your gender",
-        "Selecciona tu genero",
-        "Selecciona el teu genere",
-    ],
+    about_age: ["Select your age", "Selecciona tu edad", "Selecciona la teva edat"],
+    about_gender: ["Select your gender", "Selecciona tu genero", "Selecciona el teu genere"],
     about_gender_options: [
         ["Male", "Female", "Other"],
         ["Hombre", "Mujer", "Otro"],
@@ -71,7 +63,7 @@ export const labels = {
      *  Scenes
      *
      */
-    mood: ["Mood","Animos","Anims"],
+    mood: ["Mood", "Animos", "Anims"],
     // Scene 1
     Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacion 1", "Dia 1 Situacio 1"],
     Scene1_title: [
@@ -95,5 +87,10 @@ export const labels = {
             "CATListen while on the phone.",
             "cATGive her all your attention.",
         ],
+    ],
+    Scene1_report: [
+        ["Bad", "Mid.", "Good"],
+        ["Bad", "Mid.", "Good"],
+        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
 };

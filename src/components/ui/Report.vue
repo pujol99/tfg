@@ -2,7 +2,7 @@
     <div v-if="sceneReporting">
         <div class="card-container">
             <div class="card-body">
-                <p>{{ getLabel("welcome_body") }}</p>
+                <p>{{ getLabel(`${sceneName}_report`)[decisionTaken] }}</p>
             </div>
             <div class="card-action">
                 <Continue />
@@ -14,8 +14,13 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+    props: ["sceneName"],
     computed: {
-        ...mapGetters({ sceneReporting: "stages/isSceneReporting", getLabel: "data/getLabel" }),
+        ...mapGetters({
+            sceneReporting: "stages/isSceneReporting",
+            getLabel: "data/getLabel",
+            decisionTaken: "data/getDecisionTaken",
+        }),
     },
 };
 </script>

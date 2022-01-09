@@ -14,6 +14,7 @@ const state = () => ({
     },
     mood: 0.5,
     decisionsMood: [[-0.5, -0.1, 0.5]],
+    decisionTaken: null,
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
@@ -33,6 +34,9 @@ const getters = {
     //data
     getMood: state => {
         return state.mood;
+    },
+    getDecisionTaken: state => {
+        return state.decisionTaken;
     },
     getUserData: state => {
         return state.userData;
@@ -88,7 +92,8 @@ const mutations = {
         state.mood += state.decisionsMood[sceneIndex][index];
         if (state.mood > 1.0) state.mood = 1.0;
         if (state.mood < 0.0) state.mood = 0.0;
-
+        
+        state.decisionTaken = index;
         this.commit("stages/reportStart", { root: true });
     },
 };

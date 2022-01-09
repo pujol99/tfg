@@ -3,7 +3,7 @@
         <!-- Visuals -->
         <slot></slot>
         <Options :information="options" />
-        <Report />
+        <Report :sceneName="sceneName"/>
     </div>
 </template>
 
