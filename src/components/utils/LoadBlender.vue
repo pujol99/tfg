@@ -6,7 +6,6 @@
 import { TextureLoader, MeshBasicMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-
 export default {
     props: ["sceneName"],
     mounted() {
@@ -47,7 +46,7 @@ export default {
                 .filter(child => child.name.includes("Light"))
                 .forEach(child => (child.material = lightMaterial));
 
-            this.$store.commit("stages/addBlender", gltf.scene);
+            this.$store.commit("stages/addToScene", gltf.scene);
             this.isLoaded = true;
         });
     },

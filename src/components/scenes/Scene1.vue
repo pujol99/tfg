@@ -29,7 +29,6 @@
         </Scene>
     </Renderer>
 </template>
-s
 
 <script>
 import { mapGetters } from "vuex";
@@ -58,7 +57,7 @@ export default {
     mounted() {
         this.scene = this.$refs.scene;
         this.renderer = this.$refs.renderer;
-
+        
         this.$store.commit("stages/setScene", this.scene);
 
         this.renderer.onBeforeRender(() => {

@@ -52,8 +52,8 @@ const mutations = {
     removeLoading(state) {
         state.scene.remove(state.scene.scene.getObjectByName("loadingPlane"));
     },
-    addBlender(state, blender) {
-        state.scene.add(blender);
+    addToScene(state, object) {
+        state.scene.add(object);
     },
     loadingStart(state) {
         state.sceneLoading = true;

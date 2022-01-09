@@ -1,4 +1,5 @@
 <template>
+    <Aura ref="aura"/>
     <FbxModel
         v-for="model in models"
         :key="model"
@@ -12,9 +13,13 @@
 
 <script>
 import { AnimationMixer, Clock } from "three";
+import Aura from "./Aura"
 export default {
     props: {
         models: Array,
+    },
+    components: {
+        Aura,
     },
     mounted() {
         this.modelsSize = (this.models && this.models.length) ? this.models.length : 0;
@@ -26,11 +31,14 @@ export default {
             this.animations.forEach(function (anim) {
                 anim.animation.update(anim.clock.getDelta());
             });
+            this.$refs.aura.update()
         },
         onLoad(object) {
             var animation = new AnimationMixer(object);
             animation.clipAction(object.animations[1]).play();
             var clock = new Clock();
+
+            if(this.animations.length === 0) this.$refs.aura.load()
 
             this.animations.push({ animation, clock });
             
