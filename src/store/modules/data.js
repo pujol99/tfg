@@ -13,7 +13,10 @@ const state = () => ({
         surveyDecisions: {},
     },
     mood: 0.5,
-    decisionsMood: [[-0.5, -0.1, 0.5]],
+    decisionsMood: [
+        [-0.5, -0.1, 0.5],
+        [-0.5, -0.1, 0.5],
+    ],
     decisionTaken: null,
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
     usersCollection: "61b49c4262ed886f915e5a13",
@@ -94,6 +97,7 @@ const mutations = {
         if (state.mood < 0.0) state.mood = 0.0;
         
         state.decisionTaken = index;
+        
         this.commit("stages/reportStart", { root: true });
     },
 };

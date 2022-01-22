@@ -7,7 +7,7 @@
             <Loader
                 ref="loader"
                 :payload="{
-                    blenderSceneName: 'scene1',
+                    blenderSceneName: 'scene2',
                     fbx: [
                         {
                             path: 'Standing Arguing',
@@ -58,6 +58,7 @@ export default {
 
         this.renderer.onBeforeRender(() => {
             this.$refs.loader.update();
+            this.update();
         });
     },
     watch: {
@@ -68,9 +69,14 @@ export default {
         },
     },
     computed: {
-        ...mapGetters({ camera: "stages/getSceneCamera" }),
+        ...mapGetters({ camera: "stages/getSceneCamera", gltf: "stages/getGLTF" }),
     },
     methods: {
+        update(){
+            if(this.gltf){
+                this.gltf.children[0].children[0].children[4].rotation.y += 0.01;
+            }
+        },
         swap(from, to) {
             gsap.to(from, {
                 duration: this.ANIM_TIME,

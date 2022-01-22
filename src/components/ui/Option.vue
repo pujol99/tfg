@@ -28,9 +28,7 @@ export default {
     },
     methods: {
         onClick() {
-            if (!this.disabled) {
-                this.$store.commit("data/saveSceneDecision", this.index);
-            }
+            if (!this.disabled) this.$store.commit("data/saveSceneDecision", this.index);
         },
     },
 };
