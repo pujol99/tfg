@@ -3,7 +3,7 @@ import { labels } from "./labels";
 const state = () => ({
     languages: {
         ENG: 0,
-        ESP: 1,s
+        ESP: 1,
         CAT: 2,
     },
     language: 2,
