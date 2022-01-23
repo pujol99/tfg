@@ -67,25 +67,25 @@ export const labels = {
     // Scene 1
     Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacion 1", "Dia 1 Situacio 1"],
     Scene1_title: [
-        "Your friend is sad because she failed, but you are on the phone",
-        "Your friend is sad because she failed, but you are on the phone",
-        "CATYour friend is sad because she failed, but you are on the phone",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
     ],
     Scene1_options: [
         [
-            "Ignore and stay on the phone.",
-            "Listen while on the phone.",
-            "Give her all your attention.",
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
         ],
         [
-            "Ignore and stay on the phone.",
-            "Listen while on the phone.",
-            "Give her all your attention.",
+            "You participate in the conversation proposing some ideas",
+            "You participate in the conversation proposing some ideas",
+            "You participate in the conversation proposing some ideas",
         ],
         [
-            "CATIgnore and stay on the phone.",
-            "CATListen while on the phone.",
-            "cATGive her all your attention.",
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
         ],
     ],
     Scene1_report: [

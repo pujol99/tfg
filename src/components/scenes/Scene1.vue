@@ -2,22 +2,30 @@
     <Renderer ref="renderer" resize="window">
         <PerspectiveCamera ref="camera" :position="cameraPosition" :lookAt="cameraLookAt" />
         <Scene ref="scene" background="#000000">
-            <AmbientLight :intensity="0.2" />
-            <PointLight :intensity="0.5" :position="{ x: 0, y: 3, z: 0 }" />
+            <AmbientLight :intensity="0.8" />
             <Loader
                 ref="loader"
                 :payload="{
                     blenderSceneName: 'scene1',
+                    // Fbx: first character will be main character (with aura)
                     fbx: [
                         {
-                            path: 'Standing Arguing',
-                            position: { x: 1, y: 0, z: 1 },
-                            rotation: { y: -Math.PI * 0.5 },
+                            path: 'Texting',
+                            position: { x: -0.3, y: 0, z: -1.3 },
+                            scale: { x: 0.002, y: 0.002, z: 0.002 },
+                            rotation: { y: (Math.PI * 2) * 0.75 },
                         },
                         {
-                            path: 'Standing Arguing',
-                            position: { x: -1, y: 0, z: 1 },
-                            rotation: { y: Math.PI * 0.5 },
+                            path: 'Sitting Talking Right',
+                            position: { x: -1, y: 0.15, z: -1 },
+                            scale: { x: 0.002, y: 0.002, z: 0.002 },
+                            rotation: { y: (Math.PI * 2) * 0.25 },
+                        },
+                        {
+                            path: 'Sitting Talking Left',
+                            position: { x: -1, y: 0.15, z: -0.6 },
+                            scale: { x: 0.002, y: 0.002, z: 0.002 },
+                            rotation: { y: (Math.PI * 2) * 0.25 },
                         },
                     ],
                 }"
@@ -32,14 +40,12 @@ import { gsap } from "gsap";
 export default {
     data() {
         let cameraLookAts = [
-            { x: 1, y: 3, z: 1 },
-            { x: 1, y: 1.5, z: 1 },
-            { x: 0, y: 2, z: 1 },
+            { x: -1, y: 0.8, z: -1 },
+            { x: 0, y: 0.0, z: 0 },
         ];
         let cameraPositions = [
-            { x: 5, y: 5, z: -2 },
-            { x: -5, y: 5, z: -2 },
-            { x: 3, y: 3, z: 1 },
+            { x: -3, y: 1, z: -3 },
+            { x: -3, y: 2, z: -2 },
         ];
         return {
             cameras: cameraPositions.length,
@@ -58,6 +64,7 @@ export default {
 
         this.renderer.onBeforeRender(() => {
             this.$refs.loader.update();
+            this.update();
         });
     },
     watch: {
@@ -68,9 +75,14 @@ export default {
         },
     },
     computed: {
-        ...mapGetters({ camera: "stages/getSceneCamera" }),
+        ...mapGetters({ camera: "stages/getSceneCamera", gltf: "stages/getGLTF" }),
     },
     methods: {
+        update() {
+            if (this.gltf) {
+                // this.gltf.children[0].children[0].children[4].rotation.y += 0.01;
+            }
+        },
         swap(from, to) {
             gsap.to(from, {
                 duration: this.ANIM_TIME,

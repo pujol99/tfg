@@ -1,17 +1,11 @@
 const state = () => ({
-    stages: [
-        "Welcome", 
-        "About", 
-        "Scene1", 
-        "Survey", 
-        "Final"
-    ],
+    stages: ["Welcome", "About", "Scene1", "Survey", "Final"],
     currentStageIndex: 0,
     sceneLoading: false,
     sceneReporting: false,
     scene: null,
+    gltfScene: null,
     sceneCamera: 0,
-
 });
 
 // getters
@@ -31,6 +25,9 @@ const getters = {
     getSceneCamera: state => {
         return state.sceneCamera;
     },
+    getGLTF: state => {
+        return state.gltfScene;
+    },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;
     },
@@ -46,6 +43,10 @@ const actions = {
         if (getters.currentStageIsScene) commit("loadingStart");
         if (getters.isLastStage) commit("saveData");
     },
+    addGLTFScene({commit}, scene){
+        commit("addToScene", scene);
+        commit("setGLTFScene", scene);
+    },
     loadingFinish({ commit }) {
         commit("removeLoading");
         commit("loadingEnd");
@@ -60,6 +61,9 @@ const mutations = {
     setScene(state, scene) {
         state.scene = scene;
     },
+    setGLTFScene(state, gltf) {
+        state.gltfScene = gltf;
+    },
     removeLoading(state) {
         state.scene.remove(state.scene.scene.getObjectByName("loadingPlane"));
     },
@@ -68,6 +72,7 @@ const mutations = {
     },
     loadingStart(state) {
         state.sceneLoading = true;
+        state.sceneReporting = false;
     },
     loadingEnd(state) {
         state.sceneLoading = false;

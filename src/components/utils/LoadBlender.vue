@@ -6,6 +6,7 @@
 import { TextureLoader, MeshBasicMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { mapActions } from "vuex";
 export default {
     props: ["sceneName"],
     mounted() {
@@ -24,9 +25,7 @@ export default {
         gltfLoader.setDRACOLoader(dracoLoader);
 
         //Textures
-        const bakedTexture = textureLoader.load(
-            `./assets/scenes/${this.sceneName}/baked.jpg`
-        );
+        const bakedTexture = textureLoader.load(`./assets/scenes/${this.sceneName}/baked.jpg`);
         bakedTexture.flipY = false;
 
         //Materials
@@ -46,9 +45,13 @@ export default {
                 .filter(child => child.name.includes("Light"))
                 .forEach(child => (child.material = lightMaterial));
 
-            this.$store.commit("stages/addToScene", gltf.scene);
+            this.addScene(gltf.scene);
+
             this.isLoaded = true;
         });
+    },
+    methods: {
+        ...mapActions({ addScene: "stages/addGLTFScene" }),
     },
 };
 </script>
