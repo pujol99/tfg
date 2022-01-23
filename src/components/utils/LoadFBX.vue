@@ -36,7 +36,8 @@ export default {
         },
         onLoad(object) {
             var animation = new AnimationMixer(object);
-            animation.clipAction(object.animations[1]).play();
+            
+            animation.clipAction(object.animations[0]).play();
             var clock = new Clock();
 
             if(this.animations.length === 0) this.$refs.aura.init(this.models[0].position)

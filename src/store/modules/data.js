@@ -3,7 +3,7 @@ import { labels } from "./labels";
 const state = () => ({
     languages: {
         ENG: 0,
-        ESP: 1,
+        ESP: 1,s
         CAT: 2,
     },
     language: 2,
@@ -14,8 +14,7 @@ const state = () => ({
     },
     mood: 0.5,
     decisionsMood: [
-        [-0.5, -0.1, 0.5],
-        [-0.5, -0.1, 0.5],
+        [-0.5, 0.3, 0.0],
     ],
     decisionTaken: null,
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",

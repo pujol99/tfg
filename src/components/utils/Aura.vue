@@ -20,7 +20,8 @@ export default {
             vs: vs,
             fs: fs,
             loaded: false,
-            AURA_HEIGHT: 2.0
+            AURA_HEIGHT: 0.8, // Meters
+            AURA_SIZE: 0.3 // Scale 0-1
         };
     },
     mounted() {
@@ -38,9 +39,9 @@ export default {
             const scaleArray = new Float32Array(firefliesCount);
 
             for (let i = 0; i < firefliesCount; i++) {
-                positionArray[i * 3 + 0] = (Math.random() + center.x - 0.4);
+                positionArray[i * 3 + 0] = (Math.random() * this.AURA_SIZE + center.x - this.AURA_SIZE / 2);
                 positionArray[i * 3 + 1] = Math.random() * this.AURA_HEIGHT;
-                positionArray[i * 3 + 2] = (Math.random() + center.z - 0.5);
+                positionArray[i * 3 + 2] = (Math.random() * this.AURA_SIZE + center.z - this.AURA_SIZE / 2);
 
                 scaleArray[i] = Math.random();
             }
