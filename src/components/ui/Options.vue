@@ -9,27 +9,27 @@
         <div class="options" id="options">
             <div class="icons">
                 <div>
-                    <span class="info hided" :class="{ active: !sceneLoading }">
-                        {{ moodFormatted }}
+                    <span class="info hided" id="mood" :class="{ active: !sceneLoading }">
+                        <b>{{ moodFormatted }}</b>
                     </span>
                 </div>
                 <div>
-                    <i
+                    <button
                         @click="isExpanded = !isExpanded"
                         class="material-icons icon hided"
                         :class="{ active: !sceneLoading }"
                     >
                         {{ icon }}
-                    </i>
+                    </button>
                 </div>
                 <div>
-                    <i
+                    <button
                         class="material-icons icon hided"
                         :class="{ active: !sceneLoading }"
                         @click="this.$store.commit('stages/nextCamera')"
                     >
                         360
-                    </i>
+                    </button>
                 </div>
             </div>
             <div class="options_content" :class="{ expanded: isExpanded }">

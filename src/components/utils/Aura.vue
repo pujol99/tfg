@@ -3,15 +3,7 @@
 </template>
 
 <script>
-import {
-    Clock,
-    BufferAttribute,
-    BufferGeometry,
-    ShaderMaterial,
-    AdditiveBlending,
-    Points,
-    Color
-} from "three";
+import { Clock, BufferAttribute, BufferGeometry, ShaderMaterial, AdditiveBlending, Points, Color } from "three";
 import { vs, fs } from "/public/assets/shaders/aura";
 import { mapGetters } from "vuex";
 export default {
@@ -21,15 +13,15 @@ export default {
             fs: fs,
             loaded: false,
             AURA_HEIGHT: 0.8, // Meters
-            AURA_SIZE: 0.3 // Scale 0-1
+            AURA_SIZE: 0.3, // Scale 0-1
         };
     },
     mounted() {
         this.clock = new Clock();
         this.firefliesMaterial = null;
         this.fireflies = null;
-        this.red = new Color("red")
-        this.green = new Color("green")
+        this.red = new Color("red");
+        this.green = new Color("green");
     },
     methods: {
         init(center) {
@@ -39,9 +31,9 @@ export default {
             const scaleArray = new Float32Array(firefliesCount);
 
             for (let i = 0; i < firefliesCount; i++) {
-                positionArray[i * 3 + 0] = (Math.random() * this.AURA_SIZE + center.x - this.AURA_SIZE / 2);
+                positionArray[i * 3 + 0] = Math.random() * this.AURA_SIZE + center.x - this.AURA_SIZE / 2;
                 positionArray[i * 3 + 1] = Math.random() * this.AURA_HEIGHT;
-                positionArray[i * 3 + 2] = (Math.random() * this.AURA_SIZE + center.z - this.AURA_SIZE / 2);
+                positionArray[i * 3 + 2] = Math.random() * this.AURA_SIZE + center.z - this.AURA_SIZE / 2;
 
                 scaleArray[i] = Math.random();
             }
@@ -50,12 +42,13 @@ export default {
             firefliesGeometry.setAttribute("aScale", new BufferAttribute(scaleArray, 1));
 
             // Material
+            const barColor = this.red.lerp(this.green, this.mood);
             this.firefliesMaterial = new ShaderMaterial({
                 uniforms: {
                     uTime: { value: 0 },
                     uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
                     uSize: { value: 342 },
-                    uColor: { value: this.red.lerp(this.green, this.mood) }
+                    uColor: { value: barColor },
                 },
                 vertexShader: vs,
                 fragmentShader: fs,
@@ -65,22 +58,27 @@ export default {
             });
             // Points
             this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
-            
+
             window.addEventListener("resize", () => {
-                this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(
-                    window.devicePixelRatio,
-                    2
-                );
+                this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
             });
 
-            this.load()
+            // Mood bar
+            document.getElementById("mood").style.background = `
+            linear-gradient(
+                90deg, 
+                #${barColor.getHexString()} ${this.mood * 100}%, 
+                #FFFFFF ${this.mood * 100}%
+            )`;
+
+            this.load();
         },
         load() {
             this.$store.commit("stages/addToScene", this.fireflies);
-            this.loaded = true
+            this.loaded = true;
         },
         update() {
-            if(this.loaded){
+            if (this.loaded) {
                 const elapsedTime = this.clock.getElapsedTime();
                 this.firefliesMaterial.uniforms.uTime.value = elapsedTime;
             }

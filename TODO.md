@@ -27,5 +27,3 @@
 ## Bugs
 
 - Loading screen doesnt show when lookat isnt 0 0 0
-
-- Sometimes on phone icons can be selected, google leans comes up
