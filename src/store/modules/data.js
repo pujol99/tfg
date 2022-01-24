@@ -15,6 +15,7 @@ const state = () => ({
     mood: 0.5,
     decisionsMood: [
         [-0.5, 0.3, 0.0],
+        [-0.5, 0.3, 0.0],
     ],
     decisionTaken: null,
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
