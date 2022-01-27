@@ -33,7 +33,7 @@ export default {
             map: bakedTexture,
         });
         const lightMaterial = new MeshBasicMaterial({
-            color: 0xffffe5,
+            color: 0xffffff,
         });
 
         gltfLoader.load(`./assets/scenes/${this.sceneName}/scene.glb`, gltf => {
@@ -43,7 +43,7 @@ export default {
 
             gltf.scene.children
                 .filter(child => child.name.includes("Light"))
-                .forEach(child => (child.material = lightMaterial));
+                .forEach(child => child.material = lightMaterial);
 
             this.addScene(gltf.scene);
 
