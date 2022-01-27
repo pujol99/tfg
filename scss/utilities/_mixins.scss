@@ -5,6 +5,13 @@
     transform: translate(-50%, -50%);
 }
 
+@mixin centerParent {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @mixin icon {
     background-color: aliceblue !important;
     padding: 5px;

@@ -8,6 +8,7 @@ import LoadingScreen from "./components/ui/LoadingScreen";
 import Option from "./components/ui/Option";
 import Options from "./components/ui/Options";
 import Popup from "./components/ui/Popup";
+import Disclaimer from "./components/ui/Disclaimer";
 import SelectFlag from "./components/ui/SelectFlag";
 import Report from "./components/ui/Report";
 
@@ -28,6 +29,7 @@ createApp(App)
     .component("LoadingScreen", LoadingScreen)
     .component("Report", Report)
     .component("Option", Option)
+    .component("Disclaimer", Disclaimer)
     .component("Options", Options)
     .component("Popup", Popup)
     .component("SelectFlag", SelectFlag)
