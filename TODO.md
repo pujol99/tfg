@@ -32,6 +32,10 @@
 
 - Check the last labels that need to be created (Disclaimers)
 
+- Extract scene info to .json
+
+- remove spanish
+
 ## Bugs
 
 - Loading screen doesnt show when lookat isnt 0 0 0

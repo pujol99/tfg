@@ -94,7 +94,7 @@ export const labels = {
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
     // Scene 2
-    Scene2_desc: ["Day 2 Scene 2", "Dia 2 Situacion 2", "Dia 2 Situacio 2"],
+    Scene2_desc: ["Day 2 Scene 1", "Dia 2 Situacion 1", "Dia 2 Situacio 1"],
     Scene2_title: [
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -118,6 +118,35 @@ export const labels = {
         ],
     ],
     Scene2_report: [
+        ["Bad", "Mid.", "Good"],
+        ["Bad", "Mid.", "Good"],
+        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+    ],
+    // Scene 3
+    Scene3_desc: ["Day 3 Scene 1", "Dia 3 Situacion 1", "Dia 3 Situacio 1"],
+    Scene3_title: [
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+    ],
+    Scene3_options: [
+        [
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+        ],
+        [
+            "You participate in the conversation proposing some ideas",
+            "You participate in the conversation proposing some ideas",
+            "You participate in the conversation proposing some ideas",
+        ],
+        [
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+        ],
+    ],
+    Scene3_report: [
         ["Bad", "Mid.", "Good"],
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
