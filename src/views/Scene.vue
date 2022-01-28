@@ -1,19 +1,26 @@
 <template>
     <div v-if="currentStage(sceneName)">
         <!-- Visuals -->
-        <slot></slot>
+        <SceneVisuals :config="config[sceneName]" />
         <Options :information="options" />
-        <Report :sceneName="sceneName"/>
+        <Report :sceneName="sceneName" />
     </div>
 </template>
 
 <script>
+import { config } from "../components/scenes/configuration";
+import SceneVisuals from "./SceneVisuals.vue";
 import { mapGetters } from "vuex";
 export default {
-    props: ["sceneName"],
-    mounted() {
-        this.scene = this.$refs.scene;
+    components: {
+        SceneVisuals,
     },
+    data() {
+        return {
+            config: config,
+        };
+    },
+    props: ["sceneName"],
     computed: {
         ...mapGetters({
             currentStage: "stages/isCurrentStage",
