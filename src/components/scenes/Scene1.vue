@@ -1,5 +1,0 @@
-
-update() {
-    if (this.gltf) {
-    }
-},

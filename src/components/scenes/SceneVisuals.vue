@@ -7,7 +7,6 @@
                 ref="loader"
                 :payload="{
                     blenderSceneName: config.sceneName,
-                    // Fbx: first character will be main character (with aura)
                     fbx: config.fbx,
                 }"
             />
@@ -58,7 +57,7 @@ export default {
     methods: {
         update() {
             if (this.gltf) {
-                // this.gltf.children[0].children[0].children[4].rotation.y += 0.01;
+                this.config.update(this.gltf)
             }
         },
         swap(from, to) {

@@ -17,6 +17,9 @@ import Loader from "./components/utils/Loader";
 import LoadBlender from "./components/utils/LoadBlender";
 import LoadFBX from "./components/utils/LoadFBX";
 
+// Scenes
+import SceneVisuals from "./components/scenes/SceneVisuals";
+
 // Middleware
 import { store } from "./store";
 import { TroisJSVuePlugin } from "troisjs";
@@ -36,4 +39,5 @@ createApp(App)
     .component("Loader", Loader)
     .component("LoadBlender", LoadBlender)
     .component("LoadFBX", LoadFBX)
+    .component("SceneVisuals", SceneVisuals)
     .mount("#app");

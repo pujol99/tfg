@@ -29,7 +29,9 @@ export const config = {
             { x: -3, y: 1, z: -3 },
             { x: -3, y: 2, z: -2 },
         ],
+        update: function (gltf) {},
     },
+    ///////////////////////////////////////////////////////////////
     Scene2: {
         sceneName: "scene2",
         fbx: [
@@ -42,7 +44,11 @@ export const config = {
         ],
         cameraLookAts: [{ x: 1, y: 0.5, z: 0 }],
         cameraPositions: [{ x: 1, y: 0.5, z: 1.5 }],
+        update: function (gltf) {
+            gltf.rotation.y += 0.003;
+        },
     },
+    ///////////////////////////////////////////////////////////////
     Scene3: {
         sceneName: "scene3",
         fbx: [
@@ -67,5 +73,6 @@ export const config = {
         ],
         cameraLookAts: [{ x: -1, y: 1, z: 0 }],
         cameraPositions: [{ x: 1.5, y: 1.0, z: 0.5 }],
+        update: function (gltf) {},
     },
 };

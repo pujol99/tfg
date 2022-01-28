@@ -1,6 +1,5 @@
 <template>
     <div v-if="currentStage(sceneName)">
-        <!-- Visuals -->
         <SceneVisuals :config="config[sceneName]" />
         <Options :information="options" />
         <Report :sceneName="sceneName" />
@@ -8,13 +7,9 @@
 </template>
 
 <script>
-import { config } from "../components/scenes/configuration";
-import SceneVisuals from "./SceneVisuals.vue";
+import { config } from "./configuration";
 import { mapGetters } from "vuex";
 export default {
-    components: {
-        SceneVisuals,
-    },
     data() {
         return {
             config: config,
