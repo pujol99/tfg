@@ -4,6 +4,7 @@ const state = () => ({
     sceneLoading: false,
     sceneReporting: false,
     scene: null,
+    renderer: null,
     gltfScene: null,
     sceneCamera: 0,
 });
@@ -27,6 +28,9 @@ const getters = {
     },
     getGLTF: state => {
         return state.gltfScene;
+    },
+    getRenderer: state => {
+        return state.renderer;
     },
     isLastStage: state => {
         return state.currentStageIndex == state.stages.length - 1;
@@ -60,6 +64,9 @@ const mutations = {
     },
     setScene(state, scene) {
         state.scene = scene;
+    },
+    setRenderer(state, renderer) {
+        state.renderer = renderer;
     },
     setGLTFScene(state, gltf) {
         state.gltfScene = gltf;

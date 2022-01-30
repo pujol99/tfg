@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="scene-ui">
         <div v-if="sceneLoading" class="description">
             <h1>{{ information.description }}</h1>
         </div>

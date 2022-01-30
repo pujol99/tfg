@@ -35,7 +35,7 @@ export default {
                 positionArray[i * 3 + 1] = Math.random() * this.AURA_HEIGHT;
                 positionArray[i * 3 + 2] = Math.random() * this.AURA_SIZE + center.z - this.AURA_SIZE / 2;
 
-                scaleArray[i] = Math.random();
+                scaleArray[i] = Math.random() + 0.2;
             }
 
             firefliesGeometry.setAttribute("position", new BufferAttribute(positionArray, 3));
@@ -46,8 +46,8 @@ export default {
             this.firefliesMaterial = new ShaderMaterial({
                 uniforms: {
                     uTime: { value: 0 },
-                    uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-                    uSize: { value: 342 },
+                    uPixelRatio: { value: 1 },
+                    uSize: { value: 150 },
                     uColor: { value: barColor },
                 },
                 vertexShader: vs,
@@ -59,16 +59,17 @@ export default {
             // Points
             this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
 
-            window.addEventListener("resize", () => {
-                this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
-            });
+            //Resize
+            // this.renderer.onResize(() => {
+            //     this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
+            // });
 
-            // Mood bar
+            // Mood bar TODO
             document.getElementById("mood").style.background = `
-            linear-gradient(
-                90deg, 
-                #${barColor.getHexString()} ${this.mood * 100}%, 
-                #FFFFFF ${this.mood * 100}%
+                linear-gradient(
+                    90deg, 
+                    #${barColor.getHexString()} ${this.mood * 100}%, 
+                    #FFFFFF ${this.mood * 100}%
             )`;
 
             this.load();
@@ -85,7 +86,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters({ mood: "data/getMood" }),
+        ...mapGetters({ mood: "data/getMood", renderer: "stages/getRenderer" }),
     },
 };
 </script>

@@ -38,6 +38,7 @@ export default {
         this.renderer = this.$refs.renderer;
 
         this.$store.commit("stages/setScene", this.scene);
+        this.$store.commit("stages/setRenderer", this.renderer);
 
         this.renderer.onBeforeRender(() => {
             this.$refs.loader.update();
