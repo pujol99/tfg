@@ -12,30 +12,24 @@
 
 ## Tasks
 
-- Emissive lights materials
-
-- Background of application
-
-- Diff font for card titles
+- Better LoadingScreen
 
 - Finish label traduction
 
-- Make my own flag shader
-
-- Improve scene titles (Day 1 Scene 1...)
-
 - Create all the necesary mixins
-
-- Disclamer about `Use of Age/Gender/Answers || Anonymous` `No data extraction of your phone` `Consent to use of data`
 
 - Make description of game
 
 - Check the last labels that need to be created (Disclaimers)
 
-- Extract scene info to .json
+- Scene component collides with three Scene if I want to declare it in main.js
 
-- remove spanish
+- Search for TODOs in code
+
+- Clean css
 
 ## Bugs
 
 - Loading screen doesnt show when lookat isnt 0 0 0
+
+- Bug in the aura for phone devices

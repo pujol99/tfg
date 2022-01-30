@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Source+Serif+4:wght@800&display=swap");
 .error {
   background-color: #cc3300 !important;
 }
@@ -16,7 +17,6 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Fira Code", sans-serif;
 }
 
 html, body {
@@ -49,7 +49,9 @@ button {
 #app {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-image: url("../assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #app > div {
@@ -59,6 +61,7 @@ button {
 
 .card-action button {
   font-size: 18px;
+  font-family: "Fira Code", sans-serif;
   height: 35px;
   width: 100%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
@@ -96,9 +99,10 @@ button {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(32px);
+          backdrop-filter: blur(32px);
   padding: 10px;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,6 +114,7 @@ button {
   gap: 15px;
   max-width: 600px;
   width: 90%;
+  font-family: "Fira Code", sans-serif;
   color: white;
 }
 
@@ -117,6 +122,10 @@ button {
   .card-container {
     width: 99%;
   }
+}
+
+.card-title {
+  font-family: "Source Serif 4", sans-serif;
 }
 
 .disclaimer {
@@ -217,6 +226,7 @@ button {
           animation-fill-mode: forwards;
   padding: 20px;
   text-align: center;
+  font-family: "Fira Code", sans-serif;
   font-size: 18px;
 }
 
@@ -264,6 +274,10 @@ button {
   to {
     top: -90px;
   }
+}
+
+.scene-ui {
+  font-family: "Fira Code", sans-serif;
 }
 
 .description {
@@ -377,6 +391,7 @@ button {
   border-radius: 5px;
   background-color: #fffcf2;
   color: #252422;
+  font-family: "Fira Code", sans-serif;
   padding: 10px;
 }
 

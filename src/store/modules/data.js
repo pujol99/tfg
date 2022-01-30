@@ -3,10 +3,9 @@ import { labels } from "./labels";
 const state = () => ({
     languages: {
         ENG: 0,
-        ESP: 1,
-        CAT: 2,
+        CAT: 1,
     },
-    language: 2,
+    language: 1,
     userData: {
         sceneDecisions: [],
         aboutDecisions: {},

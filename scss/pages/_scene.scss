@@ -1,3 +1,7 @@
+.scene-ui{
+    font-family: $font-content;
+}
+
 .description{
     @include center;
     
@@ -72,6 +76,7 @@
     @include xcenter;
     @include button;
     
+    font-family: $font-content;
     padding: 10px;
     @include phone { padding: 15px 10px; }
 }
