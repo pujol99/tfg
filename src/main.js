@@ -6,7 +6,6 @@ import Continue from "./components/ui/Continue";
 import Form from "./components/ui/Form";
 import LoadingScreen from "./components/ui/LoadingScreen";
 import Option from "./components/ui/Option";
-import Options from "./components/ui/Options";
 import Popup from "./components/ui/Popup";
 import Disclaimer from "./components/ui/Disclaimer";
 import SelectFlag from "./components/ui/SelectFlag";
@@ -18,6 +17,7 @@ import LoadBlender from "./components/utils/LoadBlender";
 import LoadFBX from "./components/utils/LoadFBX";
 
 // Scenes
+import SceneUi from "./components/scenes/SceneUi";
 import SceneVisuals from "./components/scenes/SceneVisuals";
 
 // Middleware
@@ -33,7 +33,7 @@ createApp(App)
     .component("Report", Report)
     .component("Option", Option)
     .component("Disclaimer", Disclaimer)
-    .component("Options", Options)
+    .component("SceneUi", SceneUi)
     .component("Popup", Popup)
     .component("SelectFlag", SelectFlag)
     .component("Loader", Loader)

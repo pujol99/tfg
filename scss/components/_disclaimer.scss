@@ -1,0 +1,28 @@
+.disclaimer{
+    @include shadow;
+
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 6px 0;
+
+    color: black;
+    background-color: #FFFFAA;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    text-align: left;
+
+    @include phone{
+        font-size: 14px;
+    }
+}
+
+.disclaimer-icon{
+    padding-left: 15px;
+    color: orange;
+    & span { 
+        margin: auto;
+    }
+}

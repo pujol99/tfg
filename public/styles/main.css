@@ -38,14 +38,6 @@ button {
   border-style: none;
 }
 
-.center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
 #app {
   width: 100%;
   height: 100%;
@@ -54,34 +46,26 @@ button {
   background-size: cover;
 }
 
-#app > div {
-  width: 100%;
-  height: 100%;
-}
-
-.card-action button {
+.continueButton {
   font-size: 18px;
-  font-family: "Fira Code", sans-serif;
-  height: 35px;
   width: 100%;
+  padding: 8px 0px;
+  letter-spacing: 0.4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
           box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  letter-spacing: 0.35px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
   border-radius: 5px;
+  font-family: "Fira Code", sans-serif;
   background-color: #fffcf2;
   color: #252422;
 }
 
 @media (hover: hover) {
-  .card-action button:hover {
+  .continueButton:hover {
     background: #252422;
     color: #fffcf2;
   }
@@ -128,58 +112,12 @@ button {
   font-family: "Source Serif 4", sans-serif;
 }
 
-.disclaimer {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
-          box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 5px 0;
-  border-radius: 5px;
-  padding: 6px 0;
-  color: black;
-  background-color: #FFFFAA;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 15px;
-  text-align: left;
-}
-
-@media screen and (max-width: 480px) {
-  .disclaimer {
-    font-size: 14px;
-  }
-}
-
-.disclaimer-icon {
-  padding-left: 15px;
-  color: orange;
-}
-
-.disclaimer-icon span {
-  margin: auto;
-}
-
-.languages > img {
-  cursor: pointer;
-  margin: 5px 10px;
-  width: 25%;
-  aspect-ratio: 16 / 9;
-}
-
-.activeLang {
-  width: 30% !important;
-}
-
-.form-element {
-  margin-bottom: 10px;
+.form-element:not(:last-child) {
+  margin-bottom: 14px;
 }
 
 .form-element-title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .form-element-options {
@@ -201,6 +139,7 @@ button {
   transition: 0.4s;
   cursor: pointer;
   border-radius: 5px;
+  font-family: "Fira Code", sans-serif;
   background-color: #fffcf2;
   color: #252422;
   padding: 5px 10px;
@@ -274,6 +213,52 @@ button {
   to {
     top: -90px;
   }
+}
+
+.languages > img {
+  cursor: pointer;
+  margin: 5px 10px;
+  width: 25%;
+  aspect-ratio: 16 / 9;
+}
+
+.activeLang {
+  width: 30% !important;
+}
+
+.disclaimer {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+          box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 5px 0;
+  border-radius: 5px;
+  padding: 6px 0;
+  color: black;
+  background-color: #FFFFAA;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+  .disclaimer {
+    font-size: 14px;
+  }
+}
+
+.disclaimer-icon {
+  padding-left: 15px;
+  color: orange;
+}
+
+.disclaimer-icon span {
+  margin: auto;
 }
 
 .scene-ui {
@@ -352,7 +337,7 @@ button {
   border-radius: 3px;
 }
 
-.options {
+.footer {
   position: absolute;
   bottom: 10px;
   width: 100%;
@@ -389,6 +374,7 @@ button {
   transition: 0.4s;
   cursor: pointer;
   border-radius: 5px;
+  font-family: "Fira Code", sans-serif;
   background-color: #fffcf2;
   color: #252422;
   font-family: "Fira Code", sans-serif;

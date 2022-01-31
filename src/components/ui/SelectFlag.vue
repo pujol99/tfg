@@ -1,11 +1,13 @@
 <template>
-    <img
-        v-for="lang in langs"
-        :key="lang"
-        :src="`./assets/images/${lang}.png`"
-        :class="{ activeLang: currentLanguage === lang }"
-        @click="setLanguage(lang)"
-    />
+    <div class="languages">
+        <img
+            v-for="lang in langs"
+            :key="lang"
+            :src="`./assets/images/${lang}.png`"
+            :class="{ activeLang: currentLanguage === lang }"
+            @click="setLanguage(lang)"
+        />
+    </div>
 </template>
 
 <script>

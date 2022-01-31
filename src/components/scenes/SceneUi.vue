@@ -1,12 +1,14 @@
 <template>
     <div class="scene-ui">
+        <!-- Scene introduction -->
         <div v-if="sceneLoading" class="description">
             <h1>{{ information.description }}</h1>
         </div>
+        <!-- Scene title -->
         <div class="title">
             <Option :message="information.title" disabled />
         </div>
-        <div class="options" id="options">
+        <div class="footer" id="footer">
             <div class="icons">
                 <div>
                     <span class="info hided" id="mood" :class="{ active: !sceneLoading }">
@@ -32,13 +34,9 @@
                     </button>
                 </div>
             </div>
+            <!-- Scene Options -->
             <div class="options_content" :class="{ expanded: isExpanded }">
-                <Option
-                    v-for="(option, index) in information.options"
-                    :key="option"
-                    :message="option"
-                    :index="index"
-                />
+                <Option v-for="(option, index) in information.options" :key="option" :message="option" :index="index" />
             </div>
         </div>
     </div>
@@ -55,8 +53,8 @@ export default {
     },
     watch: {
         sceneReporting(newValue, oldValue) {
-            if(newValue === true){
-                document.getElementById("options").remove();
+            if (newValue === true) {
+                document.getElementById("footer").remove();
             }
         },
     },
@@ -66,7 +64,7 @@ export default {
             sceneReporting: "stages/isSceneReporting",
             currentCamera: "stages/getSceneCamera",
             mood: "data/getMood",
-            getLabel: "data/getLabel"
+            getLabel: "data/getLabel",
         }),
         moodFormatted: function () {
             return `${this.getLabel("mood")}: ${this.mood * 100}%`;

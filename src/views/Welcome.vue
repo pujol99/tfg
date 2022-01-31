@@ -8,14 +8,15 @@
                 <p>{{ getLabel("welcome_body") }}</p>
             </div>
             <div class="card-action">
-                <Disclaimer content="Anonymous use of Age Gender Answers for statistical analysis"/>
-                <Disclaimer content="By starting the game, you are consenting the use of the data"/>
+                <Disclaimer
+                    v-for="disclaimer in getLabel('welcome_disclaimers')"
+                    :key="disclaimer"
+                    :content="disclaimer"
+                />
                 <Continue />
             </div>
-            <hr>
-            <div class="languages">
-                <SelectFlag />
-            </div>
+            <hr />
+            <SelectFlag />
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div v-if="currentStage(sceneName)" class="scene-ui">
         <SceneVisuals :config="config[sceneName]" />
-        <Options :information="options" />
+        <SceneUi :information="options" />
         <Report :sceneName="sceneName" />
     </div>
 </template>
