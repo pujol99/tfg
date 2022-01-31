@@ -8,34 +8,20 @@
         <div class="title">
             <Option :message="information.title" disabled />
         </div>
+        <!-- Scene footer -->
         <div class="footer" id="footer">
-            <div class="icons">
-                <div>
-                    <span class="info hided" id="mood" :class="{ active: !sceneLoading }">
-                        <b>{{ moodFormatted }}</b>
-                    </span>
-                </div>
-                <div>
-                    <button
-                        @click="isExpanded = !isExpanded"
-                        class="material-icons icon hided"
-                        :class="{ active: !sceneLoading }"
-                    >
-                        {{ icon }}
-                    </button>
-                </div>
-                <div>
-                    <button
-                        class="material-icons icon hided"
-                        :class="{ active: !sceneLoading }"
-                        @click="this.$store.commit('stages/nextCamera')"
-                    >
-                        360
-                    </button>
-                </div>
+            <!-- Icons -->
+            <div class="icons" :class="{ active: !sceneLoading }">
+                <span class="info hided" id="mood">
+                    <b>{{ moodFormatted }}</b>
+                </span>
+                <button @click="isExpanded = !isExpanded" class="material-icons icon hided">
+                    {{ icon }}
+                </button>
+                <button class="material-icons icon hided" @click="this.$store.commit('stages/nextCamera')">360</button>
             </div>
             <!-- Scene Options -->
-            <div class="options_content" :class="{ expanded: isExpanded }">
+            <div class="options" :class="{ expanded: isExpanded }">
                 <Option v-for="(option, index) in information.options" :key="option" :message="option" :index="index" />
             </div>
         </div>
