@@ -2,7 +2,8 @@
     transition: 0.4s;
     cursor: pointer;
     border-radius: 5px;
-
+    
+    font-family: $font-content;
     background-color: $buttonBG;
     color: $buttonFG;
 
@@ -26,16 +27,13 @@
     }
 }
 
-.card-action button {
+.continueButton{
     font-size: $large-font;
-    font-family: $font-content;
-    height: 35px;
     width: 100%;
+    padding: 8px 0px;
+    letter-spacing: 0.4px;
 
     @include shadow;
-    justify-content: center;
-    letter-spacing: 0.35px;
-
     @include button;
 }
 

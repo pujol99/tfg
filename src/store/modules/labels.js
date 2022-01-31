@@ -1,9 +1,6 @@
 export const labels = {
     continue: ["Continue", "Avança"],
-    popup: [
-        "Fill answers please",
-        "Emplena les preguntes siusplau",
-    ],
+    popup: ["Fill answers please", "Emplena les preguntes siusplau"],
     /**
      *
      *  Welcome
@@ -13,6 +10,16 @@ export const labels = {
     welcome_body: [
         "Game for raising awarness on social media addiction ",
         "Joc per conscienciar sobre l'addicció a les xarxes socials",
+    ],
+    welcome_disclaimers: [
+        [
+            "Anonymous use of Age Gender Answers for statistical analysis",
+            "By starting the game, you are consenting the use of the data",
+        ],
+        [
+            "Anonymous use of Age Gender Answers for statistical analysis",
+            "By starting the game, you are consenting the use of the data",
+        ],
     ],
     /**
      *

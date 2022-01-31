@@ -31,7 +31,7 @@
             <!-- -->
         </div>
         <div class="card-action">
-            <button @click="onContinue">{{ getLabel("continue") }}</button>
+            <Continue @click="onContinue" disabled/>
         </div>
     </div>
 </template>
@@ -48,24 +48,23 @@ export default {
         return {
             questions: this.propQuestions,
             pageIndex: 0,
-            pageSize: 2,
+            PAGE_SIZE: 2,
         };
     },
     computed: {
         ...mapGetters({ getLabel: "data/getLabel" }),
         // Check that the options selected are valid options
+        // Data is valid if there is no such situation where the
+        // optionSelected is not included inside the options
         dataValidated() {
             return (
                 Object.keys(this.currentPage).filter(
-                    question =>
-                        !this.currentPage[question].options.includes(
-                            this.currentPage[question].optionSelected
-                        )
+                    question => !this.currentPage[question].options.includes(this.currentPage[question].optionSelected)
                 ).length == 0
             );
         },
         currentPage() {
-            return this.paginateQuestions(this.questions, this.pageSize)[this.pageIndex];
+            return this.paginateQuestions(this.questions, this.PAGE_SIZE)[this.pageIndex];
         },
     },
     methods: {
@@ -95,12 +94,12 @@ export default {
             // From { {question: title, options[]}, ...}
             // To { {question: optionSelected}, ...}
             // Save only decision index
-            
+
             for (var key of Object.keys(this.currentPage)) {
                 this.currentPage[key] = this.currentPage[key].optionSelectedIndex;
             }
         },
-        paginateQuestions(questions, pageSize) {
+        paginateQuestions(questions, PAGE_SIZE) {
             // From { {} {} ...}
             // To  [{ {} }, { {} }, ...]
             var questionPages = [];
@@ -108,8 +107,8 @@ export default {
             var index = 0;
 
             for (const [key, value] of Object.entries(questions)) {
-                // Reset page set when we reach pageSize
-                if (index !== 0 && index % pageSize === 0) {
+                // Reset page set when we reach PAGE_SIZE
+                if (index !== 0 && index % PAGE_SIZE === 0) {
                     questionPages.push(questionPage);
                     questionPage = {};
                 }

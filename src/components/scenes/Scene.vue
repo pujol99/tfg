@@ -1,7 +1,7 @@
 <template>
-    <div v-if="currentStage(sceneName)" class="scene-ui">
+    <div v-if="currentStage(sceneName)">
         <SceneVisuals :config="config[sceneName]" />
-        <Options :information="options" />
+        <SceneUi :information="options" />
         <Report :sceneName="sceneName" />
     </div>
 </template>
@@ -10,12 +10,12 @@
 import { config } from "./configuration";
 import { mapGetters } from "vuex";
 export default {
+    props: ["sceneName"],
     data() {
         return {
             config: config,
         };
     },
-    props: ["sceneName"],
     computed: {
         ...mapGetters({
             currentStage: "stages/isCurrentStage",

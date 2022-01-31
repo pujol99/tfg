@@ -1,10 +1,11 @@
-.scene-ui{
+.scene-ui {
     font-family: $font-content;
 }
 
-.description{
+.description {
     @include center;
-    
+
+    font-family: $font-header;
     width: 100%;
     text-align: center;
     padding: 20px;
@@ -15,13 +16,9 @@
     position: absolute;
     width: 100%;
     top: 5%;
-    @include tablet { top: 0; }
-}
-
-.title > button { 
-    width: fit-content;
-    display: block;
-    margin: 0 auto;
+    @include tablet {
+        top: 0;
+    }
 }
 
 .icons {
@@ -33,7 +30,7 @@
     margin: 0 auto;
 }
 
-.icons > div{
+.icons > div {
     flex: 0 1 0px;
     min-width: fit-content;
 }
@@ -42,24 +39,24 @@
     @include icon;
 }
 
-.info{
+.info {
     background-color: azure;
     height: fit-content;
     padding: 4px 8px;
     border-radius: 3px;
 }
 
-.options {
+.footer {
     position: absolute;
     bottom: 10px;
     width: 100%;
 }
 
-.options_content {
+.options {
     display: none;
     max-width: 1000px;
     margin: 0 auto;
-    
+
     @include tablet {
         flex-direction: column;
         gap: 0px;
@@ -75,19 +72,22 @@
 .option {
     @include xcenter;
     @include button;
-    
+
     font-family: $font-content;
     padding: 10px;
-    @include phone { padding: 15px 10px; }
+    @include phone {
+        padding: 15px 10px;
+    }
 }
 
-.hided { 
+.hided {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.6s linear, background-color 0.5s linear;
 }
 
-.active {
+.active,
+.active > * {
     visibility: visible;
     opacity: 1;
 }

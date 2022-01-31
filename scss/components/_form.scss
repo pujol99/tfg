@@ -1,9 +1,9 @@
-.form-element{
-    margin-bottom: 10px;
+.form-element:not(:last-child){
+    margin-bottom: 14px;
 }
 
 .form-element-title{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .form-element-options{

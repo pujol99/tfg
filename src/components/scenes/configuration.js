@@ -42,8 +42,18 @@ export const config = {
                 rotation: { y: Math.PI * 2 * 0 },
             },
         ],
-        cameraLookAts: [{ x: 1, y: 0.5, z: 0 }],
-        cameraPositions: [{ x: 1, y: 0.5, z: 1.5 }],
+        cameraLookAts: [
+            { x: 1.0, y: 0.49, z: 0.00 },
+            { x: 1.01, y: 0.50, z: 0.01 },
+            { x: 1.02, y: 0.51, z: 0.02 },
+            { x: 1.03, y: 0.52, z: 0.03 },
+        ],
+        cameraPositions: [
+            { x: 1.0, y: 0.50, z: 1.5 },
+            { x: 0.0, y: 0.51, z: 0.0 },
+            { x: 1.0, y: 0.52, z: -1.5 },
+            { x: 2.0, y: 0.53, z: 0.0 },
+        ],
         update: function (gltf) {
             gltf.rotation.y += 0.003;
         },

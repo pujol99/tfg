@@ -1,0 +1,12 @@
+.languages {
+    & > img{
+        cursor: pointer;
+        margin: 5px 10px;
+        width: 25%;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+.activeLang{
+    width: 30% !important;
+}
