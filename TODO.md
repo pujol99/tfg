@@ -28,6 +28,8 @@
 
 - Clean css
 
+- Change FOV
+
 ## Bugs
 
 - Loading screen doesnt show when lookat isnt 0 0 0
