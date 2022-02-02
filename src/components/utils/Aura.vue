@@ -64,7 +64,7 @@ export default {
             //     this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
             // });
 
-            // Mood bar TODO
+            // Mood bar
             document.getElementById("mood").style.background = `
                 linear-gradient(
                     90deg, 

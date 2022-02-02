@@ -11,6 +11,7 @@ const state = () => ({
         aboutDecisions: {},
         surveyDecisions: {},
     },
+    prevMood: 0.5,
     mood: 0.5,
     decisionsMood: [
         [-0.5, 0.3, 0.1],
@@ -37,6 +38,9 @@ const getters = {
     //data
     getMood: state => {
         return state.mood;
+    },
+    getPrevMood: state => {
+        return state.prevMood;
     },
     getDecisionTaken: state => {
         return state.decisionTaken;
@@ -91,7 +95,8 @@ const mutations = {
         var sceneIndex = state.userData.sceneDecisions.length;
 
         state.userData.sceneDecisions.push(index);
-
+        
+        state.prevMood = state.mood
         state.mood += state.decisionsMood[sceneIndex][index];
         if (state.mood > 1.0) state.mood = 1.0;
         if (state.mood < 0.0) state.mood = 0.0;

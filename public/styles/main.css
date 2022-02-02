@@ -290,6 +290,12 @@ button {
   }
 }
 
+.title button {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+}
+
 .icons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -322,6 +328,7 @@ button {
 }
 
 .info {
+  color: black;
   background-color: azure;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -409,4 +416,11 @@ button {
 .disabled:hover {
   background: #fffcf2;
   color: #252422;
+}
+
+.reportMood {
+  margin: 0 auto;
+  min-width: 100px;
+  min-height: 10px;
+  display: inline-block;
 }

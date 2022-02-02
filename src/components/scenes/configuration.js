@@ -22,12 +22,14 @@ export const config = {
             },
         ],
         cameraLookAts: [
-            { x: -1, y: 0.8, z: -1 },
-            { x: 0, y: 0.0, z: 0 },
+            { x: 0.0, y: 0.5, z: -1.0 },
+            { x: -0.7, y: 0.4, z: -1.0 },
+            { x: -0.7, y: 0.3, z: -1.0 },
         ],
         cameraPositions: [
-            { x: -3, y: 1, z: -3 },
-            { x: -3, y: 2, z: -2 },
+            { x: -3, y: 1, z: -2 },
+            { x: -1, y: 1, z: -3 },
+            { x: -1, y: 2, z: -3 },
         ],
         update: function (gltf) {},
     },
@@ -43,13 +45,13 @@ export const config = {
             },
         ],
         cameraLookAts: [
-            { x: 1.0, y: 0.49, z: 0.00 },
-            { x: 1.01, y: 0.50, z: 0.01 },
+            { x: 1.0, y: 0.49, z: 0.0 },
+            { x: 1.01, y: 0.5, z: 0.01 },
             { x: 1.02, y: 0.51, z: 0.02 },
             { x: 1.03, y: 0.52, z: 0.03 },
         ],
         cameraPositions: [
-            { x: 1.0, y: 0.50, z: 1.5 },
+            { x: 1.0, y: 0.5, z: 1.5 },
             { x: 0.0, y: 0.51, z: 0.0 },
             { x: 1.0, y: 0.52, z: -1.5 },
             { x: 2.0, y: 0.53, z: 0.0 },
@@ -81,8 +83,14 @@ export const config = {
                 rotation: { y: Math.PI * 2 * 0.25 },
             },
         ],
-        cameraLookAts: [{ x: -1, y: 1, z: 0 }],
-        cameraPositions: [{ x: 1.5, y: 1.0, z: 0.5 }],
+        cameraLookAts: [
+            { x: -1, y: 1, z: 0 },
+            { x: -2, y: 0.8, z: 0 },
+        ],
+        cameraPositions: [
+            { x: 1.5, y: 1.0, z: 0.5 },
+            { x: 1.5, y: 1.0, z: -0.5 },
+        ],
         update: function (gltf) {},
     },
 };

@@ -68,24 +68,36 @@ export const labels = {
     // Scene 1
     Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacio 1"],
     Scene1_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are in the dinning room before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are in the dinning room before going to school, in the table there are your parents, they start to talk about some family trip ideas",
     ],
     Scene1_options: [
         [
             "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
+            "You participate in the conversation proposing some ideas",
+            "You go to the table to listem them",
         ],
         [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
+            "You disconnect from the conversation and scroll through your phone",
+            "You participate in the conversation proposing some ideas",
+            "You go to the table to listem them",
         ],
     ],
     Scene1_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Your parents feel like you are not interested and stop talking about that after some time",
+            "You propose a good idea and the family decides to do that next weekend",
+            "Your parents decide the trip that will be done next weekend, you are all happy about it",
+        ],
+        [
+            "Your parents feel like you are not interested and stop talking about that after some time",
+            "You propose a good idea and the family decides to do that next weekend",
+            "Your parents decide the trip that will be done next weekend, you are all happy about it",
+        ],
+    ],
+    Scene1_report_general: [
+        "It's always good to spend time with your family as it will create a better connection with them",
+        "It's always good to spend time with your family as it will create a better connection with them",
     ],
     // Scene 2
     Scene2_desc: ["Day 2 Scene 1", "Dia 2 Situacio 1"],

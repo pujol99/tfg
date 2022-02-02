@@ -1,8 +1,11 @@
 <template>
     <Renderer ref="renderer" resize="window">
-        <PerspectiveCamera ref="camera" :position="cameraPosition" :lookAt="cameraLookAt" />
+        <PerspectiveCamera ref="camera" :fov="70" :position="cameraPosition" :lookAt="cameraLookAt" />
         <Scene ref="scene" background="#000000">
             <AmbientLight :intensity="0.8" />
+            <PointLight ref="light" :intensity="7" :position="cameraLookAt">
+                <Sphere :radius="0.05" />
+            </PointLight>
             <Loader
                 ref="loader"
                 :payload="{
