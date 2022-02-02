@@ -8,7 +8,7 @@
                 <p>{{ getLabel("final_body") }}</p>
             </div>
             <div class="card-action">
-                <button @click="reloadPage()">
+                <button class="continueButton" @click="reloadPage()">
                     {{ getLabel("final_restart") }}
                 </button>
             </div>
