@@ -22,13 +22,7 @@
 
 - Check the last labels that need to be created (Disclaimers)
 
-- Scene component collides with three Scene if I want to declare it in main.js
-
-- Search for TODOs in code
-
 - Clean css
-
-- Change FOV
 
 ## Bugs
 

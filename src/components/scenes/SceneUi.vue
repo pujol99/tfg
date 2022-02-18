@@ -14,6 +14,7 @@
             <div class="icons" :class="{ active: !sceneLoading }">
                 <span class="info hided" id="mood">
                     <b>{{ moodFormatted }}</b>
+                    <span id="emotion">{{currentEmotion}}</span>
                 </span>
                 <button @click="isExpanded = !isExpanded" class="material-icons icon hided">
                     {{ icon }}
@@ -35,6 +36,7 @@ export default {
     data() {
         return {
             isExpanded: true,
+            emotions: ["😪", "😟", "😐", "😀", "😎"]
         };
     },
     watch: {
@@ -53,7 +55,11 @@ export default {
             getLabel: "data/getLabel",
         }),
         moodFormatted: function () {
-            return `${this.getLabel("mood")}: ${this.mood * 100}%`;
+            return `${this.getLabel("mood")}: ${Math.floor(this.mood * 100)}%`;
+        },
+        currentEmotion: function(){
+            // Map mood[0~1] to emotions[1~4]
+            return this.emotions[Math.floor( this.mood * this.emotions.length )]
         },
         icon: function () {
             return this.isExpanded ? "expand_more" : "expand_less";

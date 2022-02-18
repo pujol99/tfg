@@ -424,3 +424,16 @@ button {
   min-height: 10px;
   display: inline-block;
 }
+
+#mood {
+  position: relative;
+}
+
+#emotion {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 26px;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}

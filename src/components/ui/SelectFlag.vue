@@ -6,6 +6,7 @@
             :src="`./assets/images/${lang}.png`"
             :class="{ activeLang: currentLanguage === lang }"
             @click="setLanguage(lang)"
+            :id="lang"
         />
     </div>
 </template>
