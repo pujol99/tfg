@@ -3,12 +3,19 @@
 </template>
 
 <script>
-import { TextureLoader, MeshBasicMaterial } from "three";
+import { TextureLoader, MeshBasicMaterial, MeshToonMaterial, ShaderMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { mapActions } from "vuex";
+import { vs, fs } from "/public/assets/shaders/screen";
 export default {
     props: ["sceneName"],
+    data() {
+        return {
+            vs: vs,
+            fs: fs
+        }
+    },
     mounted() {
         this.isLoaded = false;
 
@@ -36,6 +43,18 @@ export default {
             color: 0xffffff,
         });
 
+        // const screenTexture = textureLoader.load('./assets/images/screen.png');
+        // const screenMaterial = new MeshBasicMaterial({ map: screenTexture });
+        const screenMaterial = new ShaderMaterial({
+            uniforms:
+            {
+                uTime: { value: 0 },
+            },
+            vertexShader: vs,
+            fragmentShader: fs
+        })
+
+
         gltfLoader.load(`./assets/scenes/${this.sceneName}/scene.glb`, gltf => {
             gltf.scene.traverse(child => {
                 child.material = bakedMaterial;
@@ -44,6 +63,10 @@ export default {
             gltf.scene.children
                 .filter(child => child.name.includes("Light"))
                 .forEach(child => child.material = lightMaterial);
+
+            gltf.scene.children
+                .filter(child => child.name.includes("Screen"))
+                .forEach(child => child.material = screenMaterial);
 
             this.addScene(gltf.scene);
 

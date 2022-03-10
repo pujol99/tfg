@@ -2,6 +2,7 @@
     <Scene sceneName="Scene1"/>
     <Scene sceneName="Scene2"/>
     <Scene sceneName="Scene3"/>
+    <Scene sceneName="Scene4"/>
 </template>
 
 <script>
