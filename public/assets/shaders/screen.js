@@ -1,6 +1,5 @@
 export var vs = `
 varying vec2 vUv;
-varying vec3 vNormal;
 
 void main()
 {
@@ -11,23 +10,31 @@ void main()
     gl_Position = projectionPosition;
 
     vUv = uv;
-    vNormal = normal;
 }
 `;
 export var fs = `
+    #define PI 3.14
     varying vec2 vUv;
-    varying vec3 vNormal;
 
     uniform float uTime;
     uniform sampler2D uTexture;
 
-    void main() {
+    vec4 scanLineIntensity(float uv, float resolution, float opacity)
+    {
+        float intensity = sin(uv * resolution * PI * 2.0 * uTime);
+        intensity = ((0.5 * intensity) + 0.5) * 0.9 + 0.1;
+        return vec4(vec3(pow(intensity, opacity)), 1.0);
+    }
 
-        vec4 tex = texture2D(uTexture, vUv);
-        float stepValue = 1.0 - abs(sin(uTime* 0.5))*0.7;
-        tex.x = step(stepValue, tex.x);
-        tex.y = step(stepValue, tex.y);
-        tex.z = step(stepValue, tex.z);
-        gl_FragColor = vec4(tex.xyz, 1.0);
+    void main(void)
+    {
+        vec4 baseColor = texture2D(uTexture, vUv);
+        if (vUv.x < 0.0 || vUv.y < 0.0 || vUv.x > 1.0 || vUv.y > 1.0){
+            gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        } else {
+            baseColor *= scanLineIntensity(vUv.x, 50.0, 0.5);
+            baseColor *= scanLineIntensity(vUv.y, 20.0, 0.5);
+            gl_FragColor = baseColor;
+        }
     }
 `;
