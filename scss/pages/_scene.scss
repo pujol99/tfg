@@ -68,6 +68,12 @@
     }
 }
 
+.emotions{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .expanded {
     display: flex;
     gap: 10px;
@@ -91,7 +97,8 @@
 }
 
 .active,
-.active > * {
+.active > *, 
+.active > * > *{
     visibility: visible;
     opacity: 1;
 }
@@ -107,7 +114,7 @@
     display: inline-block;
 }
 
-#mood{
+#mood, #emptyness{
     position: relative;
 }
 

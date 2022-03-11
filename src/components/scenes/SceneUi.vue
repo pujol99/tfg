@@ -12,10 +12,16 @@
         <div class="footer" id="footer">
             <!-- Icons -->
             <div class="icons" :class="{ active: !sceneLoading }">
-                <span class="info hided" id="mood">
-                    <b>{{ moodFormatted }}</b>
-                    <span id="emotion">{{currentEmotion}}</span>
-                </span>
+                <div class="emotions">
+                    <span class="info hided" id="mood">
+                        <b>{{ moodFormatted }}</b>
+                        <span id="emotion">{{currentEmotion}}</span>
+                    </span>
+                    <span class="info hided" id="emptyness">
+                        <b>{{ moodFormatted }}</b>
+                        <span id="emotion">{{currentEmotion}}</span>
+                    </span>
+                </div>
                 <button @click="isExpanded = !isExpanded" class="material-icons icon hided">
                     {{ icon }}
                 </button>

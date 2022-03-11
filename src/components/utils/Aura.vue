@@ -72,6 +72,14 @@ export default {
                     #FFFFFF ${this.mood * 100}%
             )`;
 
+            // Mood bar
+            document.getElementById("emptyness").style.background = `
+                linear-gradient(
+                    90deg, 
+                    #${barColor.getHexString()} ${this.mood * 100}%, 
+                    #FFFFFF ${this.mood * 100}%
+            )`;
+
             this.load();
         },
         load() {
