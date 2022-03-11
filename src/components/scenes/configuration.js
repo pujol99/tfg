@@ -96,11 +96,9 @@ export const config = {
     Scene4: {
         sceneName: "scene4",
         cameraLookAts: [
-            { x: 0, y: 0.5, z: 0 },
             { x: 0, y: 0.51, z: 0 },
         ],
         cameraPositions: [
-            { x: 0, y: 0.5, z: 1.0 },
             { x: 1.0, y: 0.5, z: 1.0 },
         ],
         update: function (gltf) {},

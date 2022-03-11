@@ -3,23 +3,27 @@
 </template>
 
 <script>
-import { TextureLoader, MeshBasicMaterial, MeshToonMaterial, ShaderMaterial } from "three";
+import { TextureLoader, MeshBasicMaterial, Clock, MeshToonMaterial, ShaderMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { vs, fs } from "/public/assets/shaders/screen";
 export default {
-    props: ["sceneName"],
+    props: {
+        payload: Object
+    },
     data() {
         return {
             vs: vs,
-            fs: fs
+            fs: fs,
+            screenMaterial: null
         }
     },
     mounted() {
         this.isLoaded = false;
+        this.clock = new Clock();
 
-        if (!this.sceneName) {
+        if (!this.payload.blenderSceneName) {
             this.isLoaded = true;
             return;
         }
@@ -32,7 +36,7 @@ export default {
         gltfLoader.setDRACOLoader(dracoLoader);
 
         //Textures
-        const bakedTexture = textureLoader.load(`./assets/scenes/${this.sceneName}/baked.jpg`);
+        const bakedTexture = textureLoader.load(`./assets/scenes/${this.payload.blenderSceneName}/baked.jpg`);
         bakedTexture.flipY = false;
 
         //Materials
@@ -45,7 +49,7 @@ export default {
 
         // const screenTexture = textureLoader.load('./assets/images/screen.png');
         // const screenMaterial = new MeshBasicMaterial({ map: screenTexture });
-        const screenMaterial = new ShaderMaterial({
+        this.screenMaterial = new ShaderMaterial({
             uniforms:
             {
                 uTime: { value: 0 },
@@ -54,8 +58,8 @@ export default {
             fragmentShader: fs
         })
 
-
-        gltfLoader.load(`./assets/scenes/${this.sceneName}/scene.glb`, gltf => {
+        console.log();
+        gltfLoader.load(`./assets/scenes/${this.payload.blenderSceneName}/scene.glb`, gltf => {
             gltf.scene.traverse(child => {
                 child.material = bakedMaterial;
             });
@@ -66,15 +70,25 @@ export default {
 
             gltf.scene.children
                 .filter(child => child.name.includes("Screen"))
-                .forEach(child => child.material = screenMaterial);
+                .forEach(child => child.material = this.screenMaterial);
 
             this.addScene(gltf.scene);
 
             this.isLoaded = true;
         });
     },
+    computed: {
+        ...mapGetters({ gltf: "stages/getGLTF" }),
+    },
     methods: {
         ...mapActions({ addScene: "stages/addGLTFScene" }),
+        update() {
+            this.payload.blenderUpdate(this.gltf)
+            if (this.isLoaded) {
+                const elapsedTime = this.clock.getElapsedTime();
+                this.screenMaterial.uniforms.uTime.value = elapsedTime;
+            }
+        },
     },
 };
 </script>

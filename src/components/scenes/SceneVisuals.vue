@@ -7,6 +7,7 @@
                 ref="loader"
                 :payload="{
                     blenderSceneName: config.sceneName,
+                    blenderUpdate: config.update,
                     fbx: config.fbx,
                 }"
             />
@@ -42,7 +43,6 @@ export default {
 
         this.renderer.onBeforeRender(() => {
             this.$refs.loader.update();
-            this.update();
         });
     },
     watch: {
@@ -56,11 +56,6 @@ export default {
         ...mapGetters({ camera: "stages/getSceneCamera", gltf: "stages/getGLTF" }),
     },
     methods: {
-        update() {
-            if (this.gltf) {
-                this.config.update(this.gltf)
-            }
-        },
         swap(from, to) {
             gsap.to(from, {
                 duration: this.ANIM_TIME,

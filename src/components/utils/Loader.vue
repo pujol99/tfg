@@ -1,6 +1,6 @@
 <template>
     <LoadingScreen ref="loadingScreen" />
-    <LoadBlender ref="blender" :sceneName="payload.blenderSceneName" />
+    <LoadBlender ref="blender" :payload="payload" />
     <LoadFBX ref="fbx" :models="payload.fbx" />
 </template>
 
@@ -19,6 +19,7 @@ export default {
     methods: {
         update() {
             this.fbx.update();
+            this.blender.update();
 
             if (this.isSceneLoading) this.loadingScreen.update();
             
