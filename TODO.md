@@ -14,6 +14,8 @@
 
 - Better LoadingScreen
 
+- Clean LoadBlender
+
 - Finish label traduction
 
 - Create all the necesary mixins

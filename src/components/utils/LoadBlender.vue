@@ -47,18 +47,19 @@ export default {
             color: 0xffffff,
         });
 
-        // const screenTexture = textureLoader.load('./assets/images/screen.png');
+        const screenTexture = textureLoader.load('./assets/images/screen.png');
+        screenTexture.flipY = false;
         // const screenMaterial = new MeshBasicMaterial({ map: screenTexture });
         this.screenMaterial = new ShaderMaterial({
             uniforms:
             {
                 uTime: { value: 0 },
+                uTexture: { value: screenTexture }
             },
             vertexShader: vs,
             fragmentShader: fs
         })
 
-        console.log();
         gltfLoader.load(`./assets/scenes/${this.payload.blenderSceneName}/scene.glb`, gltf => {
             gltf.scene.traverse(child => {
                 child.material = bakedMaterial;
@@ -68,9 +69,7 @@ export default {
                 .filter(child => child.name.includes("Light"))
                 .forEach(child => child.material = lightMaterial);
 
-            gltf.scene.children
-                .filter(child => child.name.includes("Screen"))
-                .forEach(child => child.material = this.screenMaterial);
+            gltf.scene.children.find((child) => child.name === 'Screen').material = this.screenMaterial;
 
             this.addScene(gltf.scene);
 
