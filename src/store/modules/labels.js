@@ -143,4 +143,25 @@ export const labels = {
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
+    Scene4_desc: ["Day 3 Scene 1", "Dia 3 Situacio 1"],
+    Scene4_title: [
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+    ],
+    Scene4_options: [
+        [
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+        ],
+        [
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+        ],
+    ],
+    Scene4_report: [
+        ["Bad", "Mid.", "Good"],
+        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+    ],
 };
