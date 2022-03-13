@@ -13,6 +13,7 @@ import {
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { mapGetters, mapActions } from "vuex";
+import { sRGBEncoding } from "three";
 import { vs, fs } from "/public/assets/shaders/screen";
 export default {
     props: {
@@ -51,6 +52,7 @@ export default {
         const bakedMaterial = new MeshBasicMaterial({
             map: bakedTexture,
         });
+        bakedTexture.encoding = sRGBEncoding
         const lightMaterial = new MeshBasicMaterial({
             color: 0xffffff,
         });

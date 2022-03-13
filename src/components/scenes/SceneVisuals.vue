@@ -18,6 +18,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { gsap } from "gsap";
+import { sRGBEncoding } from "three";
 export default {
     props: {
         config: Object,
@@ -37,6 +38,7 @@ export default {
     mounted() {
         this.scene = this.$refs.scene;
         this.renderer = this.$refs.renderer;
+        this.renderer.renderer.outputEncoding = sRGBEncoding
 
         this.$store.commit("stages/setScene", this.scene);
         this.$store.commit("stages/setRenderer", this.renderer);
