@@ -1,5 +1,14 @@
 const state = () => ({
-    stages: ["Scene4", "Survey", "Final"],
+    stages: [
+        "Welcome",
+        "About",
+        "Scene1",
+        "Scene2",
+        "Scene3",
+        "Scene4",
+        "Survey",
+        "Final",
+    ],
     currentStageIndex: 0,
     sceneLoading: false,
     sceneReporting: false,
@@ -52,7 +61,6 @@ const actions = {
         commit("setGLTFScene", scene);
     },
     loadingFinish({ commit }) {
-        commit("removeLoading");
         commit("loadingEnd");
     },
 };
@@ -70,9 +78,6 @@ const mutations = {
     },
     setGLTFScene(state, gltf) {
         state.gltfScene = gltf;
-    },
-    removeLoading(state) {
-        state.scene.remove(state.scene.scene.getObjectByName("loadingPlane"));
     },
     addToScene(state, object) {
         state.scene.add(object);

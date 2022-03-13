@@ -1,24 +1,13 @@
 <template>
-    <Plane
-        ref="loadingScreen"
-        :width="2"
-        :height="2"
-        :position="{ y: -2, z: 0 }"
-    >
-        <ShaderMaterial
-            :props="{
-                vertexShader: vs,
-                fragmentShader: fs,
-                uniforms: us,
-            }"
-        />
-    </Plane>
+    <EffectComposer ref="effect">
+      <RenderPass />
+    </EffectComposer>
 </template>
 
 <script>
-import { Clock } from "three";
 import { gsap } from "gsap";
 import { vs, fs } from "/public/assets/shaders/loadingScreen";
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 import { mapActions } from "vuex";
 export default {
     data() {
@@ -33,31 +22,30 @@ export default {
         };
     },
     mounted() {
-        this.loadingScreen = this.$refs.loadingScreen;
-        this.loadingScreen.mesh.name = "loadingPlane";
+        this.effect = this.$refs.effect;
 
-        this.loadingScreenMaterial = this.loadingScreen.material;
-        this.loadingScreenMaterial.transparent = true;
-        
-        this.clock = new Clock();
+        this.tintPass = new ShaderPass({
+            uniforms: this.us,
+            vertexShader: this.vs,
+            fragmentShader: this.fs
+        })
+        this.effect.addPass(this.tintPass)
     },
     methods: {
         ...mapActions({ loadingFinish: "stages/loadingFinish" }),
         finish() {
             var that = this;
-
-            // Fade out animation
-            gsap.to(this.loadingScreenMaterial.uniforms.uAlpha, {
+            gsap.to(this.tintPass.material.uniforms.uAlpha, {
                 duration: this.FADETIME,
                 value: 0.0,
                 onComplete: function () {
                     that.loadingFinish()
+                    that.tintPass.enabled = false
                 },
             });
         },
         update() {
-            const elapsedTime = this.clock.getElapsedTime();
-            this.us.uTime.value = elapsedTime;
+            this.tintPass.material.uniforms.uTime.value = this.effect.composer.clock.elapsedTime;
         },
     },
 };

@@ -20,7 +20,7 @@ export default {
         update() {
             this.fbx.update();
             this.blender.update();
-
+            
             if (this.isSceneLoading) this.loadingScreen.update();
             
             if (this.isSceneLoading && this.isLoaded())
