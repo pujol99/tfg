@@ -63,6 +63,7 @@ export const config = {
     ///////////////////////////////////////////////////////////////
     Scene3: {
         sceneName: "scene3",
+        envMap: "bus",
         fbx: [
             {
                 path: "Texting",

@@ -3,6 +3,7 @@
         <PerspectiveCamera ref="camera" :fov="70" :position="cameraPosition" :lookAt="cameraLookAt" />
         <Scene ref="scene" background="#000000">
             <AmbientLight :intensity="0.8" />
+            <Cube ref="cube" :name="config.envMap"/>
             <Loader
                 ref="loader"
                 :payload="{
@@ -42,6 +43,8 @@ export default {
 
         this.$store.commit("stages/setScene", this.scene);
         this.$store.commit("stages/setRenderer", this.renderer);
+        console.log(this.config.envMap);
+        if(this.config.envMap) this.$refs.cube.init(this.scene)
 
         this.renderer.onBeforeRender(() => {
             this.$refs.loader.update();

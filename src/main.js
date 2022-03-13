@@ -12,6 +12,7 @@ import SelectFlag from "./components/ui/SelectFlag";
 import Report from "./components/ui/Report";
 
 // Utils
+import Cube from "./components/utils/Cube";
 import Loader from "./components/utils/Loader";
 import LoadBlender from "./components/utils/LoadBlender";
 import LoadFBX from "./components/utils/LoadFBX";
@@ -31,6 +32,7 @@ createApp(App)
     .component("Form", Form)
     .component("LoadingScreen", LoadingScreen)
     .component("Report", Report)
+    .component("Cube", Cube)
     .component("Option", Option)
     .component("Disclaimer", Disclaimer)
     .component("SceneUi", SceneUi)
