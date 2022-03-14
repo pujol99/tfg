@@ -65,7 +65,7 @@ export const labels = {
      *
      */
     mood: ["Mood", "Anims"],
-    // Scene 1
+    // Scene 1 /////////////////////////////////////////////////////////////
     Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacio 1"],
     Scene1_title: [
         "Its early in the morning, you are in the dinning room before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -99,7 +99,7 @@ export const labels = {
         "It's always good to spend time with your family as it will create a better connection with them",
         "It's always good to spend time with your family as it will create a better connection with them",
     ],
-    // Scene 2
+    // Scene 2 ///////////////////////////////////////////////////////////
     Scene2_desc: ["Day 2 Scene 1", "Dia 2 Situacio 1"],
     Scene2_title: [
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -121,7 +121,7 @@ export const labels = {
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
-    // Scene 3
+    // Scene 3 ///////////////////////////////////////////////////////////////
     Scene3_desc: ["Day 3 Scene 1", "Dia 3 Situacio 1"],
     Scene3_title: [
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -143,6 +143,7 @@ export const labels = {
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
+    // Scene 4 /////////////////////////////////////////////////////////////////
     Scene4_desc: ["Day 4 Scene 1", "Dia 4 Situacio 1"],
     Scene4_title: [
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -164,6 +165,7 @@ export const labels = {
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],
+    // Scene 5 //////////////////////////////////////////////////////////////////////////////
     Scene5_desc: ["Day 5 Scene 1", "Dia 5 Situacio 1"],
     Scene5_title: [
         "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
@@ -182,6 +184,28 @@ export const labels = {
         ],
     ],
     Scene5_report: [
+        ["Bad", "Mid.", "Good"],
+        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+    ],
+    // Scene 6 //////////////////////////////////////////////////////////////////////////////
+    Scene6_desc: ["Day 5 Scene 1", "Dia 5 Situacio 1"],
+    Scene6_title: [
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+    ],
+    Scene6_options: [
+        [
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+            "You disconnect from the conversation and scroll through your phone",
+        ],
+        [
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+            "You just focus in finnishing your meal",
+        ],
+    ],
+    Scene6_report: [
         ["Bad", "Mid.", "Good"],
         ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
     ],

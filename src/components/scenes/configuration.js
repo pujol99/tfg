@@ -1,6 +1,6 @@
 export const config = {
     Scene1: {
-        sceneName: "scene1",
+        sceneName: "home",
         fbx: [
             {
                 path: "Texting",
@@ -35,34 +35,7 @@ export const config = {
     },
     ///////////////////////////////////////////////////////////////
     Scene2: {
-        sceneName: "scene2",
-        fbx: [
-            {
-                path: "Walking",
-                position: { x: 1, y: 0, z: 0 },
-                scale: { x: 0.002, y: 0.002, z: 0.002 },
-                rotation: { y: Math.PI * 2 * 0 },
-            },
-        ],
-        cameraLookAts: [
-            { x: 1.0, y: 0.49, z: 0.0 },
-            { x: 1.01, y: 0.5, z: 0.01 },
-            { x: 1.02, y: 0.51, z: 0.02 },
-            { x: 1.03, y: 0.52, z: 0.03 },
-        ],
-        cameraPositions: [
-            { x: 1.0, y: 0.5, z: 1.5 },
-            { x: 0.0, y: 0.51, z: 0.0 },
-            { x: 1.0, y: 0.52, z: -1.5 },
-            { x: 2.0, y: 0.53, z: 0.0 },
-        ],
-        update: function (gltf) {
-            gltf.rotation.y += 0.003;
-        },
-    },
-    ///////////////////////////////////////////////////////////////
-    Scene3: {
-        sceneName: "scene3",
+        sceneName: "bus",
         envMap: "bus",
         fbx: [
             {
@@ -94,9 +67,36 @@ export const config = {
         ],
         update: function (gltf) {},
     },
+    ///////////////////////////////////////////////////////////////
+    Scene3: {
+        sceneName: "school",
+        fbx: [
+            {
+                path: "Walking",
+                position: { x: 1, y: 0, z: 0 },
+                scale: { x: 0.002, y: 0.002, z: 0.002 },
+                rotation: { y: Math.PI * 2 * 0 },
+            },
+        ],
+        cameraLookAts: [
+            { x: 1.0, y: 0.49, z: 0.0 },
+            { x: 1.01, y: 0.5, z: 0.01 },
+            { x: 1.02, y: 0.51, z: 0.02 },
+            { x: 1.03, y: 0.52, z: 0.03 },
+        ],
+        cameraPositions: [
+            { x: 1.0, y: 0.5, z: 1.5 },
+            { x: 0.0, y: 0.51, z: 0.0 },
+            { x: 1.0, y: 0.52, z: -1.5 },
+            { x: 2.0, y: 0.53, z: 0.0 },
+        ],
+        update: function (gltf) {
+            gltf.rotation.y += 0.003;
+        },
+    },
     ///////////////////////////////////////////////////////////
     Scene4: {
-        sceneName: "scene4",
+        sceneName: "phone",
         cameraLookAts: [
             { x: 0, y: 0.5, z: 0 },
             { x: 0.05, y: 0.55, z: 0.05 },
@@ -109,7 +109,7 @@ export const config = {
     },
     ////////////////////////////////////////////////////////////////
     Scene5: {
-        sceneName: "scene5",
+        sceneName: "study",
         fbx: [
             {
                 path: "Typing",
@@ -124,7 +124,20 @@ export const config = {
         ],
         cameraPositions: [
             { x: -0.6, y: 1, z: 1 },
-            { x: 0.6, y: 1, z: 1 },
+            { x: -0.4, y: 0.6, z: 0.5 },
+        ],
+        update: function (gltf) {},
+    },
+    ////////////////////////////////////////////////////////////////
+    Scene6: {
+        sceneName: "phone",
+        cameraLookAts: [
+            { x: 0, y: 0.5, z: 0 },
+            { x: 0.05, y: 0.55, z: 0.05 },
+        ],
+        cameraPositions: [
+            { x: 0.3, y: 0.5, z: 0.9 },
+            { x: -0.3, y: 0.51, z: 0.91 },
         ],
         update: function (gltf) {},
     },

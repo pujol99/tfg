@@ -7,6 +7,7 @@ const state = () => ({
         "Scene3",
         "Scene4",
         "Scene5",
+        "Scene6",
         "Survey",
         "Final",
     ],
