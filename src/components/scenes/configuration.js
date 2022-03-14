@@ -94,6 +94,7 @@ export const config = {
         ],
         update: function (gltf) {},
     },
+    ///////////////////////////////////////////////////////////
     Scene4: {
         sceneName: "scene4",
         cameraLookAts: [
@@ -104,6 +105,21 @@ export const config = {
             { x: 0.3, y: 0.5, z: 0.6 },
             { x: -0.3, y: 0.51, z: 0.61 },
         ],
+        update: function (gltf) {},
+    },
+    ////////////////////////////////////////////////////////////////
+    Scene5: {
+        sceneName: "scene5",
+        fbx: [
+            {
+                path: "Typing",
+                position: { x: 0.17, y: 0.15, z: 0.35 },
+                scale: { x: 0.002, y: 0.002, z: 0.002 },
+                rotation: { y: Math.PI * 2 * 0.5 },
+            },
+        ],
+        cameraLookAts: [{ x: 0.0, y: 0.5, z: 0 }],
+        cameraPositions: [{ x: -0.6, y: 1, z: 1 }],
         update: function (gltf) {},
     },
 };

@@ -18,6 +18,8 @@ const state = () => ({
         [-0.5, 0.1, 0.3],
         [-0.2, -0.3, 0.4],
         [-0.2, -0.3, 0.4],
+        [-0.2, -0.3, 0.4],
+        [-0.2, -0.3, 0.4],
     ],
     decisionTaken: null,
     scenesCollection: "61b4956f0ddbee6f8b1b8c7e",

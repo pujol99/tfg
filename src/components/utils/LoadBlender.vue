@@ -79,9 +79,9 @@ export default {
                 gltf.scene.children
                     .filter(child => child.name.includes("Light"))
                     .forEach(child => (child.material = lightMaterial));
-
+                
                 gltf.scene.children
-                    .filter(child => child.name.includes("Screen"))
+                    .filter(child => child.name === "Screen")
                     .forEach(child => (child.material = this.screenMaterial));
 
                 this.addScene(gltf.scene);
