@@ -43,7 +43,7 @@ export default {
 
         this.$store.commit("stages/setScene", this.scene);
         this.$store.commit("stages/setRenderer", this.renderer);
-        console.log(this.config.envMap);
+
         if(this.config.envMap) this.$refs.cube.init(this.scene)
 
         this.renderer.onBeforeRender(() => {

@@ -13,7 +13,7 @@ import {
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { mapGetters, mapActions } from "vuex";
-import { sRGBEncoding } from "three";
+import { sRGBEncoding, Vector2 } from "three";
 import { vs, fs } from "/public/assets/shaders/screen";
 export default {
     props: {
@@ -58,12 +58,23 @@ export default {
         });
 
         const screenTexture = textureLoader.load("./assets/images/screen.png");
+        const monitorTexture = textureLoader.load("./assets/images/monitor.png");
         screenTexture.flipY = false;
-        // const screenMaterial = new MeshBasicMaterial({ map: screenTexture });
         this.screenMaterial = new ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uTexture: { value: screenTexture },
+                uRes: { value: new Vector2(200.0) },
+            },
+            vertexShader: vs,
+            fragmentShader: fs,
+        });
+
+        this.monitorMaterial = new ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uTexture: { value: monitorTexture },
+                uRes: { value: new Vector2(1000.0) },
             },
             vertexShader: vs,
             fragmentShader: fs,
@@ -84,6 +95,10 @@ export default {
                     .filter(child => child.name === "Screen")
                     .forEach(child => (child.material = this.screenMaterial));
 
+                gltf.scene.children
+                    .filter(child => child.name === "Monitor")
+                    .forEach(child => (child.material = this.monitorMaterial));
+
                 this.addScene(gltf.scene);
 
                 this.isLoaded = true;
@@ -100,6 +115,7 @@ export default {
                 this.payload.blenderUpdate(this.gltf);
                 const elapsedTime = this.clock.getElapsedTime();
                 this.screenMaterial.uniforms.uTime.value = elapsedTime;
+                this.monitorMaterial.uniforms.uTime.value = elapsedTime;
             }
         },
     },

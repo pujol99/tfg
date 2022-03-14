@@ -102,8 +102,8 @@ export const config = {
             { x: 0.05, y: 0.55, z: 0.05 },
         ],
         cameraPositions: [
-            { x: 0.3, y: 0.5, z: 0.6 },
-            { x: -0.3, y: 0.51, z: 0.61 },
+            { x: 0.3, y: 0.5, z: 0.9 },
+            { x: -0.3, y: 0.51, z: 0.91 },
         ],
         update: function (gltf) {},
     },
@@ -118,8 +118,14 @@ export const config = {
                 rotation: { y: Math.PI * 2 * 0.5 },
             },
         ],
-        cameraLookAts: [{ x: 0.0, y: 0.5, z: 0 }],
-        cameraPositions: [{ x: -0.6, y: 1, z: 1 }],
+        cameraLookAts: [
+            { x: 0.0, y: 0.5, z: 0 },
+            { x: 0.1, y: 0.52, z: 0.1 },
+        ],
+        cameraPositions: [
+            { x: -0.6, y: 1, z: 1 },
+            { x: 0.6, y: 1, z: 1 },
+        ],
         update: function (gltf) {},
     },
 };

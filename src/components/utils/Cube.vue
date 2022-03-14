@@ -8,7 +8,6 @@ export default {
     props: ["name"],
     methods: {
         init(scene) {
-            console.log(scene);
             const cubeTextureLoader = new CubeTextureLoader();
             scene.scene.background = cubeTextureLoader.load([
                 `./assets/textures/${this.name}/px.png`,
