@@ -17,8 +17,8 @@ export const labels = {
             "By starting the game, you are consenting the use of the data",
         ],
         [
-            "Anonymous use of Age Gender Answers for statistical analysis",
-            "By starting the game, you are consenting the use of the data",
+            "Ús anònim de Respostes d'edat i gènere per a l'anàlisi estadística",
+            "En iniciar el joc, estàs consentint l'ús de les dades",
         ],
     ],
     /**
