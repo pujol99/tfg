@@ -119,6 +119,7 @@ export const config = {
     Scene5: {
         gltf: {
             name: "study",
+            update: function (gltf) {},
         },
         fbx: [
             {
@@ -136,7 +137,6 @@ export const config = {
             { x: -0.6, y: 1, z: 1 },
             { x: -0.4, y: 0.6, z: 0.5 },
         ],
-        update: function (gltf) {},
     },
     ////////////////////////////////////////////////////////////////
     Scene6: {

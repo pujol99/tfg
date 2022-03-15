@@ -25,7 +25,7 @@ export default {
             if (this.isSceneLoading && this.isLoaded()) this.loadingScreen.finish();
         },
         isLoaded() {
-            return !this.objects.map(element => element.isLoaded).includes(false);
+            return (!this.$refs.gltf || this.$refs.gltf.isLoaded) && (!this.$refs.fbx || this.$refs.fbx.isLoaded)
         },
     },
 };

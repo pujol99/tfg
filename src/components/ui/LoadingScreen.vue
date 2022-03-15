@@ -20,7 +20,7 @@ export default {
     mounted() {
         this.effect = this.$refs.effect;
 
-        this.tintPass = new ShaderPass({
+        this.loadingScreen = new ShaderPass({
             uniforms: {
                 uAlpha: { value: 1.0 },
                 uTime: { value: 0.0 },
@@ -28,23 +28,23 @@ export default {
             vertexShader: this.vs,
             fragmentShader: this.fs
         })
-        this.effect.addPass(this.tintPass)
+        this.effect.addPass(this.loadingScreen)
     },
     methods: {
         ...mapActions({ loadingFinish: "stages/loadingFinish" }),
         finish() {
             var that = this;
-            gsap.to(this.tintPass.material.uniforms.uAlpha, {
+            gsap.to(this.loadingScreen.material.uniforms.uAlpha, {
                 duration: this.FADETIME,
                 value: 0.0,
                 onComplete: function () {
                     that.loadingFinish()
-                    that.tintPass.enabled = false
+                    that.loadingScreen.enabled = false
                 },
             });
         },
         update() {
-            this.tintPass.material.uniforms.uTime.value = this.effect.composer.clock.elapsedTime;
+            this.loadingScreen.material.uniforms.uTime.value = this.effect.composer.clock.elapsedTime;
         },
     },
 };

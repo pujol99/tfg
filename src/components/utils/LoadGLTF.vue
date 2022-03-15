@@ -23,13 +23,11 @@ export default {
         return {
             vs: vs,
             fs: fs,
-            screenMaterial: null,
-            isLoaded: false
+            isLoaded: false,
+            clock:  new Clock()
         };
     },
     mounted() {
-        this.clock = new Clock();
-
         //Loaders
         const textureLoader = new TextureLoader();
         const dracoLoader = new DRACOLoader();
@@ -38,81 +36,70 @@ export default {
         gltfLoader.setDRACOLoader(dracoLoader);
 
         //Textures
-        const bakedTexture = textureLoader.load(
-            `./assets/scenes/${this.sceneConfig.name}/baked.jpg`
-        );
+        const bakedTexture = textureLoader.load(`./assets/scenes/${this.sceneConfig.name}/baked.jpg`);
         bakedTexture.flipY = false;
+        const screenTexture = textureLoader.load("./assets/images/screen.png");
+        screenTexture.flipY = false;
+        const monitorTexture = textureLoader.load("./assets/images/monitor.png");
 
         //Materials
-        const bakedMaterial = new MeshBasicMaterial({
-            map: bakedTexture,
-        });
+        const bakedMaterial = new MeshBasicMaterial({ map: bakedTexture });
         bakedTexture.encoding = sRGBEncoding;
-        const lightMaterial = new MeshBasicMaterial({
-            color: 0xffffff,
-        });
-
-        const screenTexture = textureLoader.load("./assets/images/screen.png");
-        const monitorTexture = textureLoader.load("./assets/images/monitor.png");
-        screenTexture.flipY = false;
-        this.screenMaterial = new ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uTexture: { value: screenTexture },
-                uRes: { value: new Vector2(200.0) },
-            },
-            vertexShader: vs,
-            fragmentShader: fs,
-        });
-
-        this.monitorMaterial = new ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uTexture: { value: monitorTexture },
-                uRes: { value: new Vector2(1000.0) },
-            },
-            vertexShader: vs,
-            fragmentShader: fs,
-        });
+        const lightMaterial = new MeshBasicMaterial({ color: 0xffffff });
+        this.screenMaterial = this.getScreenMaterial(screenTexture, 200.0)
+        this.monitorMaterial = this.getScreenMaterial(monitorTexture, 1000.0)
 
         gltfLoader.load(
             `./assets/scenes/${this.sceneConfig.name}/scene.glb`,
             gltf => {
-                gltf.scene.traverse(child => {
-                    child.material = bakedMaterial;
-                });
-
-                gltf.scene.children
-                    .filter(child => child.name.includes("Light"))
-                    .forEach(child => (child.material = lightMaterial));
-
-                gltf.scene.children
-                    .filter(child => child.name === "Screen")
-                    .forEach(child => (child.material = this.screenMaterial));
-
-                gltf.scene.children
-                    .filter(child => child.name === "Monitor")
-                    .forEach(child => (child.material = this.monitorMaterial));
+                this.setAllMaterial(gltf, bakedMaterial)
+                this.setMaterialIncludes(gltf, "Light", lightMaterial)
+                this.setMaterial(gltf, "Monitor", this.monitorMaterial)
+                this.setMaterial(gltf, "Screen", this.screenMaterial)
 
                 this.addScene(gltf.scene);
-
                 this.isLoaded = true;
             }
         );
     },
-    computed: {
-        ...mapGetters({ gltf: "stages/getGLTF" }),
-    },
+    computed: {...mapGetters({ gltf: "stages/getGLTF" }),},
     methods: {
         ...mapActions({ addScene: "stages/addGLTFScene" }),
         update() {
             if (this.isLoaded) {
                 this.sceneConfig.update(this.gltf);
 
+                // Update uniforms
                 const elapsedTime = this.clock.getElapsedTime();
                 this.screenMaterial.uniforms.uTime.value = elapsedTime;
                 this.monitorMaterial.uniforms.uTime.value = elapsedTime;
             }
+        },
+        setMaterialIncludes(gltf, type, material){
+            gltf.scene.children
+                .filter(child => child.name.includes(type))
+                .forEach(child => child.material = material);
+        },
+        setMaterial(gltf, type, material){
+            gltf.scene.children
+                .filter(child => child.name === type)
+                .forEach(child => child.material = material);
+        },
+        setAllMaterial(gltf, material){
+            gltf.scene.traverse(child => {
+                child.material = material;
+            });
+        },
+        getScreenMaterial(texture, res){
+            return new ShaderMaterial({
+                uniforms: {
+                    uTime: { value: 0 },
+                    uTexture: { value: texture },
+                    uRes: { value: new Vector2(res) },
+                },
+                vertexShader: vs,
+                fragmentShader: fs,
+            });
         },
     },
 };

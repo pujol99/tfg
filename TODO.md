@@ -14,17 +14,10 @@
 
 - Better LoadingScreen
 
-- Clean LoadBlender
-
 - Finish label traduction
-
-- Create all the necesary mixins
 
 - Make description of game
 
 - Check the last labels that need to be created (Disclaimers)
 
-- Clean css
-
 ## Bugs
-
