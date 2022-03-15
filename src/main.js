@@ -13,8 +13,9 @@ import Report from "./components/ui/Report";
 
 // Utils
 import Cube from "./components/utils/Cube";
+import Aura from "./components/utils/Aura";
 import Loader from "./components/utils/Loader";
-import LoadBlender from "./components/utils/LoadBlender";
+import LoadGLTF from "./components/utils/LoadGLTF";
 import LoadFBX from "./components/utils/LoadFBX";
 
 // Scenes
@@ -33,13 +34,14 @@ createApp(App)
     .component("LoadingScreen", LoadingScreen)
     .component("Report", Report)
     .component("Cube", Cube)
+    .component("Aura", Aura)
     .component("Option", Option)
     .component("Disclaimer", Disclaimer)
     .component("SceneUi", SceneUi)
     .component("Popup", Popup)
     .component("SelectFlag", SelectFlag)
     .component("Loader", Loader)
-    .component("LoadBlender", LoadBlender)
+    .component("LoadGLTF", LoadGLTF)
     .component("LoadFBX", LoadFBX)
     .component("SceneVisuals", SceneVisuals)
     .mount("#app");

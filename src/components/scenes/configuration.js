@@ -1,6 +1,9 @@
 export const config = {
     Scene1: {
-        sceneName: "home",
+        gltf: {
+            name: "home",
+            update: function (gltf) {},
+        },
         fbx: [
             {
                 path: "Texting",
@@ -31,11 +34,13 @@ export const config = {
             { x: -1, y: 1, z: -3 },
             { x: -1, y: 2, z: -3 },
         ],
-        update: function (gltf) {},
     },
     ///////////////////////////////////////////////////////////////
     Scene2: {
-        sceneName: "bus",
+        gltf: {
+            name: "bus",
+            update: function (gltf) {},
+        },
         envMap: "bus",
         fbx: [
             {
@@ -65,11 +70,15 @@ export const config = {
             { x: 1.5, y: 1.0, z: 0.5 },
             { x: 1.5, y: 1.0, z: -0.5 },
         ],
-        update: function (gltf) {},
     },
     ///////////////////////////////////////////////////////////////
     Scene3: {
-        sceneName: "school",
+        gltf: {
+            name: "school",
+            update: function (gltf) {
+                gltf.rotation.y += 0.003;
+            },
+        },
         fbx: [
             {
                 path: "Walking",
@@ -90,13 +99,13 @@ export const config = {
             { x: 1.0, y: 0.52, z: -1.5 },
             { x: 2.0, y: 0.53, z: 0.0 },
         ],
-        update: function (gltf) {
-            gltf.rotation.y += 0.003;
-        },
     },
     ///////////////////////////////////////////////////////////
     Scene4: {
-        sceneName: "phone",
+        gltf: {
+            name: "phone",
+            update: function (gltf) {},
+        },
         cameraLookAts: [
             { x: 0, y: 0.5, z: 0 },
             { x: 0.05, y: 0.55, z: 0.05 },
@@ -105,11 +114,12 @@ export const config = {
             { x: 0.3, y: 0.5, z: 0.9 },
             { x: -0.3, y: 0.51, z: 0.91 },
         ],
-        update: function (gltf) {},
     },
     ////////////////////////////////////////////////////////////////
     Scene5: {
-        sceneName: "study",
+        gltf: {
+            name: "study",
+        },
         fbx: [
             {
                 path: "Typing",
@@ -130,7 +140,10 @@ export const config = {
     },
     ////////////////////////////////////////////////////////////////
     Scene6: {
-        sceneName: "phone",
+        gltf: {
+            name: "phone",
+            update: function (gltf) {},
+        },
         cameraLookAts: [
             { x: 0, y: 0.5, z: 0 },
             { x: 0.05, y: 0.55, z: 0.05 },
@@ -139,6 +152,5 @@ export const config = {
             { x: 0.3, y: 0.5, z: 0.9 },
             { x: -0.3, y: 0.51, z: 0.91 },
         ],
-        update: function (gltf) {},
     },
 };

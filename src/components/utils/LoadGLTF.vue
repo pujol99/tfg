@@ -7,33 +7,28 @@ import {
     TextureLoader,
     MeshBasicMaterial,
     Clock,
-    MeshToonMaterial,
     ShaderMaterial,
+    sRGBEncoding,
+    Vector2,
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { mapGetters, mapActions } from "vuex";
-import { sRGBEncoding, Vector2 } from "three";
 import { vs, fs } from "/public/assets/shaders/screen";
 export default {
     props: {
-        payload: Object,
+        sceneConfig: Object,
     },
     data() {
         return {
             vs: vs,
             fs: fs,
             screenMaterial: null,
+            isLoaded: false
         };
     },
     mounted() {
-        this.isLoaded = false;
         this.clock = new Clock();
-
-        if (!this.payload.blenderSceneName) {
-            this.isLoaded = true;
-            return;
-        }
 
         //Loaders
         const textureLoader = new TextureLoader();
@@ -44,7 +39,7 @@ export default {
 
         //Textures
         const bakedTexture = textureLoader.load(
-            `./assets/scenes/${this.payload.blenderSceneName}/baked.jpg`
+            `./assets/scenes/${this.sceneConfig.name}/baked.jpg`
         );
         bakedTexture.flipY = false;
 
@@ -52,7 +47,7 @@ export default {
         const bakedMaterial = new MeshBasicMaterial({
             map: bakedTexture,
         });
-        bakedTexture.encoding = sRGBEncoding
+        bakedTexture.encoding = sRGBEncoding;
         const lightMaterial = new MeshBasicMaterial({
             color: 0xffffff,
         });
@@ -81,7 +76,7 @@ export default {
         });
 
         gltfLoader.load(
-            `./assets/scenes/${this.payload.blenderSceneName}/scene.glb`,
+            `./assets/scenes/${this.sceneConfig.name}/scene.glb`,
             gltf => {
                 gltf.scene.traverse(child => {
                     child.material = bakedMaterial;
@@ -90,7 +85,7 @@ export default {
                 gltf.scene.children
                     .filter(child => child.name.includes("Light"))
                     .forEach(child => (child.material = lightMaterial));
-                
+
                 gltf.scene.children
                     .filter(child => child.name === "Screen")
                     .forEach(child => (child.material = this.screenMaterial));
@@ -112,7 +107,8 @@ export default {
         ...mapActions({ addScene: "stages/addGLTFScene" }),
         update() {
             if (this.isLoaded) {
-                this.payload.blenderUpdate(this.gltf);
+                this.sceneConfig.update(this.gltf);
+
                 const elapsedTime = this.clock.getElapsedTime();
                 this.screenMaterial.uniforms.uTime.value = elapsedTime;
                 this.monitorMaterial.uniforms.uTime.value = elapsedTime;

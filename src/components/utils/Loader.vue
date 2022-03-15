@@ -1,33 +1,31 @@
 <template>
     <LoadingScreen ref="loadingScreen" />
-    <LoadBlender ref="blender" :payload="payload" />
-    <LoadFBX ref="fbx" :models="payload.fbx" />
+    <LoadGLTF ref="gltf" :sceneConfig="sceneConfig.gltf" v-if="sceneConfig.gltf" />
+    <LoadFBX ref="fbx" :models="sceneConfig.fbx" v-if="sceneConfig.fbx"/>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
     props: {
-        payload: Object,
+        sceneConfig: Object,
     },
     computed: { ...mapGetters({ isSceneLoading: "stages/isSceneLoading" }) },
     mounted() {
         this.loadingScreen = this.$refs.loadingScreen;
-        this.blender = this.$refs.blender;
-        this.fbx = this.$refs.fbx;
+
+        this.objects = [this.$refs.gltf, this.$refs.fbx].filter(object => object);
     },
     methods: {
         update() {
-            this.fbx.update();
-            this.blender.update();
-            
+            this.objects.forEach(element => element.update());
+
             if (this.isSceneLoading) this.loadingScreen.update();
-            
-            if (this.isSceneLoading && this.isLoaded())
-                this.loadingScreen.finish();
+
+            if (this.isSceneLoading && this.isLoaded()) this.loadingScreen.finish();
         },
         isLoaded() {
-            return this.blender.isLoaded && this.fbx.isLoaded;
+            return !this.objects.map(element => element.isLoaded).includes(false);
         },
     },
 };

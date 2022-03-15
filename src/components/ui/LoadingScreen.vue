@@ -13,10 +13,6 @@ export default {
     data() {
         return {
             FADETIME: 1.0,
-            us: {
-                uAlpha: { value: 1.0 },
-                uTime: { value: 0.0 },
-            },
             vs: vs,
             fs: fs
         };
@@ -25,7 +21,10 @@ export default {
         this.effect = this.$refs.effect;
 
         this.tintPass = new ShaderPass({
-            uniforms: this.us,
+            uniforms: {
+                uAlpha: { value: 1.0 },
+                uTime: { value: 0.0 },
+            },
             vertexShader: this.vs,
             fragmentShader: this.fs
         })

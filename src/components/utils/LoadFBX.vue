@@ -13,17 +13,12 @@
 
 <script>
 import { AnimationMixer, Clock } from "three";
-import Aura from "./Aura"
 export default {
     props: {
         models: Array,
     },
-    components: {
-        Aura,
-    },
     mounted() {
-        this.modelsSize = (this.models && this.models.length) ? this.models.length : 0;
-        this.isLoaded = this.modelsSize === 0;
+        this.isLoaded = false
         this.animations = [];
     },
     methods: {
@@ -44,7 +39,7 @@ export default {
 
             this.animations.push({ animation, clock });
             
-            if (this.animations.length === this.modelsSize)
+            if (this.animations.length === this.models.length)
                 this.isLoaded = true;
         },
     },
