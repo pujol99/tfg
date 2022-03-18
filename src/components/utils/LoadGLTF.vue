@@ -50,27 +50,7 @@ export default {
         bakedTexture.encoding = sRGBEncoding;
         const lightMaterial = new MeshBasicMaterial({ color: 0xffffff });
         this.screenMaterial = this.getScreenMaterial(screenTexture, 200.0);
-
-        //Video
-        var video = document.getElementById("video");
-        const videoTexture = new VideoTexture(video);
-        this.monitorMaterial = this.getScreenMaterial(videoTexture, 1000.0);
-        // this.monitorMaterial = new MeshBasicMaterial( { map: texture } );
-
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            const constraints = { video: { width: 800, height: 800 } };
-            navigator.mediaDevices
-                .getUserMedia(constraints)
-                .then(function (stream) {
-                    video.srcObject = stream;
-                    video.play();
-                })
-                .catch(function (error) {
-                    console.error("Unable to access the camera/webcam.", error);
-                });
-        } else {
-            console.error("MediaDevices interface not available.");
-        }
+        this.monitorMaterial = this.getScreenMaterial(monitorTexture, 1000.0);
 
         gltfLoader.load(`./assets/scenes/${this.sceneConfig.name}/scene.glb`, gltf => {
             this.setAllMaterial(gltf, bakedMaterial);
