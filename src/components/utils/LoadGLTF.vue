@@ -10,6 +10,7 @@ import {
     ShaderMaterial,
     sRGBEncoding,
     Vector2,
+    VideoTexture,
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
@@ -24,7 +25,7 @@ export default {
             vs: vs,
             fs: fs,
             isLoaded: false,
-            clock:  new Clock()
+            clock: new Clock(),
         };
     },
     mounted() {
@@ -36,7 +37,9 @@ export default {
         gltfLoader.setDRACOLoader(dracoLoader);
 
         //Textures
-        const bakedTexture = textureLoader.load(`./assets/scenes/${this.sceneConfig.name}/baked.jpg`);
+        const bakedTexture = textureLoader.load(
+            `./assets/scenes/${this.sceneConfig.name}/baked.jpg`
+        );
         bakedTexture.flipY = false;
         const screenTexture = textureLoader.load("./assets/images/screen.png");
         screenTexture.flipY = false;
@@ -46,23 +49,40 @@ export default {
         const bakedMaterial = new MeshBasicMaterial({ map: bakedTexture });
         bakedTexture.encoding = sRGBEncoding;
         const lightMaterial = new MeshBasicMaterial({ color: 0xffffff });
-        this.screenMaterial = this.getScreenMaterial(screenTexture, 200.0)
-        this.monitorMaterial = this.getScreenMaterial(monitorTexture, 1000.0)
+        this.screenMaterial = this.getScreenMaterial(screenTexture, 200.0);
 
-        gltfLoader.load(
-            `./assets/scenes/${this.sceneConfig.name}/scene.glb`,
-            gltf => {
-                this.setAllMaterial(gltf, bakedMaterial)
-                this.setMaterialIncludes(gltf, "Light", lightMaterial)
-                this.setMaterial(gltf, "Monitor", this.monitorMaterial)
-                this.setMaterial(gltf, "Screen", this.screenMaterial)
+        //Video
+        var video = document.getElementById("video");
+        const videoTexture = new VideoTexture(video);
+        this.monitorMaterial = this.getScreenMaterial(videoTexture, 1000.0);
+        // this.monitorMaterial = new MeshBasicMaterial( { map: texture } );
 
-                this.addScene(gltf.scene);
-                this.isLoaded = true;
-            }
-        );
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            const constraints = { video: { width: 800, height: 800 } };
+            navigator.mediaDevices
+                .getUserMedia(constraints)
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function (error) {
+                    console.error("Unable to access the camera/webcam.", error);
+                });
+        } else {
+            console.error("MediaDevices interface not available.");
+        }
+
+        gltfLoader.load(`./assets/scenes/${this.sceneConfig.name}/scene.glb`, gltf => {
+            this.setAllMaterial(gltf, bakedMaterial);
+            this.setMaterialIncludes(gltf, "Light", lightMaterial);
+            this.setMaterial(gltf, "Monitor", this.monitorMaterial);
+            this.setMaterial(gltf, "Screen", this.screenMaterial);
+
+            this.addScene(gltf.scene);
+            this.isLoaded = true;
+        });
     },
-    computed: {...mapGetters({ gltf: "stages/getGLTF" }),},
+    computed: { ...mapGetters({ gltf: "stages/getGLTF" }) },
     methods: {
         ...mapActions({ addScene: "stages/addGLTFScene" }),
         update() {
@@ -75,22 +95,22 @@ export default {
                 this.monitorMaterial.uniforms.uTime.value = elapsedTime;
             }
         },
-        setMaterialIncludes(gltf, type, material){
+        setMaterialIncludes(gltf, type, material) {
             gltf.scene.children
                 .filter(child => child.name.includes(type))
-                .forEach(child => child.material = material);
+                .forEach(child => (child.material = material));
         },
-        setMaterial(gltf, type, material){
+        setMaterial(gltf, type, material) {
             gltf.scene.children
                 .filter(child => child.name === type)
-                .forEach(child => child.material = material);
+                .forEach(child => (child.material = material));
         },
-        setAllMaterial(gltf, material){
+        setAllMaterial(gltf, material) {
             gltf.scene.traverse(child => {
                 child.material = material;
             });
         },
-        getScreenMaterial(texture, res){
+        getScreenMaterial(texture, res) {
             return new ShaderMaterial({
                 uniforms: {
                     uTime: { value: 0 },
