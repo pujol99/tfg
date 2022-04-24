@@ -42,7 +42,8 @@ export default {
             firefliesGeometry.setAttribute("aScale", new BufferAttribute(scaleArray, 1));
 
             // Material
-            const barColor = this.red.lerp(this.green, this.mood);
+            var color = new Color();
+            var barColor = color.lerpColors(this.red, this.green, this.mood.happiness);
             this.firefliesMaterial = new ShaderMaterial({
                 uniforms: {
                     uTime: { value: 0 },
@@ -58,19 +59,6 @@ export default {
             });
             // Points
             this.fireflies = new Points(firefliesGeometry, this.firefliesMaterial);
-
-            //Resize
-            // this.renderer.onResize(() => {
-            //     this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
-            // });
-
-            // Mood bar
-            document.getElementById("mood").style.background = `
-                linear-gradient(
-                    90deg, 
-                    #${barColor.getHexString()} ${this.mood * 100}%, 
-                    #FFFFFF ${this.mood * 100}%
-            )`;
 
             this.load();
         },

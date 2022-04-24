@@ -27,8 +27,11 @@
 .icons {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     padding: 10px 30px;
+    @include phone {
+        padding: 5px;
+    }
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -80,7 +83,7 @@
     font-family: $font-content;
     padding: 10px;
     @include phone {
-        padding: 15px 10px;
+        padding: 5px;
     }
 }
 
@@ -107,8 +110,15 @@
     display: inline-block;
 }
 
-#mood{
+.moods{
     position: relative;
+    font-size: 14px;
+}
+
+.emotions{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #emotion{

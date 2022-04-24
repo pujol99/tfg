@@ -11,19 +11,48 @@ const state = () => ({
         aboutDecisions: {},
         surveyDecisions: {},
     },
-    prevMood: 0.5,
-    mood: 0.5,
+    mood: {
+        happiness: 0.5,
+        prev_happiness: 0.5,
+        socialization: 0.5,
+        prev_socialization: 0.5,
+        focus: 0.5,
+        prev_focus: 0.5,
+    },
     decisionsMood: [
-        [-0.5, 0.3, 0.1],
-        [-0.5, 0.1, 0.3],
-        [-0.2, -0.3, 0.4],
-        [-0.2, -0.3, 0.4],
-        [-0.2, -0.3, 0.4],
-        [-0.2, -0.3, 0.4],
+        {
+            happiness: [-0.1, 0.3, -0.1],
+            socialization: [-0.2, 0.2, -0.1],
+            focus: [-0.1, 0.1, -0.1],
+        },
+        {
+            happiness: [0.1, 0.2, 0.3],
+            socialization: [-0.3, -0.1, 0.3],
+            focus: [0.0, 0.0, 0.1],
+        },
+        {
+            happiness: [-0.6, -0.1, 0.3],
+            socialization: [-0.4, -0.1, 0.3],
+            focus: [-0.2, -0.1, 0.2],
+        },
+        {
+            happiness: [0.2, -0.2, -0.2],
+            socialization: [0.3, -0.1, -0.1],
+            focus: [0.2, -0.2, -0.2],
+        },
+        {
+            happiness: [0.0, 0.0, 0.1],
+            socialization: [0.0, -0.3, 0.1],
+            focus: [-0.3, 0.3, -0.3],
+        },
+        {
+            happiness: [0.1, 0.2, 0.2],
+            socialization: [0.0, 0.0, 0.0],
+            focus: [0.2, -0.2, -0.2],
+        },
     ],
     decisionTaken: null,
-    scenesCollection: "61b4956f0ddbee6f8b1b8c7e",
-    usersCollection: "61b49c4262ed886f915e5a13",
+    usersCollection: "626589ec019db46796910a0a",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
 });
 
@@ -36,14 +65,13 @@ const getters = {
         return labels[label][state.language];
     },
     getLanguage: state => {
-        return Object.keys(state.languages).find(key => state.languages[key] === state.language);
+        return Object.keys(state.languages).find(
+            key => state.languages[key] === state.language
+        );
     },
     //data
     getMood: state => {
         return state.mood;
-    },
-    getPrevMood: state => {
-        return state.prevMood;
     },
     getDecisionTaken: state => {
         return state.decisionTaken;
@@ -60,7 +88,7 @@ const actions = {
     },
     saveData({ commit, getters }) {
         console.log(getters.getUserData);
-        //commit("saveData");
+        commit("saveData");
     },
 };
 
@@ -82,6 +110,9 @@ const mutations = {
         req.setRequestHeader("Content-Type", "application/json");
         req.setRequestHeader("X-Master-Key", state.masterKey);
         req.setRequestHeader("X-Collection-Id", state.usersCollection);
+
+        state.userData.mood = state.mood
+
         req.send(JSON.stringify(state.userData));
     },
     saveAboutDecisions(state, aboutDecisions) {
@@ -98,14 +129,21 @@ const mutations = {
         var sceneIndex = state.userData.sceneDecisions.length;
 
         state.userData.sceneDecisions.push(index);
-        
-        state.prevMood = state.mood
-        state.mood += state.decisionsMood[sceneIndex][index];
-        if (state.mood > 1.0) state.mood = 1.0;
-        if (state.mood < 0.0) state.mood = 0.0;
-        
+
+        state.mood.prev_focus = state.mood.focus;
+        state.mood.prev_happiness = state.mood.happiness;
+        state.mood.prev_socialization = state.mood.socialization;
+
+        state.mood.focus += state.decisionsMood[sceneIndex].focus[index];
+        state.mood.happiness += state.decisionsMood[sceneIndex].happiness[index];
+        state.mood.socialization += state.decisionsMood[sceneIndex].socialization[index];
+
+        state.mood.focus = Math.min(Math.max(state.mood.focus, 0.0), 1.0);
+        state.mood.happiness = Math.min(Math.max(state.mood.happiness, 0.0), 1.0);
+        state.mood.socialization = Math.min(Math.max(state.mood.socialization, 0.0), 1.0);
+
         state.decisionTaken = index;
-        
+
         this.commit("stages/reportStart", { root: true });
     },
 };

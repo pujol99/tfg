@@ -12,10 +12,20 @@
         <div class="footer" id="footer">
             <!-- Icons -->
             <div class="icons" :class="{ active: !sceneLoading }">
-                <span class="info hided" id="mood">
-                    <b>{{ moodFormatted }}</b>
-                    <span id="emotion">{{currentEmotion}}</span>
-                </span>
+                <div class="hided emotions">
+                    <div class="moods info" id="focus">
+                        <p>{{ moodFormatted('focus') }}</p>
+                        <span id="emotion">{{currentEmotion('focus')}}</span>
+                    </div>
+                    <div class="moods info" id="socialization">
+                        <p>{{ moodFormatted('socialization') }}</p>
+                        <span id="emotion">{{currentEmotion('socialization')}}</span>
+                    </div>
+                    <div class="moods info" id="happiness">
+                        <p>{{ moodFormatted('happiness') }}</p>
+                        <span id="emotion">{{currentEmotion('happiness')}}</span>
+                    </div>
+                </div>
                 <button @click="isExpanded = !isExpanded" class="material-icons icon hided">
                     {{ icon }}
                 </button>
@@ -30,13 +40,16 @@
 </template>
 
 <script>
+import { Color } from "three";
 import { mapGetters } from "vuex";
 export default {
     props: ["information"],
     data() {
         return {
             isExpanded: true,
-            emotions: ["😪", "😟", "😐", "😀", "😎"]
+            emotions: ["😪", "😟", "😐", "😀", "😎"],
+            red: new Color("red"),
+            green: new Color("green"),
         };
     },
     watch: {
@@ -46,6 +59,28 @@ export default {
             }
         },
     },
+    methods: {
+        moodFormatted: function (type) {
+            return `${this.getLabel(type)}`;
+        },
+        currentEmotion: function(type){
+            // Map mood[0~1] to emotions[0~4]
+            return this.emotions[Math.floor( this.mood[type] * this.emotions.length-1 )]
+        },
+    },
+    mounted() {
+        // Mood bar
+        for (const mood of ["happiness", "focus", "socialization"]) {
+            var color = new Color();
+            var barColor = color.lerpColors(this.red, this.green, this.mood[mood]);
+            document.getElementById(mood).style.background = `
+                linear-gradient(
+                    90deg, 
+                    #${barColor.getHexString()} ${this.mood[mood] * 100}%, 
+                    #FFFFFF ${this.mood[mood] * 100}%
+            )`;
+        }
+    },
     computed: {
         ...mapGetters({
             sceneLoading: "stages/isSceneLoading",
@@ -54,13 +89,6 @@ export default {
             mood: "data/getMood",
             getLabel: "data/getLabel",
         }),
-        moodFormatted: function () {
-            return `${this.getLabel("mood")}: ${Math.floor(this.mood * 100)}%`;
-        },
-        currentEmotion: function(){
-            // Map mood[0~1] to emotions[1~4]
-            return this.emotions[Math.floor( this.mood * this.emotions.length )]
-        },
         icon: function () {
             return this.isExpanded ? "expand_more" : "expand_less";
         },

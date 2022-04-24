@@ -64,149 +64,209 @@ export const labels = {
      *  Scenes
      *
      */
-    mood: ["Mood", "Anims"],
+    focus: ["focus", "focus"],
+    happiness: ["happiness", "happiness"],
+    socialization: ["socialization", "socialization"],
     // Scene 1 /////////////////////////////////////////////////////////////
-    Scene1_desc: ["Day 1 Scene 1", "Dia 1 Situacio 1"],
+    Scene1_desc: [
+        "Putting social media before important things",
+        "Posar les xarxes socials abans que les coses importants",
+    ],
     Scene1_title: [
-        "Its early in the morning, you are in the dinning room before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are in the dinning room before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "És de bon matí, estàs esmorzant abans d'anar a l'escola, a la taula hi ha els teus pares, comencen a parlar d'algunes idees de viatge en família",
     ],
     Scene1_options: [
         [
             "You disconnect from the conversation and scroll through your phone",
             "You participate in the conversation proposing some ideas",
-            "You go to the table to listem them",
+            "You just focus in finishing your meal",
         ],
         [
-            "You disconnect from the conversation and scroll through your phone",
-            "You participate in the conversation proposing some ideas",
-            "You go to the table to listem them",
+            "Et desconnectes de la conversa i et desplaces pel teu telèfon",
+            "Participa en la conversa proposant algunes idees",
+            "Només et concentres a acabar el menjar",
         ],
     ],
     Scene1_report: [
         [
             "Your parents feel like you are not interested and stop talking about that after some time",
             "You propose a good idea and the family decides to do that next weekend",
-            "Your parents decide the trip that will be done next weekend, you are all happy about it",
+            "Your parents feel like you are not interested and stop talking about that after some time",
         ],
         [
-            "Your parents feel like you are not interested and stop talking about that after some time",
-            "You propose a good idea and the family decides to do that next weekend",
-            "Your parents decide the trip that will be done next weekend, you are all happy about it",
+            "els teus pares senten que no t'interessen i deixen de parlar-ne al cap d'un temps",
+            "Proposes una bona idea i la família decideix fer-ho el proper cap de setmana",
+            "els teus pares senten que no t'interessen i deixen de parlar-ne al cap d'un temps",
         ],
     ],
     Scene1_report_general: [
         "It's always good to spend time with your family as it will create a better connection with them",
-        "It's always good to spend time with your family as it will create a better connection with them",
+        "Sempre és bo passar temps amb la família, ja que crearà una millor connexió amb ells",
     ],
     // Scene 2 ///////////////////////////////////////////////////////////
-    Scene2_desc: ["Day 2 Scene 1", "Dia 2 Situacio 1"],
+    Scene2_desc: [
+        "Putting social media before important things",
+        "Posar les xarxes socials abans que les coses importants",
+    ],
     Scene2_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "You are in the bus going to school, some colleagues are also in the bus",
+        "Estàs a l'autobús per anar a l'escola, alguns companys també són a l'autobús",
     ],
     Scene2_options: [
         [
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
+            "You'd rather sit alone and check your instagram notifications, you got plenty",
+            "You start playing a popular mobile game with them from your sit",
+            "You go talk to them during the rest of the trip discussing how the weekend was",
         ],
         [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
+            "Preferiu seure sol i comprovar les notificacions d'Instagram, en teniu moltes.",
+            "Comenceu a jugar a un popular joc mòbil amb ells des de la vostra seient",
+            "Vas a parlar amb ells durant la resta del viatge parlant de com va ser el cap de setmana",
         ],
     ],
     Scene2_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Playtime is over, and even if you did what you felt like doing, you feel empty. You start to wonder if it would have been better to play with your friends. Your mood goes down",
+            "Even though you were playing with them you feel like you weren't really with them",
+            "You have a great time laughing with them about their stories, you feel connected",
+        ],
+        [
+            "L'hora de jugar s'ha acabat, i encara que facis el que t'agradaria, et sents buit. Comences a preguntar-te si hauria estat millor jugar amb els teus amics. El teu estat d'ànim baixa",
+            "Tot i que estàveu jugant amb ells, tens la sensació de no estar realment amb ells",
+            "T'ho passes molt bé rient amb ells de les seves històries, et sents connectat",
+        ],
+    ],
+    Scene2_report_general: [
+        "It's always good to spend time with your friends as it will create a better connection with them",
+        "Sempre és bo passar temps amb els teus amics, ja que crearà una millor connexió amb ells",
     ],
     // Scene 3 ///////////////////////////////////////////////////////////////
-    Scene3_desc: ["Day 3 Scene 1", "Dia 3 Situacio 1"],
+    Scene3_desc: ["Fear of Missing Out", "Por a perdre't coses (FOMO)"],
     Scene3_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "You are walking to school in the morning while having a non-relevant discussion on twitter when you see your best friend, Sofia, approaching you. She looks pretty sad",
+        "Vas a l'escola caminant al matí mentre tens una discussió poc rellevant a Twitter quan veus que la teva millor amiga, la Sofia, s'acosta a tu. Es veu força trista",
     ],
     Scene3_options: [
         [
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
+            "Completely ignore her and continue discussing on twitter. She is just sleepy today.",
+            "Ask her to tell you what's the matter out of obligation, but continue focused on your discussion",
+            "Put your phone in the pocket and try to understand and cheer her up by all means. Your friends are more important than a random discussion",
         ],
         [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
+            "Ignoreu-la completament i continueu discutint a Twitter. Ella només té somni avui.",
+            "Demaneu-li que us expliqui què passa per obligació, però continua centrat en la teva discussió.",
+            "Posa el teu telèfon a la butxaca i intenta entendre-la i animar-la per tots els mitjans. Els teus amics són més importants que una discussió aleatòria.",
         ],
     ],
     Scene3_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Sofia does not say a single word and when you arrive at school, she goes straight to class without talking to anyone else. During the first class, she asks the professor to go home, visibly about to cry",
+            "Since you have not really listened to her, you can't help her at all and the situation becomes uncomfortable. She is visibly mad at you, but maybe she was able to let off steam. Your mood goes down.",
+            "Sofia tells you that she is having a hard time studying for the final exams because she is worried about not being a good enough student. When you arrive to the school, you notice that she is slightly happier and she thanks you for listening to her. Your mood goes up... a lot!",
+        ],
+        [
+            "La Sofia no diu ni una paraula i quan arribes a l'escola, va directament a classe sense parlar amb ningú més. Durant la primera classe, demana al professor que se'n vagi a casa, visiblement a punt de plorar",
+            "Com que no l'has escoltat realment, no pots ajudar-la gens i la situació es torna incòmoda. Està visiblement enfadada amb tu, però potser s'ha pogut desfogar. El teu estat d'ànim baixa.",
+            "La Sofia et diu que li costa estudiar per als exàmens finals perquè li preocupa no ser una estudiant prou bona. Quan arribes a l'escola, notes que està una mica més contenta i t'agraeix per escoltar-la. . El teu estat d'ànim puja... molt!",
+        ],
+    ],
+    Scene3_report_general: [
+        "It's always important to care about the people that surrounds you as they will do the same for you, if so",
+        "Sempre és important preocupar-se per les persones que t'envolten, ja que ells faran el mateix per tu, si és així",
     ],
     // Scene 4 /////////////////////////////////////////////////////////////////
-    Scene4_desc: ["Day 4 Scene 1", "Dia 4 Situacio 1"],
+    Scene4_desc: ["Passive vs active use of social media", "Us actiu vs passiu de les xarxes socials"],
     Scene4_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "You wake up and decide to be on social media",
+        "Et despertes i decideixes estar a les xarxes socials",
     ],
     Scene4_options: [
         [
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
+            "You talk to friends and share things with them. Find communities for their interests and hobbies",
+            "You scroll through posts",
+            "You scroll through TikTok",
         ],
         [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
+            "Parles amb els amics i comparteixes coses amb ells. Trobeu comunitats pels seus interessos i aficions",
+            "Revises les publicacions",
+            "Entres a TikTok",
         ],
     ],
     Scene4_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Well done, a active use of social media will make you more connected with real life",
+            "There are some better options... Making a pasive use of social media it's less rewarding than an active use",
+            "There are some better options... Making a pasive use of social media it's less rewarding than an active use",
+        ],
+        [
+            "Ben fet, un ús actiu de les xarxes socials us farà més connectat amb la vida real",
+            "i ha algunes opcions millors... Fer un ús passiu de les xarxes socials és menys gratificant que un ús actiu",
+            "i ha algunes opcions millors... Fer un ús passiu de les xarxes socials és menys gratificant que un ús actiu",
+        ],
+    ],
+    Scene4_report_general: [
+        "Did you klnow that aps use addictive design tricks like this ... An active user utilises the platform to either simulate or enhance real life. A passive user, on the other hand, is not partaking in any direct engagement with the platform and community They are not reaching out to people: they are waiting for content to come to them. And when it does even if it evokes a brief snicker or flicker of interest it is nowhere near as rewardin]",
+        "Sabíeu que els aps utilitzen trucs de disseny addictius com aquest? Un usuari actiu utilitza la plataforma per simular o millorar la vida real? Un usuari passiu, en canvi, no participa en cap compromís directe amb la plataforma i la comunitat No estan arribant a la gent: estan esperant que els arribi contingut. I quan ho fa, fins i tot si evoca una breu riallada o un parpelleig d'interès, és no és tan recompensat]",
     ],
     // Scene 5 //////////////////////////////////////////////////////////////////////////////
-    Scene5_desc: ["Day 5 Scene 1", "Dia 5 Situacio 1"],
+    Scene5_desc: ["Fear of Missing Out", "Por a perdre't coses (FOMO)"],
     Scene5_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "It's the end of the semester, you have an exam tomorrow. Since it's the end of the semester, your classmates have planned a party and added you to the group chat.",
+        "És el final del semestre, demà tens un examen. Com que és el final del semestre, els teus companys de classe han planejat una festa i t'han afegit al xat grupal.",
     ],
     Scene5_options: [
         [
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
+            "You leave your mobile on the table and continue studying, it is not time to plan a party since the final exam is approaching.",
+            "You put the phone on do not disturb and leave it charging in another room",
+            "In an attempt to get your friends to stop talking about the party, you upload a story of yourself studying and tag them to study.",
         ],
         [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
+            "Deixes el teu mòbil sobre la taula i segueixes estudiant, no és el moment de planificar una festa ja que s'acosta l'examen final.",
+            "Poses el telèfon a no molestar i el deixes carregant en una altra habitació",
+            "En un intent que els teus amics deixin de parlar de la festa, puges una història teva estudiant i els etiquetes perquè estudiïn.",
         ],
     ],
     Scene5_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Your mobile won't stop turning on and it distracts you and in the end you end up joining the conversation",
+            "You finish studying and come back to your phone with 100 unread messages. Your friends seem upset that you didn't answer. But at least you know that tomorrow you will get a very good grade in the exam.",
+            "Your friends eventually stopped talking to the group and started studying. But since then every 5 minutes you look at your mobile to see who has read the message, and finally you started watching videos on your mobile",
+        ],
+        [
+            "El teu mòbil no deixa d'encendre's i et desconcentra i al final acabes unint-te a la conversa.",
+            "Termines d'estudiar i tornes al teu telèfon amb 100 missatges no llegits. els teus amics semblen molestos perquè no vas respondre. Però almenys saps que demà trauràs una molt bona nota al examen",
+            "Els teus amics al final van deixar de parlar per al grup i van començar a estudiar. però des de llavors cada 5 minuts mires el teu mòbil per veure qui ha llegit el missatge, i al final vas començar a veure vídeos al teu mòbil.",
+        ],
+    ],
+    Scene5_report_general: [
+        "When studying is important to keep away the things that can distract you",
+        "Perquè estudiem que és important que es mantingui la idea que es distracti.",
     ],
     // Scene 6 //////////////////////////////////////////////////////////////////////////////
-    Scene6_desc: ["Day 5 Scene 1", "Dia 5 Situacio 1"],
+    Scene6_desc: ["Humane vs addictive design", "Disseny huma vs adictiu"],
     Scene6_title: [
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
-        "Its early in the morning, you are eating your breakfast before going to school, in the table there are your parents, they start to talk about some family trip ideas",
+        "You take a break from studying with your phone. Which app would you choose",
+        "Et fas una pausa per estudiar amb el teu telèfon. Quina aplicació triaríeu",
     ],
     Scene6_options: [
-        [
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-            "You disconnect from the conversation and scroll through your phone",
-        ],
-        [
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-            "You just focus in finnishing your meal",
-        ],
+        ["Wordle (daily puzzle)", "TikTok", "Instagram"],
+        ["Wordle (puzzle diari)", "TikTok", "Instagram"],
     ],
     Scene6_report: [
-        ["Bad", "Mid.", "Good"],
-        ["CATBad", "CATMid.CATMid.CATMid.CATMid. CATMid.CATMid. CATMid.", "cATGood"],
+        [
+            "Very good, you chose a app that doesn't have addictive features (limits to 1 play a day) ",
+            "Bad choice... Apps with addictive design can make you lose track of time and spend more time that you wanted ",
+            "Bad choice... Apps with addictive design can make you lose track of time and spend more time that you wanted ",
+        ],
+        [
+            "Molt bé, has triat una aplicació que no té funcions addictives (límits a 1 jugada al dia)",
+            "Mala elecció... Les aplicacions amb un disseny addictiu et poden fer perdre la noció del temps i passar més temps del que volies",
+            "Mala elecció... Les aplicacions amb un disseny addictiu et poden fer perdre la noció del temps i passar més temps del que volies",
+        ],
+    ],
+    Scene6_report_general: [
+        "Did you know the most famous tricks that apps use to keep you addicted? Endless scrolling/streaming Social pressure. Social comparison and social reward. **Gamifying social interaction. Push Notifications. Typing symbol (make a popup on hover to explain this tricks)**",
+        "Coneixíeu els trucs més famosos que fan servir les aplicacions per mantenir-vos addicte? Desplaçament/transmissió sense fi Pressió social. Comparació social i recompensa social. ** Interacció social gamificant. Notificacions push. Símbol d'escriure (creeu una finestra emergent al passar el cursor per explicar aquests trucs)**",
     ],
 };

@@ -303,12 +303,18 @@ button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   padding: 10px 30px;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  .icons {
+    padding: 5px;
+  }
 }
 
 .icons > div {
@@ -390,7 +396,7 @@ button {
 
 @media screen and (max-width: 480px) {
   .option {
-    padding: 15px 10px;
+    padding: 5px;
   }
 }
 
@@ -425,8 +431,20 @@ button {
   display: inline-block;
 }
 
-#mood {
+.moods {
   position: relative;
+  font-size: 14px;
+}
+
+.emotions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
 }
 
 #emotion {
