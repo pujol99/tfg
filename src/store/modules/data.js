@@ -110,9 +110,7 @@ const mutations = {
         req.setRequestHeader("Content-Type", "application/json");
         req.setRequestHeader("X-Master-Key", state.masterKey);
         req.setRequestHeader("X-Collection-Id", state.usersCollection);
-
         state.userData.mood = state.mood
-
         req.send(JSON.stringify(state.userData));
     },
     saveAboutDecisions(state, aboutDecisions) {
