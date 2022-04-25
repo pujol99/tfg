@@ -57,6 +57,7 @@ export default {
         moodUpdate(type){
             var prevColor = new Color();
             var color = new Color();
+            
             const barColorPrev = prevColor.lerpColors(this.red, this.green, this.mood[`prev_${type}`]);
             const barColor = color.lerpColors(this.red, this.green, this.mood[type])
             document.getElementById(`prev_${type}`).style.background = `
