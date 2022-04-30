@@ -66,14 +66,24 @@ export const labels = {
      *  Tricks
      *
      */
-    trick1_title: ["Bubble message", "test"],
-    trick1_body: [
-        "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. This allows us to attach weight and importance as we don’t know what the message could be, keeping us paused to see the outcome of the message.",
+    trick0_title: ["Bubble message", "test"],
+    trick0_body: [
+        "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. This allows us to attach weight and importance as we don't know what the message could be, keeping us paused to see the outcome of the message.",
         "test",
     ],
-    trick2_title: ["The slot machine delay", "test"],
-    trick2_body: [
+    trick1_title: ["The slot machine delay", "test"],
+    trick1_body: [
         "The slight delay of response before your newsfeed is populated again is all a part of building the anticipation to release a dopamine hit of excitement when you get your latest posts.",
+        "test",
+    ],
+    trick2_title: ["The Like epidemic", "test"],
+    trick2_body: [
+        "Humans have been evolutionarily hardwired to crave social acceptance. And in the internet age, social acceptance is nowhere more purely distilled than in the form of the 'Like' button. The like button provides social validation. The number of likes can be measured and compared allowing users to establish status by a quantifiable number",
+        "test",
+    ],
+    trick3_title: ["Push notifications", "test"],
+    trick3_body: [
+        "Finally but probably the most deadly feature of them all. Push notifications which are designed to constantly distract and interrupt our days. Constantly notifying us and trying to pull us back to the app. Every time we receive a notification, our brain produces dopamine, the chemical associated with reward and motivation. FOMO (fear of missing out) is a big part that push notifications prey on. Telling you, you have a 14 unread messages but you don’t know who is messaging you or what they are saying",
         "test",
     ],
     /**
@@ -298,8 +308,5 @@ export const labels = {
             "Mala elecció... Les aplicacions amb un disseny addictiu et poden fer perdre la noció del temps i passar més temps del que volies",
         ],
     ],
-    Scene6_report_general: [
-        "",
-        "",
-    ],
+    Scene6_report_general: ["", ""],
 };
