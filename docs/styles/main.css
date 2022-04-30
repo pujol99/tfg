@@ -474,6 +474,10 @@ button {
   margin-bottom: 10px;
 }
 
+.trick-title {
+  margin-top: 20px;
+}
+
 .trick-link > a {
   color: white;
 }
