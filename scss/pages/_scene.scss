@@ -12,16 +12,21 @@
     background-color: azure;
 }
 
+@keyframes title-up {
+    from { top: 0px; }
+    to   { top: 50px; }
+}
+
 .title {
     position: absolute;
     width: 100%;
-    top: 5%;
-    @include tablet { top: 0; }
     button{
         max-width: 600px;
         margin: 0 auto;
         display: block;
     }
+    @include easyInOut(5s);
+    animation-name: title-up;
 }
 
 .icons {
@@ -140,15 +145,8 @@
        color: white;
     }
 
-    &-body{
-    }
-
     &-image > img{
         width: 50%;
-    }
-
-    &-action{
-
     }
 
 }

@@ -28,13 +28,44 @@
     
 }
 
+.card-body{
+    > * {
+        margin-bottom: 8px;
+    }
+}
+
 .card-body-big{
     height: 100%;
     > * {
-        margin-bottom: 5px;
+        margin-bottom: 12px;
     }
 }
 
 .card-title{
     font-family: $font-header;
+}
+
+.info-option-box{
+    background-color: gray;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.info-screen{
+    width: 70%;
+    margin: 0 auto;
+    @extend .info;
+    &-title{
+        @extend .info-option-box;
+        margin-bottom: 50px;
+    }
+
+    &-options{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &-option{
+        @extend .info-option-box;
+    }
 }

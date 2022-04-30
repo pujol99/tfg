@@ -10,7 +10,7 @@ export const labels = {
      */
     welcome_title: ["TFG", "TFG"],
     welcome_body: [
-        "Game for raising awarness on social media addiction. In this mini-game, you will be presented with common situations in the daily life of a teenager student. Depending on the actions you choose, your mood will go up and down",
+        "Game for raising awarness on social media addiction. ",
         "Joc per conscienciar sobre l'addicció a les xarxes socials",
     ],
     welcome_disclaimers: [
@@ -61,6 +61,13 @@ export const labels = {
         "You use social media so much that it has had a negative impact on your job/studies.",
         "",
     ],
+    /**
+     *
+     *  Info
+     *
+     */
+    info_title: ["Game rules", ""],
+    info_body:["In this mini-game, you will be presented with common situations in the daily life of a teenager student. Choose the actions that you would do honestly. Depending on the actions you choose, your mood will go up and down", ""],
     /**
      *
      *  Tricks

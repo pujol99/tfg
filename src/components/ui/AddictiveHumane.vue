@@ -15,7 +15,7 @@
                 <div class="trick-body">
                     {{ getLabel(`trick${value}_body`) }}
                 </div>
-                <div class="trick-image" v-if="links[index] !== ''">
+                <div class="trick-image">
                     <img :src="`assets/images/trick${value}.png`" />
                 </div>
                 <div class="trick-link" v-if="links[index] !== ''">

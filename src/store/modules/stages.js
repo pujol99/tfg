@@ -2,6 +2,7 @@ const state = () => ({
     stages: [
         "Welcome",
         "About",
+        "Info",
         "Scene1",
         "Scene2",
         "Scene3",
