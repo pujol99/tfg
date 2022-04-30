@@ -16,7 +16,7 @@
                     {{ getLabel(`trick${value}_body`) }}
                 </div>
                 <div class="trick-image">
-                    <img :src="`/assets/images/trick${value}.png`" />
+                    <img :src="`assets/images/trick${value}.png`" />
                 </div>
                 <div class="trick-link">
                     <a :href="links[index-1]" target="_blank">Read more...</a>

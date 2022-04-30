@@ -11,7 +11,7 @@
                 harum eum. Commodi neque quae tempora cum asperiores ducimus dolorum amet
                 quis possimus, corrupti reprehenderit eum at accusamus, tempore
             </p>
-            <img src="/assets/images/pasiveActive.jpeg" style="width:100%">
+            <img src="assets/images/pasiveActive.jpeg" style="width:100%">
         </div>
         <div class="card-action">
             <Close id="pasiveActive" />
