@@ -82,9 +82,7 @@
 
     font-family: $font-content;
     padding: 10px;
-    @include phone {
-        padding: 5px;
-    }
+
 }
 
 .hided {
@@ -128,4 +126,29 @@
 
     font-size: 26px;
     transform: rotate(30deg);
+}
+
+.trick{
+    > * {
+        margin-bottom: 10px;
+    }
+    &-title{
+       
+    }
+
+    &-link > a{
+       color: white;
+    }
+
+    &-body{
+    }
+
+    &-image > img{
+        width: 50%;
+    }
+
+    &-action{
+
+    }
+
 }

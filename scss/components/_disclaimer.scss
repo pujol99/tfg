@@ -1,26 +1,29 @@
 .disclaimer{
     @include shadow;
 
-    margin: 5px 0;
+    margin: 3px 0;
+    padding: 2px;
     border-radius: 5px;
-    padding: 6px 0;
 
-    color: black;
+    color: #595959;
     background-color: #FFFFAA;
 
     display: flex;
     align-items: center;
-    gap: 15px;
 
-    text-align: left;
-
-    @include phone{
-        font-size: 14px;
+    text-align: center;
+    font-size: 14px;
+    @include phone {
+        font-size: 13px;
     }
 }
 
+.disclaimer-content{
+    width: 100%;
+}
+
 .disclaimer-icon{
-    padding-left: 15px;
+    padding: 5px;
     color: orange;
     & span { 
         margin: auto;

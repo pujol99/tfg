@@ -88,6 +88,7 @@ const actions = {
     },
     saveData({ commit, getters }) {
         console.log(getters.getUserData);
+        commit("getBergenScale")
         commit("saveData");
     },
 };
@@ -96,6 +97,15 @@ const actions = {
 const mutations = {
     setLanguage(state, language) {
         state.language = state.languages[language];
+    },
+    getBergenScale(state){
+        const qS = ["bergen1", "bergen2", "bergen3", "bergen4", "bergen5", "bergen6"]
+        let total = 0
+        for (const q of qS) {
+            total += parseInt(state.userData.aboutDecisions[q])+1
+            delete state.userData.aboutDecisions[q];
+        }
+        state.userData.aboutDecisions.total = total;
     },
     saveData(state) {
         let req = new XMLHttpRequest();

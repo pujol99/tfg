@@ -3,6 +3,7 @@ import App from "./App.vue";
 
 // UI library
 import Continue from "./components/ui/Continue";
+import Close from "./components/ui/Close";
 import Form from "./components/ui/Form";
 import LoadingScreen from "./components/ui/LoadingScreen";
 import Option from "./components/ui/Option";
@@ -10,6 +11,9 @@ import Popup from "./components/ui/Popup";
 import Disclaimer from "./components/ui/Disclaimer";
 import SelectFlag from "./components/ui/SelectFlag";
 import Report from "./components/ui/Report";
+import ActivePasive from "./components/ui/ActivePasive";
+import AddictiveHumane from "./components/ui/AddictiveHumane";
+
 
 // Utils
 import Cube from "./components/utils/Cube";
@@ -30,9 +34,12 @@ createApp(App)
     .use(store)
     .use(TroisJSVuePlugin)
     .component("Continue", Continue)
+    .component("Close", Close)
     .component("Form", Form)
     .component("LoadingScreen", LoadingScreen)
     .component("Report", Report)
+    .component("ActivePasive", ActivePasive)
+    .component("AddictiveHumane", AddictiveHumane)
     .component("Cube", Cube)
     .component("Aura", Aura)
     .component("Option", Option)

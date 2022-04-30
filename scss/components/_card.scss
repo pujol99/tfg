@@ -20,6 +20,21 @@
     color: white;
 }
 
+.card-container-big{
+    @extend .card-container;
+    @include no-blur;
+    z-index: 4;
+    height: 90%;
+    
+}
+
+.card-body-big{
+    height: 100%;
+    > * {
+        margin-bottom: 5px;
+    }
+}
+
 .card-title{
     font-family: $font-header;
 }

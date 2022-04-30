@@ -5,7 +5,7 @@
             <h1>{{ information.description }}</h1>
         </div>
         <!-- Scene title -->
-        <div class="title">
+        <div class="title" id="header-title">
             <Option :message="information.title" disabled />
         </div>
         <!-- Scene footer -->
@@ -56,6 +56,7 @@ export default {
         sceneReporting(newValue, oldValue) {
             if (newValue === true) {
                 document.getElementById("footer").remove();
+                document.getElementById("header-title").remove();
             }
         },
     },

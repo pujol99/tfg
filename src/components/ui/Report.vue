@@ -1,5 +1,7 @@
 <template>
     <div v-show="sceneReporting">
+        <ActivePasive v-if="sceneName === 'Scene4'"/>
+        <AddictiveHumane v-if="sceneName === 'Scene6'"/>
         <div class="card-container">
             <div class="card-body">
                 <p>{{ getLabel(`${sceneName}_report`)[decisionTaken] }}</p>

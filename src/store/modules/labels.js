@@ -1,5 +1,7 @@
 export const labels = {
     continue: ["Continue", "Avança"],
+    close: ["Close", "Tanca"],
+    next: ["Next", "Seguent"],
     popup: ["Fill answers please", "Emplena les preguntes siusplau"],
     /**
      *
@@ -8,7 +10,7 @@ export const labels = {
      */
     welcome_title: ["TFG", "TFG"],
     welcome_body: [
-        "Game for raising awarness on social media addiction ",
+        "Game for raising awarness on social media addiction. In this mini-game, you will be presented with common situations in the daily life of a teenager student. Depending on the actions you choose, your mood will go up and down",
         "Joc per conscienciar sobre l'addicció a les xarxes socials",
     ],
     welcome_disclaimers: [
@@ -41,24 +43,55 @@ export const labels = {
         ["Male", "Female", "Other"],
         ["Home", "Dona", "Altre"],
     ],
+    bergen1: [
+        "You spend a lot of time thinking about social media or planning how to use it.",
+        "",
+    ],
+    bergen2: ["You feel an urge to use social media more and more.", ""],
+    bergen3: ["You use social media in order to forget about personal problems.", ""],
+    bergen4: [
+        "You have tried to cut down on the use of social media without success.",
+        "",
+    ],
+    bergen5: [
+        "You become restless or troubled if you are prohibited from using social media.",
+        "",
+    ],
+    bergen6: [
+        "You use social media so much that it has had a negative impact on your job/studies.",
+        "",
+    ],
+    /**
+     *
+     *  Tricks
+     *
+     */
+    trick1_title: ["Bubble message", "test"],
+    trick1_body: [
+        "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. This allows us to attach weight and importance as we don’t know what the message could be, keeping us paused to see the outcome of the message.",
+        "test",
+    ],
+    trick2_title: ["The slot machine delay", "test"],
+    trick2_body: [
+        "The slight delay of response before your newsfeed is populated again is all a part of building the anticipation to release a dopamine hit of excitement when you get your latest posts.",
+        "test",
+    ],
     /**
      *
      *  Survey
      *
      */
     survey_title: ["Final survey", "Enquesta final"],
-    s1_title: [
-        "ENGAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "CATAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-    ],
+    s1_title: ["You have increased your knowledge in  social media addictive design", ""],
     s2_title: [
-        "ENGAn excessive use of social media platforms can lead to negative effects in physical and mental health",
-        "CATAn excessive use of social media platforms can lead to negative effects in physical and mental health",
+        "You have increased your knowledge in social media passive / active use",
+        "",
     ],
-    survey_options: [
-        ["Disagree", "Neutral", "Agree"],
-        ["En desacord", "Neutral", "D'acord"],
+    likert_options: [
+        ["1", "2", "3", "4", "5"],
+        ["1", "2", "3", "4", "5"],
     ],
+    likert_disclaimer: ["1 disagree - 5 agree", "1 disagree - 5 agree"],
     /**
      *
      *  Scenes
@@ -176,7 +209,10 @@ export const labels = {
         "Sempre és important preocupar-se per les persones que t'envolten, ja que ells faran el mateix per tu, si és així",
     ],
     // Scene 4 /////////////////////////////////////////////////////////////////
-    Scene4_desc: ["Passive vs active use of social media", "Us actiu vs passiu de les xarxes socials"],
+    Scene4_desc: [
+        "Passive vs active use of social media",
+        "Us actiu vs passiu de les xarxes socials",
+    ],
     Scene4_title: [
         "You wake up and decide to be on social media",
         "Et despertes i decideixes estar a les xarxes socials",
@@ -205,10 +241,7 @@ export const labels = {
             "i ha algunes opcions millors... Fer un ús passiu de les xarxes socials és menys gratificant que un ús actiu",
         ],
     ],
-    Scene4_report_general: [
-        "Did you klnow that aps use addictive design tricks like this ... An active user utilises the platform to either simulate or enhance real life. A passive user, on the other hand, is not partaking in any direct engagement with the platform and community They are not reaching out to people: they are waiting for content to come to them. And when it does even if it evokes a brief snicker or flicker of interest it is nowhere near as rewardin]",
-        "Sabíeu que els aps utilitzen trucs de disseny addictius com aquest? Un usuari actiu utilitza la plataforma per simular o millorar la vida real? Un usuari passiu, en canvi, no participa en cap compromís directe amb la plataforma i la comunitat No estan arribant a la gent: estan esperant que els arribi contingut. I quan ho fa, fins i tot si evoca una breu riallada o un parpelleig d'interès, és no és tan recompensat]",
-    ],
+    Scene4_report_general: ["", ""],
     // Scene 5 //////////////////////////////////////////////////////////////////////////////
     Scene5_desc: ["Fear of Missing Out", "Por a perdre't coses (FOMO)"],
     Scene5_title: [
@@ -266,7 +299,7 @@ export const labels = {
         ],
     ],
     Scene6_report_general: [
-        "Did you know the most famous tricks that apps use to keep you addicted? Endless scrolling/streaming Social pressure. Social comparison and social reward. **Gamifying social interaction. Push Notifications. Typing symbol (make a popup on hover to explain this tricks)**",
-        "Coneixíeu els trucs més famosos que fan servir les aplicacions per mantenir-vos addicte? Desplaçament/transmissió sense fi Pressió social. Comparació social i recompensa social. ** Interacció social gamificant. Notificacions push. Símbol d'escriure (creeu una finestra emergent al passar el cursor per explicar aquests trucs)**",
+        "",
+        "",
     ],
 };

@@ -28,6 +28,10 @@
                 </div>
                 <!-- -->
             </div>
+            <Disclaimer
+                v-if="disclaimer"
+                :content="disclaimer"
+            />
             <!-- -->
         </div>
         <div class="card-action">
@@ -43,6 +47,7 @@ export default {
         propQuestions: Object,
         title: String,
         saveFunction: String,
+        disclaimer: String
     },
     data() {
         return {
