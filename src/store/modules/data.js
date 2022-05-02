@@ -103,7 +103,6 @@ const mutations = {
         let total = 0
         for (const q of qS) {
             total += parseInt(state.userData.aboutDecisions[q])+1
-            delete state.userData.aboutDecisions[q];
         }
         state.userData.aboutDecisions.total = total;
     },

@@ -116,16 +116,43 @@ button {
   height: 90%;
 }
 
+.card-body > * {
+  margin-bottom: 8px;
+}
+
 .card-body-big {
   height: 100%;
 }
 
 .card-body-big > * {
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .card-title {
   font-family: "Source Serif 4", sans-serif;
+}
+
+.info-option-box, .info-screen-title, .info-screen-option {
+  background-color: gray;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.info-screen {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.info-screen-title {
+  margin-bottom: 50px;
+}
+
+.info-screen-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .form-element:not(:last-child) {
@@ -298,16 +325,35 @@ button {
   background-color: azure;
 }
 
+@-webkit-keyframes title-up {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 50px;
+  }
+}
+
+@keyframes title-up {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 50px;
+  }
+}
+
 .title {
   position: absolute;
   width: 100%;
-  top: 5%;
-}
-
-@media screen and (max-width: 800px) {
-  .title {
-    top: 0;
-  }
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: title-up;
+          animation-name: title-up;
 }
 
 .title button {
@@ -353,7 +399,7 @@ button {
   cursor: pointer;
 }
 
-.info {
+.info, .info-screen {
   color: black;
   background-color: azure;
   height: -webkit-fit-content;
