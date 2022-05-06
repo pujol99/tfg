@@ -2,8 +2,8 @@
     <div v-if="currentScene('Survey')">
         <Form
             :title="getLabel('survey_title')"
-            :propQuestions="surveyQuestions"
-            saveFunction="saveSurveyDecisions"
+            :propQuestions="questions"
+            formType="surveyDecisions"
             :disclaimer="getLabel('likert_disclaimer')"
         />
     </div>
@@ -13,15 +13,15 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        surveyQuestions() {
-            let options = this.getLabel("likert_options")
+        questions() {
+            let options = ["1", "2", "3", "4", "5"];
             return {
-                s1: {
-                    title: this.getLabel("s1_title"),
+                survey_1: {
+                    title: this.getLabel("survey_1"),
                     options: options,
                 },
-                s2: {
-                    title: this.getLabel("s2_title"),
+                survey_2: {
+                    title: this.getLabel("survey_2"),
                     options: options,
                 },
             };

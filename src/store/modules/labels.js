@@ -43,55 +43,86 @@ export const labels = {
         ["Male", "Female", "Other"],
         ["Home", "Dona", "Altre"],
     ],
-    bergen1: [
-        "You spend a lot of time thinking about social media or planning how to use it.",
-        "",
+    about_socials: [
+        "Which social media do you use more",
+        "Quina es la xarxa social que mes utilitzes",
     ],
-    bergen2: ["You feel an urge to use social media more and more.", ""],
-    bergen3: ["You use social media in order to forget about personal problems.", ""],
-    bergen4: [
+    bergen_title: [
+        "Social media addiction scale",
+        "Escala sobre l'addiccio a xarxes socials",
+    ],
+    bergen_1: [
+        "You spend a lot of time thinking about social media during the day",
+        "Passes molta estona pensant en xarxes socials durant el dia",
+    ],
+    bergen_2: [
+        "You feel an urge to use social media more and more.",
+        "Cada cop tens mes ganes de utilitzar les xarxes socials",
+    ],
+    bergen_3: [
+        "You use social media in order to forget about personal problems.",
+        "Avegades utilitzes les xarxes socials per oblidar-te dels teus problemes",
+    ],
+    bergen_4: [
         "You have tried to cut down on the use of social media without success.",
-        "",
+        "Has intentat algun cop reduir el temps que hi passes sense exit",
     ],
-    bergen5: [
+    bergen_5: [
         "You become restless or troubled if you are prohibited from using social media.",
-        "",
+        "Estas molest si no pots utilitzar les xarxes socials",
     ],
-    bergen6: [
+    bergen_6: [
         "You use social media so much that it has had a negative impact on your job/studies.",
-        "",
+        "Utilitzes tant les xarxes socials que tens males notes o treballes poc",
     ],
+    compareAddictive_title: [
+        "Rate this addictive activities",
+        "Valora les seguents accions adictives",
+    ],
+    compareAddictive_1: ["Upload an Instagram post", "Penjar una foto a Instagram"],
+    compareAddictive_2: ["Using TikTok", "Utilitzar TikTok"],
+    compareAddictive_3: ["Recieving phone notifications", "Rebre notificacions al movil"],
+    comparePasive_title: [
+        "Rate this activities as pasive or active",
+        "Valora aquestes activitats pasives/actives",
+    ],
+    comparePasive_1: ["Writting a blog / post", "Escriure un post / blog"],
+    comparePasive_2: ["Scrolling through instagram posts", "Mirar fotos per instagram"],
+    comparePasive_3: ["Watching YouTube videos", "Mira videos a YouTube"],
     /**
      *
      *  Info
      *
      */
-    info_title: ["Game rules", ""],
-    info_body:["In this mini-game, you will be presented with common situations in the daily life of a teenager student. Choose the actions that you would do honestly. Depending on the actions you choose, your mood will go up and down", ""],
+    info_title: ["Game rules", "Regles del joc"],
+    info_body: [
+        "In this mini-game, you will be presented with common situations in the daily life of a teenager student. Choose the actions that you would do honestly. Depending on the actions you choose, your mood will go up and down",
+        "En aquest minijoc, se't presentaran situacions cuotidianes de la vida de un estudiant. Escull les accions que tu faries honestament. Depenen de les accions que escolleixis el teu estat d'anim pujara o baixara",
+    ],
     /**
      *
      *  Tricks
      *
      */
-    trick0_title: ["Bubble message", "test"],
+    trick0_title: ["Bubble message", "Misstage bombolla"],
     trick0_body: [
-        "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. This allows us to attach weight and importance as we don't know what the message could be, keeping us paused to see the outcome of the message.",
-        "test",
+        "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. Keeping us paused to see the outcome of the message, therefore more time inside the app",
+        "El “escribiendo...” es aquella icona que t'avisa de que l'altre persona t'esta escrivint un missatge. Aixo crea una atencio per saber que estara escrivint l'altre persona. Mantenin-nos a la espera de que sera el missatge i per tant mes estona dins la aplicacio",
     ],
-    trick1_title: ["The slot machine delay", "test"],
+    trick1_title: ["The slot machine delay", "La tirada de ruleta"],
     trick1_body: [
         "The slight delay of response before your newsfeed is populated again is all a part of building the anticipation to release a dopamine hit of excitement when you get your latest posts.",
-        "test",
+        "El temps en el que esperes que la teva llista de posts es recarregui amb noves fotos forma part de crear una atencio i alliberar dopamina que fara que estiguem excitats sobre que seran les noves publicacions que han pujat els teus contactes",
     ],
-    trick2_title: ["The Like epidemic", "test"],
+    trick2_title: ["The Like epidemic", "La epidemia de 'likes'"],
     trick2_body: [
         "Humans have been evolutionarily hardwired to crave social acceptance. And in the internet age, social acceptance is nowhere more purely distilled than in the form of the 'Like' button. The like button provides social validation. The number of likes can be measured and compared allowing users to establish status by a quantifiable number",
-        "test",
+        "Les persones busquem la acceptacio dels demes desde sempre. I en l'era de internet aixo es tradueix en 'likes'. I els likes ens donen validacio i estatus social.",
     ],
-    trick3_title: ["Push notifications", "test"],
+    trick3_title: ["Push notifications", "Les notificacions"],
     trick3_body: [
-        "Finally but probably the most deadly feature of them all. Push notifications which are designed to constantly distract and interrupt our days. Constantly notifying us and trying to pull us back to the app. Every time we receive a notification, our brain produces dopamine, the chemical associated with reward and motivation. FOMO (fear of missing out) is a big part that push notifications prey on. Telling you, you have a 14 unread messages but you don’t know who is messaging you or what they are saying",
-        "test",
+        "Push notifications are designed to constantly distract and interrupt our days. Constantly notifying us and trying to pull us back to the app. Every time we receive a notification, our brain produces dopamine, the chemical associated with reward and motivation. FOMO (fear of missing out) is a big part that push notifications prey on. Telling you, you have a 14 unread messages but you don't know who is messaging you or what they are saying",
+        "Les notificacions estan fetes per distreurens i interrumpir els nostres dies. Constanment ens intenten fer tornar a les aplicacions que haviem abandonat. Cada cop que rebem una notificacio alliberem dopamina, que representa motivacio i felicitat. La por a perdres coses tambe fa que les notificacions ens fagin dubtar sobre si els '14 missatges no llegits' tindran molta importancia o no, fent-nos entrar a la app per descobrir-ho",
     ],
     /**
      *
@@ -99,24 +130,22 @@ export const labels = {
      *
      */
     survey_title: ["Final survey", "Enquesta final"],
-    s1_title: ["You have increased your knowledge in  social media addictive design", ""],
-    s2_title: [
-        "You have increased your knowledge in social media passive / active use",
-        "",
+    survey_1: ["Social media's are made to be addictive", "Les xarxes socials estan fetes per ser adictives"],
+    survey_2: [
+        "You are now more aware about the things that make apps more addictive",
+        "Ara ets mes concient de les coses que fan les applicacions per ser mes adictives",
     ],
-    likert_options: [
-        ["1", "2", "3", "4", "5"],
-        ["1", "2", "3", "4", "5"],
-    ],
-    likert_disclaimer: ["1 disagree - 5 agree", "1 disagree - 5 agree"],
+    likert_disclaimer: ["1 disagree - 5 agree", "1 En desacord - 5 D'acord"],
+    rateAddictive_disclaimer: ["1 not addictive - 5 addictive", "1 No adictiu - 5 Adictiu"],
+    ratePasive_disclaimer: ["1 Active - 5 Pasive", "1 Actiu - 5 Pasiu"],
     /**
      *
      *  Scenes
      *
      */
-    focus: ["focus", "focus"],
-    happiness: ["happiness", "happiness"],
-    socialization: ["socialization", "socialization"],
+    focus: ["focus", "concentracio"],
+    happiness: ["happiness", "felicitat"],
+    socialization: ["socialization", "socialitzacio"],
     // Scene 1 /////////////////////////////////////////////////////////////
     Scene1_desc: [
         "Putting social media before important things",

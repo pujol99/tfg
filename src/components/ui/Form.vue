@@ -1,19 +1,23 @@
 <template>
-    <Popup ref="popup" :message="getLabel('popup')" />
     <div class="card-container">
         <div class="card-title">
             <h2>{{ title }}</h2>
         </div>
+            <Disclaimer v-if="disclaimer" :content="disclaimer" />
         <div class="card-body">
             <!-- form -->
-            <div class="form-element" v-for="question in Object.keys(currentPage)" :key="question">
+            <div
+                class="form-element"
+                v-for="question in Object.keys(currentPage)"
+                :key="question"
+            >
                 <!-- form title -->
                 <div class="form-element-title">
                     {{ currentPage[question].title }}
                 </div>
                 <!-- -->
                 <!-- form options -->
-                <div class="form-element-options">
+                <div class="form-element-options" v-if="currentPage[question].options">
                     <div
                         class="form-element-option"
                         v-for="(option, index) in currentPage[question].options"
@@ -28,14 +32,7 @@
                 </div>
                 <!-- -->
             </div>
-            <Disclaimer
-                v-if="disclaimer"
-                :content="disclaimer"
-            />
             <!-- -->
-        </div>
-        <div class="card-action">
-            <Continue @click="onContinue" disabled/>
         </div>
     </div>
 </template>
@@ -46,14 +43,14 @@ export default {
     props: {
         propQuestions: Object,
         title: String,
-        saveFunction: String,
-        disclaimer: String
+        formType: String,
+        disclaimer: String,
     },
     data() {
         return {
             questions: this.propQuestions,
             pageIndex: 0,
-            PAGE_SIZE: 2,
+            PAGE_SIZE: 3,
         };
     },
     computed: {
@@ -64,7 +61,10 @@ export default {
         dataValidated() {
             return (
                 Object.keys(this.currentPage).filter(
-                    question => !this.currentPage[question].options.includes(this.currentPage[question].optionSelected)
+                    question =>
+                        !this.currentPage[question].options.includes(
+                            this.currentPage[question].optionSelected
+                        )
                 ).length == 0
             );
         },
@@ -73,11 +73,12 @@ export default {
         },
     },
     methods: {
-        ...mapActions({ nextStage: "stages/nextStage" }),
+        ...mapActions({
+            nextStage: "stages/nextStage",
+            saveDecisions: "data/saveDecisions",
+        }),
         onContinue() {
             if (!this.dataValidated) {
-                // activate popup warning
-                this.$refs.popup.activate();
                 return;
             }
             this.saveData();
@@ -89,11 +90,14 @@ export default {
         saveData() {
             this.formatDataForSave();
 
-            this.$store.commit(`data/${this.saveFunction}`, this.currentPage);
+            this.saveDecisions({ formType: this.formType, decisions: this.currentPage });
         },
         onDecisionClick(question, option, index) {
             question.optionSelected = option;
             question.optionSelectedIndex = index;
+
+            // Auto skip
+            this.onContinue();
         },
         formatDataForSave() {
             // From { {question: title, options[]}, ...}

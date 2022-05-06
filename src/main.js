@@ -7,7 +7,6 @@ import Close from "./components/ui/Close";
 import Form from "./components/ui/Form";
 import LoadingScreen from "./components/ui/LoadingScreen";
 import Option from "./components/ui/Option";
-import Popup from "./components/ui/Popup";
 import Disclaimer from "./components/ui/Disclaimer";
 import SelectFlag from "./components/ui/SelectFlag";
 import Report from "./components/ui/Report";
@@ -45,7 +44,6 @@ createApp(App)
     .component("Option", Option)
     .component("Disclaimer", Disclaimer)
     .component("SceneUi", SceneUi)
-    .component("Popup", Popup)
     .component("SelectFlag", SelectFlag)
     .component("Loader", Loader)
     .component("LoadGLTF", LoadGLTF)

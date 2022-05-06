@@ -2,6 +2,9 @@ const state = () => ({
     stages: [
         "Welcome",
         "About",
+        "Bergen",
+        "PrevCompareAddictive",
+        "PrevComparePasive",
         "Info",
         "Scene1",
         "Scene2",
@@ -9,6 +12,8 @@ const state = () => ({
         "Scene4",
         "Scene5",
         "Scene6",
+        "PostCompareAddictive",
+        "PostComparePasive",
         "Survey",
         "Final",
     ],
@@ -59,7 +64,7 @@ const actions = {
         if (getters.currentStageIsScene) commit("loadingStart");
         if (getters.isLastStage) commit("saveData");
     },
-    addGLTFScene({commit}, scene){
+    addGLTFScene({ commit }, scene) {
         commit("addToScene", scene);
         commit("setGLTFScene", scene);
     },

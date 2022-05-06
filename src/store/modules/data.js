@@ -8,8 +8,6 @@ const state = () => ({
     language: 0,
     userData: {
         sceneDecisions: [],
-        aboutDecisions: {},
-        surveyDecisions: {},
     },
     mood: {
         happiness: 0.5,
@@ -86,9 +84,12 @@ const actions = {
     setLanguage({ commit }, language) {
         commit("setLanguage", language);
     },
+    saveDecisions({ commit }, payload) {
+        commit("saveDecisions", payload)
+    },
     saveData({ commit, getters }) {
         console.log(getters.getUserData);
-        commit("getBergenScale")
+        commit("getBergenScale");
         commit("saveData");
     },
 };
@@ -102,9 +103,9 @@ const mutations = {
         const qS = ["bergen1", "bergen2", "bergen3", "bergen4", "bergen5", "bergen6"]
         let total = 0
         for (const q of qS) {
-            total += parseInt(state.userData.aboutDecisions[q])+1
+            total += parseInt(state.userData.bergenDecisions[q]) + 1;
         }
-        state.userData.aboutDecisions.total = total;
+        state.userData.bergenDecisions.total = total;
     },
     saveData(state) {
         let req = new XMLHttpRequest();
@@ -122,14 +123,11 @@ const mutations = {
         state.userData.mood = state.mood
         req.send(JSON.stringify(state.userData));
     },
-    saveAboutDecisions(state, aboutDecisions) {
-        for (const [key, value] of Object.entries(aboutDecisions)) {
-            state.userData.aboutDecisions[key] = value;
-        }
-    },
-    saveSurveyDecisions(state, surveyDecisions) {
-        for (const [key, value] of Object.entries(surveyDecisions)) {
-            state.userData.surveyDecisions[key] = value;
+    saveDecisions(state, payload) {
+        for (const [key, value] of Object.entries(payload.decisions)) {
+            if(!(payload.formType in state.userData))
+                state.userData[payload.formType] = {};
+            state.userData[payload.formType][key] = value;
         }
     },
     saveSceneDecision(state, index) {

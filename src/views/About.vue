@@ -1,12 +1,10 @@
 <template>
     <div v-if="currentScene('About')">
         <Form
-            :propQuestions="aboutQuestions"
+            :propQuestions="questions"
             :title="getLabel('about_title')"
-            saveFunction="saveAboutDecisions"
-            :disclaimer="getLabel('likert_disclaimer')"
+            formType="aboutDecisions"
         />
-        
     </div>
 </template>
 
@@ -14,8 +12,7 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        aboutQuestions() {
-            let options = this.getLabel("likert_options")
+        questions() {
             return {
                 age: {
                     title: this.getLabel("about_age"),
@@ -25,31 +22,17 @@ export default {
                     title: this.getLabel("about_gender"),
                     options: this.getLabel("about_gender_options"),
                 },
-                bergen1: {
-                    title: this.getLabel("bergen1"),
-                    options: options,
+                socials: {
+                    title: this.getLabel("about_socials"),
+                    options: [
+                        "Instagram",
+                        "Twitter",
+                        "TikTok",
+                        "Youtube",
+                        "Snap",
+                        "Facebook",
+                    ],
                 },
-                bergen2: {
-                    title: this.getLabel("bergen2"),
-                    options: options,
-                },
-                bergen3: {
-                    title: this.getLabel("bergen3"),
-                    options: options,
-                },
-                bergen4: {
-                    title: this.getLabel("bergen4"),
-                    options: options,
-                },
-                bergen5: {
-                    title: this.getLabel("bergen5"),
-                    options: options,
-                },
-                bergen6: {
-                    title: this.getLabel("bergen6"),
-                    options: options,
-                },
-
             };
         },
         ...mapGetters({
