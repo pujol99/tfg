@@ -275,7 +275,7 @@ button {
   margin: 3px 0;
   padding: 2px;
   border-radius: 5px;
-  color: #595959;
+  color: black;
   background-color: #FFFFAA;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -284,13 +284,6 @@ button {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  font-size: 14px;
-}
-
-@media screen and (max-width: 480px) {
-  .disclaimer {
-    font-size: 13px;
-  }
 }
 
 .disclaimer-content {
@@ -355,6 +348,7 @@ button {
 }
 
 .title button {
+  font-size: 16px;
   max-width: 600px;
   margin: 0 auto;
   display: block;
@@ -527,5 +521,5 @@ button {
 }
 
 .trick-image > img {
-  width: 50%;
+  width: 45%;
 }

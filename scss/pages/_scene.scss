@@ -21,6 +21,7 @@
     position: absolute;
     width: 100%;
     button{
+        font-size: 16px;
         max-width: 600px;
         margin: 0 auto;
         display: block;
@@ -146,7 +147,7 @@
     }
 
     &-image > img{
-        width: 50%;
+        width: 45%;
     }
 
 }

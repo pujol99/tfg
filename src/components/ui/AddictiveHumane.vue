@@ -40,11 +40,12 @@ export default {
     data() {
         return {
             index: 0,
-            nTricks: 4,
+            nTricks: 5,
             links: [
                 "https://www.nytimes.com/2014/08/31/fashion/texting-anxiety-caused-by-little-bubbles.html",
                 "https://www.nirandfar.com/want-to-hook-your-users-drive-them-crazy",
                 "https://www.cosmopolitan.com/lifestyle/a57384/why-your-likes-on-social-media-dont-mean-anything-addiction/",
+                "",
                 ""
             ],
         };

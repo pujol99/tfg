@@ -47,10 +47,7 @@ export const labels = {
         "Which social media do you use more",
         "Quina es la xarxa social que mes utilitzes",
     ],
-    bergen_title: [
-        "Social media addiction scale",
-        "Escala sobre l'addiccio a xarxes socials",
-    ],
+    bergen_title: ["Social media addiction scale", "Escala sobre l'addiccio a xarxes socials"],
     bergen_1: [
         "You spend a lot of time thinking about social media during the day",
         "Passes molta estona pensant en xarxes socials durant el dia",
@@ -104,6 +101,14 @@ export const labels = {
      *  Tricks
      *
      */
+    active_title: [
+        "Passive / Active use of social media",
+        "Us actiu / pasiu de les xarxes socials",
+    ],
+    active_body: [
+        "There are two ways of using social media, one where you just 'spectate' (watch videos, scroll posts, read discussions) and the other way where you 'create content' (Share your's / other's posts, comment, discusse). Studies have found that an active use of social media keeps us more connected with others and stimulated. In the other hand a pasive use is just a cure for boredom and can make us more isolated",
+        "Hi ha dos maneres de utilitzar les xarxes, una on ets un 'espectador' (mirar videos, fotos, llegir comentaris) i la altre manera on 'crees contingut' (Compartir les teves o altres fotos, comentar, discutir). Estudis han vist que un us actiu de les xarxes en mante mes conectats amb els altres i estimulats. D'altre banda un us passiu es simplement una cura per el aborriment i ens pot fer sentir issolats",
+    ],
     trick0_title: ["Bubble message", "Misstage bombolla"],
     trick0_body: [
         "Namely the “typing awareness indicator” are those 3 dots in a speech bubble you see when someone is typing. Creating anticipation, suspense as to what the person might be saying. Keeping us paused to see the outcome of the message, therefore more time inside the app",
@@ -124,13 +129,21 @@ export const labels = {
         "Push notifications are designed to constantly distract and interrupt our days. Constantly notifying us and trying to pull us back to the app. Every time we receive a notification, our brain produces dopamine, the chemical associated with reward and motivation. FOMO (fear of missing out) is a big part that push notifications prey on. Telling you, you have a 14 unread messages but you don't know who is messaging you or what they are saying",
         "Les notificacions estan fetes per distreurens i interrumpir els nostres dies. Constanment ens intenten fer tornar a les aplicacions que haviem abandonat. Cada cop que rebem una notificacio alliberem dopamina, que representa motivacio i felicitat. La por a perdres coses tambe fa que les notificacions ens fagin dubtar sobre si els '14 missatges no llegits' tindran molta importancia o no, fent-nos entrar a la app per descobrir-ho",
     ],
+    trick4_title: ["Infinite scroll", "Contingut infinit"],
+    trick4_body: [
+        "Apps like TikTok have made their content infinte (scrolling will always bring new content) by doing this have done that short videos convert into long time sessions without even noticing",
+        "Moltes aplicacions com TikTok han fet que ara el contingut sigui infinit (sempre que vagis cap a baix tindras nous videos) fent aixo han fet que petits videos que duren pocs segons es converteixin en sessions llargues sense donar-nos compte",
+    ],
     /**
      *
      *  Survey
      *
      */
     survey_title: ["Final survey", "Enquesta final"],
-    survey_1: ["Social media's are made to be addictive", "Les xarxes socials estan fetes per ser adictives"],
+    survey_1: [
+        "Social media's are made to be addictive",
+        "Les xarxes socials estan fetes per ser adictives",
+    ],
     survey_2: [
         "You are now more aware about the things that make apps more addictive",
         "Ara ets mes concient de les coses que fan les applicacions per ser mes adictives",
@@ -314,7 +327,7 @@ export const labels = {
         ],
         [
             "El teu mòbil no deixa d'encendre's i et desconcentra i al final acabes unint-te a la conversa.",
-            "Termines d'estudiar i tornes al teu telèfon amb 100 missatges no llegits. els teus amics semblen molestos perquè no vas respondre. Però almenys saps que demà trauràs una molt bona nota al examen",
+            "Acabes d'estudiar i tornes al teu telèfon amb 100 missatges no llegits. els teus amics semblen molestos perquè no vas respondre. Però almenys saps que demà trauràs una molt bona nota al examen",
             "Els teus amics al final van deixar de parlar per al grup i van començar a estudiar. però des de llavors cada 5 minuts mires el teu mòbil per veure qui ha llegit el missatge, i al final vas començar a veure vídeos al teu mòbil.",
         ],
     ],

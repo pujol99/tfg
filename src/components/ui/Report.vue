@@ -9,19 +9,19 @@
                 <p>{{ getLabel(`${sceneName}_report_general`) }}</p>
                 <br />
                 <div v-show="mood.focus !== mood.prev_focus">
-                    <p>focus</p>
+                    <p>{{getLabel("focus")}}</p>
                     <span id="prev_focus" class="info reportMood"></span>
                     <span> -> </span>
                     <span id="focus" class="info reportMood"></span>
                 </div>
                 <div v-show="mood.socialization !== mood.prev_socialization">
-                    <p>socialization</p>
+                    <p>{{getLabel("socialization")}}</p>
                     <span id="prev_socialization" class="info reportMood"></span>
                     <span> -> </span>
                     <span id="socialization" class="info reportMood"></span>
                 </div>
                 <div v-show="mood.happiness !== mood.prev_happiness">
-                    <p>happiness</p>
+                    <p>{{getLabel("happiness")}}</p>
                     <span id="prev_happiness" class="info reportMood"></span>
                     <span> -> </span>
                     <span id="happiness" class="info reportMood"></span>

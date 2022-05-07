@@ -5,7 +5,7 @@ const state = () => ({
         ENG: 0,
         CAT: 1,
     },
-    language: 0,
+    language: 1,
     userData: {
         sceneDecisions: [],
     },
