@@ -50,7 +50,7 @@ const state = () => ({
         },
     ],
     decisionTaken: null,
-    usersCollection: "626589ec019db46796910a0a",
+    usersCollection: "62761b4925069545a32ea6c0",
     masterKey: "$2b$10$yGbK6Zw/E5lzTl.TmQivFuhYR87PWV2Cy2TG.gIi8Lp2BLduGVNyq",
 });
 
