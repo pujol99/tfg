@@ -90,7 +90,7 @@ const actions = {
     saveData({ commit, getters }) {
         console.log(getters.getUserData);
         commit("getBergenScale");
-        commit("saveData");
+        //commit("saveData");
     },
 };
 
