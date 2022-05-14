@@ -1,6 +1,18 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 
+import { createRouter, createWebHashHistory } from "vue-router";
+import Game from "./Game.vue";
+import Results from "./views/Results.vue";
+
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        { path: "/", component: Game },
+        { path: "/results", component: Results },
+    ],
+});
+
 // UI library
 import Continue from "./components/ui/Continue";
 import Close from "./components/ui/Close";
@@ -12,7 +24,6 @@ import SelectFlag from "./components/ui/SelectFlag";
 import Report from "./components/ui/Report";
 import ActivePasive from "./components/ui/ActivePasive";
 import AddictiveHumane from "./components/ui/AddictiveHumane";
-
 
 // Utils
 import Cube from "./components/utils/Cube";
@@ -31,6 +42,7 @@ import { TroisJSVuePlugin } from "troisjs";
 
 createApp(App)
     .use(store)
+    .use(router)
     .use(TroisJSVuePlugin)
     .component("Continue", Continue)
     .component("Close", Close)

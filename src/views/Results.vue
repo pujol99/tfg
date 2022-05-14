@@ -1,0 +1,17 @@
+<template>
+    <div class="results">
+        <h1>Results</h1>
+    </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+    computed: {
+        ...mapGetters({
+            currentScene: "stages/isCurrentStage",
+            getLabel: "data/getLabel",
+        }),
+    },
+};
+</script>
