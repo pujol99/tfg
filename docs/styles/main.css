@@ -523,3 +523,7 @@ button {
 .trick-image > img {
   width: 45%;
 }
+
+.results {
+  color: white;
+}
