@@ -4,7 +4,14 @@
             <h1>Results</h1>
         </div>
         <div class="results-actions">
-            <button @click="getBins()">Refresh data (Limited requests ⚠️)</button>
+            <button
+                @click="
+                    clearData();
+                    getBinsIds();
+                "
+            >
+                Refresh all data (Limited requests ⚠️)
+            </button>
             <button id="copyTable" @click="copyTable()">Copy table</button>
         </div>
         <table id="results-table">
@@ -51,6 +58,7 @@ export default {
     data() {
         return {
             results: [],
+            binsIds: [],
         };
     },
     computed: {
@@ -71,38 +79,50 @@ export default {
     },
     methods: {
         getBin(id) {
-            let req = new XMLHttpRequest();
-
-            req.onreadystatechange = () => {
-                if (req.readyState == XMLHttpRequest.DONE) {
-                    if (req.responseText) {
-                        this.results.push(JSON.parse(req.responseText));
-                        localStorage.setItem("results", JSON.stringify(this.results));
-                    }
+            this.sendRequest(`https://api.jsonbin.io/v3/b/${id}/latest`, data => {
+                if (data) {
+                    this.results.push(JSON.parse(data));
+                    localStorage.setItem("results", JSON.stringify(this.results));
                 }
-            };
-
-            req.open("GET", `https://api.jsonbin.io/v3/b/${id}/latest`, true);
-            req.setRequestHeader("X-Master-Key", this.masterKey);
-            req.setRequestHeader("Access-Control-Allow-Origin", "*");
-            req.send();
+            });
         },
         getBins() {
-            this.results = [];
+            let index = 0
+            for (const binId of this.binsIds) {
+                index += 1
+                setTimeout(() => {
+                    this.getBin(binId);
+                }, 1000 * index);
+            }
+        },
+        getBinsIds(lastId = "") {
+            this.sendRequest(`https://api.jsonbin.io/v3/c/${this.collection}/bins/${lastId}`, data => {
+                let lastBinId = null;
+                
+                for (const bin of JSON.parse(data)) {
+                    this.binsIds.push(bin.record);
+                    lastBinId = bin.record;
+                }
+                !lastBinId ? this.getBins() : this.getBinsIds(lastBinId);
+            });
+        },
+        sendRequest(url, cb) {
             let req = new XMLHttpRequest();
+
+            req.open("GET", url, true);
+            req.setRequestHeader("X-Master-Key", this.masterKey);
+            req.setRequestHeader("Access-Control-Allow-Origin", "*");
+            req.send();
 
             req.onreadystatechange = () => {
                 if (req.readyState == XMLHttpRequest.DONE) {
-                    for (const bin of JSON.parse(req.responseText)) {
-                        this.getBin(bin.record);
-                    }
+                    cb(req.responseText);
                 }
             };
-            req.open("GET", `https://api.jsonbin.io/v3/c/${this.collection}/bins`, true);
-            req.setRequestHeader("X-Master-Key", this.masterKey);
-            req.setRequestHeader("Access-Control-Allow-Origin", "*");
-            console.log(req);
-            req.send();
+        },
+        clearData() {
+            this.results = [];
+            this.binsIds = [];
         },
         copyTable() {
             var el = document.getElementById("results-table");

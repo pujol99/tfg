@@ -527,6 +527,8 @@ button {
 .results {
   color: white;
   width: 100%;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 .results-title {
@@ -538,7 +540,7 @@ button {
 
 .results-actions {
   height: 100px;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -557,6 +559,7 @@ button {
   font-family: "Fira Code", sans-serif;
   background-color: #fffcf2;
   color: #252422;
+  font-weight: bold;
   width: 100%;
   height: 40px;
 }
@@ -574,16 +577,17 @@ button {
   border-collapse: collapse;
   table-layout: fixed;
   width: 95%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .results th {
   font-family: "Source Serif 4", sans-serif;
+  font-size: 12px;
+  height: 60px;
 }
 
 .results td {
   font-family: "Fira Code", sans-serif;
-  overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
 }
