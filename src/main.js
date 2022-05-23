@@ -1,15 +1,18 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 
-import { createRouter, createWebHashHistory } from "vue-router";
-import Game from "./Game.vue";
-import Results from "./views/Results.vue";
 
+// Routing
+import { createRouter, createWebHistory } from "vue-router";
+import Game from "./routes/Game.vue";
+import Results from "./routes/Results.vue";
+import Settings from "./routes/Settings.vue";
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         { path: "/", component: Game },
         { path: "/results", component: Results },
+        { path: "/settings", component: Settings },
     ],
 });
 

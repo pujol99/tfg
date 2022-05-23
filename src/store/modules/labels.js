@@ -37,6 +37,10 @@ export const labels = {
      *
      */
     about_title: ["About you", "Sobre tu"],
+    about_age_options: [
+        ["10-", "11-15", "15-19", "20+"],
+        ["10-", "11-15", "15-19", "20+"],
+    ],
     about_age: ["Select your age", "Selecciona la teva edat"],
     about_gender: ["Select your gender", "Selecciona el teu genere"],
     about_gender_options: [
@@ -46,6 +50,10 @@ export const labels = {
     about_socials: [
         "Which social media do you use more",
         "Quina es la xarxa social que mes utilitzes",
+    ],
+    about_socials_options: [
+        ["Instagram", "Twitter", "TikTok", "Youtube", "Snap", "Facebook"],
+        ["Instagram", "Twitter", "TikTok", "Youtube", "Snap", "Facebook"],
     ],
     bergen_title: ["Social media addiction scale", "Escala sobre l'addiccio a xarxes socials"],
     bergen_1: [

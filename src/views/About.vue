@@ -24,14 +24,7 @@ export default {
                 },
                 socials: {
                     title: this.getLabel("about_socials"),
-                    options: [
-                        "Instagram",
-                        "Twitter",
-                        "TikTok",
-                        "Youtube",
-                        "Snap",
-                        "Facebook",
-                    ],
+                    options: this.getLabel("about_socials_options"),
                 },
             };
         },

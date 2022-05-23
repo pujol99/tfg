@@ -63,9 +63,7 @@ const getters = {
         return labels[label][state.language];
     },
     getLanguage: state => {
-        return Object.keys(state.languages).find(
-            key => state.languages[key] === state.language
-        );
+        return Object.keys(state.languages).find(key => state.languages[key] === state.language);
     },
     //data
     getMood: state => {
@@ -77,6 +75,12 @@ const getters = {
     getUserData: state => {
         return state.userData;
     },
+    getMasterKey: state => {
+        return state.masterKey;
+    },
+    getUsersCollection: state => {
+        return state.usersCollection;
+    },
 };
 
 // actions
@@ -85,7 +89,7 @@ const actions = {
         commit("setLanguage", language);
     },
     saveDecisions({ commit }, payload) {
-        commit("saveDecisions", payload)
+        commit("saveDecisions", payload);
     },
     saveData({ commit, getters }) {
         console.log(getters.getUserData);

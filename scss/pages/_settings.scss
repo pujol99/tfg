@@ -1,0 +1,43 @@
+.settings {
+    color: white;
+    width: 100%;
+
+    &-title {
+        height: 100px;
+        width: 100%;
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    &-content {
+        background-color: gray;
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    &-setting {
+        margin: 10px 0;
+        font-family: $font-content;
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            font-family: $font-content;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 15px;
+        }
+    }
+    
+    &-action button {
+        @include button;
+        width: 100%;
+        margin-top: 10px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
