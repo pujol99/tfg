@@ -2,20 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 
 
-// Routing
-import { createRouter, createWebHistory } from "vue-router";
-import Game from "./routes/Game.vue";
-import Results from "./routes/Results.vue";
-import Settings from "./routes/Settings.vue";
-const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        { path: "/", component: Game },
-        { path: "/results", component: Results },
-        { path: "/settings", component: Settings },
-    ],
-});
-
 // UI library
 import Continue from "./components/ui/Continue";
 import Close from "./components/ui/Close";
@@ -45,7 +31,6 @@ import { TroisJSVuePlugin } from "troisjs";
 
 createApp(App)
     .use(store)
-    .use(router)
     .use(TroisJSVuePlugin)
     .component("Continue", Continue)
     .component("Close", Close)
